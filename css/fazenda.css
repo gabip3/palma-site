@@ -1,0 +1,278 @@
+/* ===== NOSSA FAZENDA =====
+   .fz-entrada  trilho do hero: a foto fica presa ao topo enquanto a historia
+                sobe por cima dela, como uma folha de papel. Nada prende a
+                rolagem: e so position: sticky.
+   .fz-hero     a fotografia em tela cheia, com o titulo no chao escuro
+   .fz-historia a primeira area clara: a historia contada pela primeira vez
+   .fz-segue    o sinal discreto de que a narrativa continua */
+
+/* ----- header sobre a fotografia -----
+   Na Home o header inverte sobre as manchas (difference). Sobre uma foto a
+   inversao geraria cores estranhas, entao aqui ele fica branco e usa a logo
+   branca oficial. */
+.topo--foto .topo__nav { mix-blend-mode: normal; color: #fff; }
+.topo--foto .topo__logo { opacity: 0; }
+.topo--foto .topo__logo--branco { opacity: 1; }
+.topo__link[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ----- hero ----- */
+
+.fz-entrada { position: relative; }
+
+.fz-hero {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  background: #17172a;
+  color: #fff;
+}
+
+.fz-hero__foto,
+.fz-hero__foto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.fz-hero__foto img {
+  object-fit: cover;
+  /* alinhada pela base: nas telas largas o corte sai do ceu, e a faixa de luz
+     do galpao fica sempre acima do texto */
+  object-position: 50% 100%;
+  transform-origin: 50% 42%;
+}
+
+/* Veu so no pe da foto: o galpao aceso fica atras do rotulo em algumas telas,
+   e o rotulo pequeno sumia na faixa de luz. O ceu e o galpao continuam
+   inteiros acima. */
+.fz-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64%;
+  background: linear-gradient(to top, rgba(8, 8, 18, .7) 0%, rgba(8, 8, 18, .42) 40%, rgba(8, 8, 18, 0) 100%);
+  pointer-events: none;
+}
+
+/* titulo no chao escuro, logo abaixo da linha de luz do galpao */
+.fz-hero__texto {
+  z-index: 1;
+  position: absolute;
+  left: var(--margem);
+  right: var(--margem);
+  bottom: var(--base-y);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(14px, 2.2svh, 26px);
+}
+
+.fz-hero__rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: clamp(12px, .86vw, 15px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.fz-hero__rotulo svg { width: 22px; height: auto; flex: none; fill: currentColor; }
+
+.fz-hero__titulo {
+  margin: 0;
+  font-size: clamp(50px, min(8vw, 13.5svh), 170px);
+  font-weight: 900;
+  line-height: .9;
+  letter-spacing: -.038em;
+  text-wrap: balance;
+}
+.fz-linha {
+  display: block;
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+  clip-path: inset(-.4em -.4em 0 -.4em);
+}
+.fz-tinta { display: inline-block; }
+
+.fz-hero__lugar {
+  z-index: 1;
+  position: absolute;
+  right: var(--margem);
+  bottom: var(--base-y);
+  margin: 0;
+  font-size: clamp(11px, .78vw, 13px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+
+/* ----- historia: a folha clara que sobe sobre a foto ----- */
+
+.fz-historia {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 32px);
+  background: var(--papel);
+  color: var(--tinta);
+  padding: clamp(96px, 16svh, 200px) var(--margem) clamp(72px, 12svh, 150px);
+}
+
+.fz-historia__rotulo {
+  grid-column: 1 / -1;
+  margin: 0 0 clamp(18px, 2.6svh, 32px);
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+
+.fz-quebra { display: block; }
+@media (max-width: 639px) { .fz-quebra { display: inline; } }
+
+.fz-historia__titulo {
+  grid-column: 1 / span 11;
+  margin: 0;
+  font-size: clamp(42px, 6vw, 120px);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.036em;
+}
+
+/* texto na esquerda, mais abaixo; foto na direita, sangrando pela borda */
+.fz-historia__texto {
+  grid-column: 1 / span 5;
+  grid-row: 3;
+  align-self: center;
+  margin-top: clamp(40px, 7svh, 96px);
+}
+.fz-historia__abre {
+  margin: 0;
+  max-width: 22ch;
+  font-size: clamp(22px, 2.1vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+.fz-historia__corpo {
+  margin: clamp(20px, 3svh, 32px) 0 0;
+  max-width: 44ch;
+  font-size: clamp(16px, 1.15vw, 20px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(16, 13, 11, .78);
+}
+.fz-historia__corpo + .fz-historia__corpo { margin-top: 1em; }
+
+.fz-historia__figura {
+  grid-column: 7 / -1;
+  grid-row: 3;
+  margin: clamp(56px, 9svh, 120px) calc(-1 * var(--margem)) 0 0;
+}
+.fz-historia__figura img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+.fz-historia__legenda {
+  margin-top: 12px;
+  padding-right: var(--margem);
+  font-size: 13px;
+  color: rgba(16, 13, 11, .55);
+}
+
+/* ----- o que vem depois: sinal discreto ----- */
+
+.fz-segue {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(72px, 12svh, 150px);
+  font-size: clamp(11px, .8vw, 13px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(16, 13, 11, .5);
+}
+.fz-segue svg { width: 16px; height: auto; flex: none; fill: var(--tinta); }
+.fz-segue__fio {
+  flex: 1;
+  height: 1px;
+  background: rgba(16, 13, 11, .16);
+  transform-origin: left center;
+}
+
+/* ===== movimento ===== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .fz-hero__foto img { transform: scale(1.08); will-change: transform; }
+  .js .fz-hero.is-pronto .fz-hero__foto img {
+    transform: scale(var(--fz-escala, 1));
+    transition: transform 2.8s cubic-bezier(.2, .7, .1, 1);
+  }
+  .js .fz-hero.is-rolando .fz-hero__foto img { transition: none; }
+
+  .js .fz-tinta { transform: translateY(112%); }
+  .js .fz-hero.is-pronto .fz-tinta {
+    transform: none;
+    transition: transform 1.1s var(--ease-saida);
+    transition-delay: calc(.35s + var(--i) * .1s);
+  }
+  .js .fz-hero__rotulo,
+  .js .fz-hero__lugar { opacity: 0; }
+  .js .fz-hero.is-pronto .fz-hero__rotulo,
+  .js .fz-hero.is-pronto .fz-hero__lugar { opacity: 1; transition: opacity 1s ease .25s; }
+
+  .js .fz-segue__fio { transform: scaleX(0); }
+  .js .fz-segue.is-visivel .fz-segue__fio { transform: none; transition: transform 1.6s var(--ease-saida); }
+}
+
+/* ===== composicoes ===== */
+
+@media (max-width: 1023px) {
+  .fz-historia__titulo { grid-column: 1 / -1; }
+  .fz-historia__texto { grid-column: 1 / span 7; }
+  .fz-historia__figura { grid-column: 8 / -1; }
+  .fz-historia__figura img { aspect-ratio: 4 / 5; object-position: 62% 60%; }
+}
+
+/* celular: recorte vertical proprio; titulo no chao escuro */
+@media (max-aspect-ratio: 5/6) {
+  .fz-hero__foto img { object-position: 50% 50%; }
+  .fz-hero__lugar { display: none; }
+}
+
+@media (max-width: 639px) {
+  .fz-hero__titulo { font-size: clamp(46px, 13.4vw, 72px); }
+  .fz-historia__titulo { font-size: clamp(38px, 11vw, 60px); }
+  .fz-historia__texto,
+  .fz-historia__figura { grid-column: 1 / -1; grid-row: auto; }
+  .fz-historia__figura { margin: clamp(40px, 6svh, 64px) calc(-1 * var(--margem)) 0; }
+  .fz-historia__figura img { aspect-ratio: 5 / 4; object-position: 50% 62%; }
+  .fz-historia__legenda { padding-inline: var(--margem); }
+  .fz-historia__texto { margin-top: clamp(32px, 5svh, 48px); }
+  .fz-segue { grid-row: auto; }
+}
+
+/* celular deitado: pouca altura */
+@media (max-width: 1023px) and (max-height: 520px) and (orientation: landscape) {
+  .fz-hero { min-height: 0; }
+  /* mostra a parte de baixo da foto: o galpao sobe e o titulo fica no chao escuro */
+  .fz-hero__foto img { object-position: 50% 88%; }
+  .fz-hero__titulo { font-size: clamp(34px, 12svh, 60px); }
+  .fz-hero__lugar { display: none; }
+}

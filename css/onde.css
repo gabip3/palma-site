@@ -1,0 +1,239 @@
+/* ===== SECAO 05: ONDE ENCONTRAR PALMA =====
+   Secao curta e objetiva, em duas areas:
+   .onde__chamada  frase, apoio e a busca por cidade ou CEP
+   .onde__painel   o caminho da Fazenda Palma ate "sua casa", com duas manchas
+                   pequenas no lugar de pins; embaixo, a resposta da busca
+
+   CONTEUDO PENDENTE: sem dados reais de onde encontrar Palma (ver
+   js/onde-encontrar.js), o painel nao mostra loja nem mapa. */
+
+.onde {
+  position: relative;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 32px);
+  align-items: center;
+  background: var(--papel);
+  color: var(--tinta);
+  padding: clamp(72px, 12svh, 160px) var(--margem) clamp(96px, 16svh, 200px);
+}
+/* o fio acompanha a margem, como na Secao 04 */
+.onde::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--margem);
+  right: var(--margem);
+  height: 1px;
+  background: rgba(16, 13, 11, .16);
+}
+
+/* ----- chamada e busca ----- */
+
+.onde__chamada { grid-column: 1 / span 6; }
+
+.onde__rotulo {
+  margin: 0 0 clamp(14px, 2.2svh, 28px);
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+
+.onde__titulo {
+  margin: 0;
+  font-size: clamp(40px, 4.8vw, 96px);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.035em;
+}
+.onde__linha {
+  display: block;
+  padding-bottom: .12em;
+  margin-bottom: -.12em;
+  clip-path: inset(-.4em -.4em 0 -.4em);
+}
+.onde__tinta { display: inline-block; }
+
+.onde__apoio {
+  margin: clamp(18px, 2.4svh, 32px) 0 0;
+  font-size: clamp(19px, 1.6vw, 30px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.onde__busca {
+  display: flex;
+  align-items: stretch;
+  max-width: 40rem;
+  margin-top: clamp(32px, 5svh, 64px);
+}
+.onde__campo {
+  flex: 1;
+  min-width: 0;
+  padding: 0 0 .15em;
+  border: 0;
+  border-bottom: 2px solid var(--tinta);
+  border-radius: 0;
+  background: transparent;
+  color: var(--tinta);
+  font: inherit;
+  font-size: clamp(17px, 1.3vw, 24px);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  outline: none;
+  transition: border-color .3s ease;
+}
+.onde__campo::placeholder { color: rgba(16, 13, 11, .42); font-weight: 400; }
+.onde__campo:focus-visible { border-bottom-color: var(--azul); }
+
+.onde__botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5em;
+  margin-left: clamp(12px, 1.4vw, 24px);
+  padding: 1.35em 1.55em 1.35em 1.9em;
+  background: var(--azul);
+  color: #fff;
+  font-size: clamp(13px, 1.04vw, 20px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color .35s ease;
+}
+.onde__botao svg { width: 2.3em; flex: none; transition: transform .55s var(--ease-saida); }
+.onde__botao:hover { background: var(--azul-fundo); }
+.onde__botao:hover svg { transform: translateX(.4em); }
+
+/* ----- painel: o caminho ----- */
+
+.onde__painel { grid-column: 8 / span 5; }
+
+.onde__caminho {
+  position: relative;
+  aspect-ratio: 560 / 440;
+  color: var(--tinta);
+}
+.onde__traco {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.onde__traco path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+.onde__marca { position: absolute; fill: currentColor; }
+.onde__marca--origem {
+  left: calc(74 / 560 * 100%);
+  top: calc(78 / 440 * 100%);
+  width: 9%;
+  translate: -50% -50%;
+}
+.onde__marca--destino {
+  left: calc(486 / 560 * 100%);
+  top: calc(352 / 440 * 100%);
+  width: 11%;
+  translate: -50% -50%;
+  color: var(--azul);
+}
+
+.onde__ponto {
+  position: absolute;
+  margin: 0;
+  font-size: clamp(13px, .95vw, 17px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgba(16, 13, 11, .55);
+}
+.onde__ponto span {
+  display: block;
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+/* o traco sai da fazenda para baixo: o nome fica livre a direita */
+.onde__ponto--origem { left: calc(74 / 560 * 100% + 7%); top: calc(78 / 440 * 100% - 1.35em); }
+.onde__ponto--destino { right: calc(74 / 560 * 100% + 6%); top: calc(352 / 440 * 100% + 1.4em); text-align: right; }
+.onde__lugar { font-style: normal; }
+.onde__lugar:empty { display: none; }
+
+/* ----- resposta da busca ----- */
+
+.onde__resultado {
+  margin-top: clamp(20px, 3svh, 36px);
+  padding-top: clamp(14px, 1.6vw, 20px);
+  border-top: 1px solid rgba(16, 13, 11, .16);
+}
+.onde__aviso {
+  margin: 0;
+  font-size: clamp(15px, 1.05vw, 19px);
+  font-weight: 600;
+}
+.onde__lista {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.onde__lista li {
+  display: grid;
+  gap: .2em;
+  padding: .8em 0;
+  border-bottom: 1px solid rgba(16, 13, 11, .1);
+  font-size: clamp(14px, 1vw, 17px);
+}
+.onde__lista span { color: rgba(16, 13, 11, .6); }
+
+/* ===== movimento ===== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .onde__tinta { transform: translateY(118%); }
+  .js .onde.is-visivel .onde__tinta {
+    transform: none;
+    transition: transform 1.05s var(--ease-saida);
+    transition-delay: calc(var(--i) * .09s);
+  }
+
+  /* o traco se desenha da fazenda ate a casa; as manchas nascem nas pontas */
+  .js .onde__traco path { stroke-dashoffset: 1; }
+  .js .onde.is-visivel .onde__traco path { stroke-dashoffset: 0; transition: stroke-dashoffset 1.8s var(--ease-tinta) .3s; }
+  .js .onde__marca { scale: .2; opacity: 0; }
+  .js .onde.is-visivel .onde__marca { scale: 1; opacity: 1; transition: scale .9s var(--ease-saida), opacity .4s ease; }
+  .js .onde.is-visivel .onde__marca--origem { transition-delay: .15s; }
+  .js .onde.is-visivel .onde__marca--destino { transition-delay: 1.9s; }
+  .js .onde__ponto { opacity: 0; }
+  .js .onde.is-visivel .onde__ponto { opacity: 1; transition: opacity .8s ease .6s; }
+  .js .onde.is-visivel .onde__ponto--destino { transition-delay: 2.1s; }
+}
+
+/* ===== composicoes ===== */
+
+@media (max-width: 1023px) {
+  .onde { row-gap: clamp(48px, 8vw, 72px); }
+  .onde__chamada { grid-column: 1 / -1; }
+  /* o desenho menor, deslocado para a direita: a secao continua curta */
+  .onde__painel { grid-column: 5 / span 8; }
+  .onde__titulo { font-size: clamp(40px, 8.4vw, 80px); }
+}
+
+@media (max-width: 639px) {
+  .onde__titulo { font-size: clamp(38px, 10.6vw, 56px); }
+  .onde__apoio { font-size: clamp(18px, 5vw, 22px); }
+  .onde__busca { flex-direction: column; gap: 20px; }
+  .onde__campo { padding: .3em 0 .35em; font-size: 18px; }
+  .onde__botao {
+    margin-left: 0;
+    justify-content: space-between;
+    min-height: 60px;
+    font-size: clamp(13px, 3.55vw, 17px);
+  }
+  .onde__painel { grid-column: 1 / -1; }
+  .onde__ponto { font-size: 13px; }
+  .onde__ponto span { font-size: 11px; }
+}

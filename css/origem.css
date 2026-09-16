@@ -1,0 +1,205 @@
+/* ===== SECAO 02: ORIGEM =====
+   Marca, origem, produto. Esta secao tem uma funcao so: mostrar de onde vem a
+   Palma, e seguir para os produtos.
+
+   .origem__trilho  pista curta; segura o palco enquanto a foto e revelada
+   .origem__palco   a foto em tela cheia, limpa: nenhum texto ou grafismo por cima
+   .origem__faixa   papel logo depois da foto: texto, CTA e a assinatura
+   .origem__saida   passagem para a Secao 03, sem quebra de fundo
+
+   Sem movimento (ou sem JS) e uma secao comum: foto de uma tela e, abaixo, a
+   faixa. Com movimento a secao sobe para dentro do Hero (margem -100svh) e a
+   janela so aparece dentro da mancha principal, controlada por origem.js. */
+
+.origem {
+  position: relative;
+  z-index: 5;              /* acima das manchas e da headline do Hero (1 a 3) */
+  pointer-events: none;    /* o palco sobreposto nao pode roubar o clique do Hero */
+
+  /* Tempos da rolagem, em alturas de tela. Espelhados em origem.js.
+     --cobre: a mancha cobre a tela (COBRE_EM do hero.js, com o Hero de 100svh)
+     --pausa: a foto inteira parada antes de seguir rolando */
+  --cobre: 84svh;
+  --pausa: 30svh;
+}
+
+.origem__trilho { position: relative; }
+
+.origem__palco {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--tinta);
+}
+
+.origem__janela {
+  position: absolute;
+  inset: 0;
+}
+
+.origem__foto,
+.origem__foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* a vaca e o bezerro inteiros: da cabeca da vaca aos cascos na palha */
+.origem__foto img {
+  object-fit: cover;
+  object-position: 50% 70%;
+  transform-origin: 50% 40%;
+}
+
+/* ----- faixa: papel logo depois da foto ----- */
+
+.origem__faixa {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  background: var(--papel);
+  color: var(--tinta);
+  padding: clamp(80px, 13svh, 170px) var(--margem) 0;
+}
+
+.origem__abertura {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(28px, 4.4svh, 56px);
+  margin-left: 36vw;
+}
+
+.origem__texto {
+  margin: 0;
+  max-width: 25ch;
+  font-size: clamp(24px, 2.4vw, 50px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -.02em;
+}
+/* a abertura fica sozinha na primeira linha, no mesmo corpo e com todo o peso;
+   o resto vem embaixo num traco fino. A caixa corta embaixo na revelacao; a
+   folga de .08em guarda a cedilha. */
+.origem__abre {
+  display: block;
+  width: fit-content;
+  padding-bottom: .08em;
+  margin-bottom: calc(.12em - .08em);
+  font-weight: 900;
+  clip-path: inset(-.3em -.3em 0 -.3em);
+}
+.origem__abre-tinta { display: inline-block; }
+.origem__segue {
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+
+.origem__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5em;
+  padding: 1.52em 1.55em 1.52em 1.9em;
+  background: var(--azul);
+  color: #fff;
+  font-size: clamp(13px, 1.04vw, 20px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color .35s ease;
+}
+.origem__cta svg { width: 2.3em; flex: none; transition: transform .55s var(--ease-saida); }
+.origem__cta:hover { background: var(--azul-fundo); }
+.origem__cta:hover svg { transform: translateX(.4em); }
+.origem__cta:focus-visible { outline: 2px solid var(--azul); outline-offset: 4px; }
+
+/* os quatro pilares so como assinatura: pouco espaco, sem interacao.
+   Cada ponto vai antes da palavra; o de quem abre linha cai na margem negativa
+   e e cortado, entao nenhuma linha termina ou comeca com ponto solto. */
+.origem__assinatura {
+  --sep: 2.2em;
+  margin: clamp(8px, 2svh, 24px) 0 0;
+  overflow: hidden;
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 800;
+  letter-spacing: .16em;
+  line-height: 1.5;
+  color: rgba(16, 13, 11, .62);
+}
+.origem__pilares {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: .35em;
+  margin-left: calc(-1 * var(--sep));
+}
+.origem__pilares > span { white-space: nowrap; }
+.origem__pilares > span::before {
+  content: "·" / "";
+  display: inline-block;
+  width: var(--sep);
+  text-align: center;
+  letter-spacing: 0;
+  color: var(--azul);
+}
+
+.origem__saida {
+  height: clamp(96px, 18svh, 220px);
+}
+
+/* ===== com movimento ===== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .origem { margin-top: -100svh; }
+
+  /* palco preso durante a revelacao e a pausa; +100svh do proprio palco.
+     Depois a foto sai rolando e a faixa vem logo abaixo, sem cobrir a foto. */
+  .js .origem__trilho { height: calc(var(--cobre) + var(--pausa) + 100svh); }
+  .js .origem__palco { position: sticky; top: 0; background: transparent; }
+
+  /* antes do JS assumir, a janela fica apagada: nada cobre o Hero */
+  .js .origem__janela { opacity: 0; will-change: clip-path, opacity; }
+  .js .origem__foto img { will-change: transform; }
+
+  /* Saindo da foto, o texto revela "Tudo começa aqui." subindo da propria linha;
+     o resto da frase, o CTA e a assinatura chegam logo atras. Uma vez so. */
+  .js .origem__abre-tinta { transform: translateY(115%); }
+  .js .origem__segue,
+  .js .origem__cta,
+  .js .origem__assinatura { opacity: 0; }
+  .js .origem__abertura.is-revelada .origem__abre-tinta {
+    transform: none;
+    transition: transform 1s var(--ease-saida);
+  }
+  .js .origem__abertura.is-revelada .origem__segue,
+  .js .origem__abertura.is-revelada .origem__cta,
+  .js .origem__abertura.is-revelada .origem__assinatura {
+    opacity: 1;
+    transition: opacity .9s ease .45s, background-color .35s ease;
+  }
+  .js .origem__abertura.is-revelada .origem__cta { transition-delay: .65s, 0s; }
+  .js .origem__abertura.is-revelada .origem__assinatura { transition-delay: .8s, 0s; }
+}
+
+/* ===== composicoes ===== */
+
+/* telas estreitas (tablet em pe e celular): recorte vertical proprio da foto */
+@media (max-aspect-ratio: 5/6) {
+  .origem__foto img { object-position: 25% 50%; }
+}
+@media (max-aspect-ratio: 5/6) and (max-width: 639px) {
+  /* a cara do bezerro e o olho da vaca cabem juntos, sem folga */
+  .origem__foto img { object-position: 31% 50%; }
+}
+
+@media (max-width: 1023px) {
+  .origem__faixa { padding-top: clamp(64px, 10svh, 120px); }
+  .origem__abertura { margin-left: 0; }
+  .origem__texto { max-width: 22ch; font-size: clamp(22px, 5.8vw, 36px); }
+  .origem__cta {
+    align-self: stretch;
+    justify-content: space-between;
+    font-size: clamp(13px, 3.55vw, 17px);
+    min-height: 60px;
+  }
+  .origem__assinatura { --sep: 1.8em; font-size: clamp(10px, 2.9vw, 13px); }
+}

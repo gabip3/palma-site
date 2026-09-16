@@ -1,0 +1,120 @@
+/* ===== RODAPE =====
+   Fechamento em tinta, como a mancha que cobre a tela na Home. Logo branca e
+   as redes em manchas a direita; embaixo, navegacao, enderecos e telefone em
+   colunas; por ultimo a linha legal. */
+
+.rodape {
+  position: relative;
+  z-index: 6;
+  background: var(--tinta);
+  color: #fff;
+  padding: clamp(72px, 12svh, 150px) var(--margem) clamp(28px, 4svh, 44px);
+}
+.rodape a { color: inherit; text-decoration: none; }
+.rodape :focus-visible { outline-color: #fff; }
+
+/* ----- topo: logo e redes ----- */
+
+.rodape__topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: clamp(48px, 8svh, 96px);
+}
+
+.rodape__marca { display: block; width: clamp(96px, 10vw, 170px); }
+.rodape__marca img { width: 100%; height: auto; }
+
+.rodape__redes {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(14px, 1.6vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rodape__rede {
+  display: block;
+  color: #fff;
+  transition: transform .5s var(--ease-saida);
+}
+.rodape__rede svg { display: block; height: clamp(52px, 4.6vw, 76px); width: auto; overflow: visible; }
+.rodape__rede use { fill: currentColor; }
+/* o simbolo leva a cor do fundo: parece recortado na mancha */
+.rodape__simbolo { fill: var(--tinta); stroke: var(--tinta); }
+.rodape__rede:hover,
+.rodape__rede:focus-visible { transform: scale(1.12) rotate(-6deg); }
+.rodape__rede:focus-visible { outline-offset: 8px; }
+
+/* ----- colunas ----- */
+
+.rodape__colunas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px clamp(24px, 3vw, 56px);
+  padding-top: clamp(28px, 4svh, 44px);
+  border-top: 1px solid rgba(255, 255, 255, .18);
+}
+
+.rodape__rotulo {
+  margin: 0 0 16px;
+  font-size: clamp(11px, .78vw, 13px);
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .56);
+}
+
+.rodape__nav {
+  display: grid;
+  gap: .5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(16px, 1.15vw, 20px);
+  font-weight: 700;
+}
+.rodape__nav a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size .5s var(--ease-saida);
+}
+.rodape__nav a:hover { background-size: 100% 1.5px; }
+
+.rodape__endereco {
+  font-style: normal;
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .86);
+}
+
+.rodape__telefone {
+  font-size: clamp(20px, 1.7vw, 30px);
+  font-weight: 800;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rodape__telefone:hover { text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1.5px; }
+
+/* ----- base legal ----- */
+
+.rodape__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: clamp(56px, 9svh, 110px);
+  font-size: 13px;
+  color: rgba(255, 255, 255, .5);
+}
+.rodape__base p { margin: 0; }
+
+@media (max-width: 1023px) {
+  .rodape__colunas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 559px) {
+  .rodape__colunas { grid-template-columns: 1fr; gap: 32px; }
+  .rodape__topo { align-items: center; }
+}

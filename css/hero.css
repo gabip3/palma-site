@@ -1,0 +1,135 @@
+/* ===== HERO =====
+   As manchas oficiais sao a interface: tudo o que elas tocam inverte. A
+   headline usa mix-blend-mode: difference com cor branca, que sobre o papel
+   resulta preto e sobre a mancha resulta claro. So a headline e as manchas:
+   o texto de apoio e o CTA ficam na Secao 02, para nada se repetir.
+
+   Como nas embalagens, sao varias manchas do pattern, de tamanhos diferentes,
+   algumas cortadas pelas bordas. A principal e a que atravessa a headline e
+   depois cobre a tela na rolagem (hero.js).
+
+   Posicoes em variaveis: o JS le a caixa final de cada mancha e anima so
+   transform, nunca layout. */
+
+.hero {
+  position: relative;
+  min-height: 100svh;      /* svh e nao dvh: a barra do navegador recolhendo no
+                              celular nao pode mudar a altura e sacudir a mancha,
+                              que acompanha a rolagem */
+  background: var(--papel);
+  color: var(--tinta);
+
+  --t-y: 29svh;
+  --t-corpo: clamp(56px, min(8vw, 14.4svh), 200px);
+  --t-recuo: 15.5vw;
+}
+
+.hero__mancha {
+  position: absolute;
+  z-index: 1;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  aspect-ratio: var(--ar);
+  color: var(--tinta);
+  transform-origin: 0 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.hero__mancha svg { width: 100%; height: 100%; }
+.js .hero:not(.is-viva) .hero__mancha { visibility: hidden; }
+
+/* desktop */
+.hero__mancha--principal { --x: 46vw; --y: 26svh; --w: 36vw; }
+.hero__mancha--b         { --x: 82vw; --y: 70svh; --w: 26vw; }
+.hero__mancha--c         { --x: 80vw; --y: 22svh; --w: 4vw; }
+.hero__mancha--d         { --x: -5vw; --y: 47svh; --w: 11vw; }
+
+/* ----- headline ----- */
+
+.hero__titulo {
+  position: absolute;
+  z-index: 2;
+  left: var(--margem);
+  top: var(--t-y);
+  margin: 0;
+  font-size: var(--t-corpo);
+  font-weight: 900;
+  line-height: .86;
+  letter-spacing: -.034em;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-kerning: normal;
+}
+
+.t-linha { display: block; white-space: nowrap; }
+.t-linha--2 { padding-left: var(--t-recuo); }
+
+/* cada parte sobe de dentro de um recorte que so corta embaixo */
+.t-parte {
+  display: inline-block;
+  padding-bottom: .02em;
+  clip-path: inset(-.4em -.4em 0 -.4em);
+}
+.t-tinta { display: inline-block; }
+
+.js .t-tinta { transform: translateY(108%); }
+.js .hero.is-pronta .t-tinta {
+  animation: t-subir 1.05s var(--ease-saida) forwards;
+  animation-delay: calc(.32s + var(--i) * .085s);
+}
+@keyframes t-subir { to { transform: none; } }
+
+/* O fade vai em cada peca, nunca no .topo: opacidade abaixo de 1 no container
+   isolaria a navegacao, e a inversao sobre a mancha pararia de funcionar. */
+.js .topo__marca, .js .topo__nav { opacity: 0; }
+.js.palma-pronta .topo__marca,
+.js.palma-pronta .topo__nav { opacity: 1; transition: opacity .8s ease .2s; }
+
+
+/* ===== composicoes ===== */
+
+/* tablet e celular: quatro linhas; manchas separadas, nunca uma faixa. Sem o
+   bloco de baixo, a metade inferior fica com as manchas: a principal na
+   headline, uma na borda direita e a maior saindo pelo canto de baixo. */
+@media (max-width: 1023px) {
+  .hero__mancha--principal { --x: 28vw; --y: 23svh; --w: 72vw; }
+  .hero__mancha--b         { --x: -20vw; --y: 74svh; --w: 72vw; }
+  .hero__mancha--c         { --x: 9vw;  --y: 56svh; --w: 9vw; }
+  .hero__mancha--d         { --x: 80vw; --y: 62svh; --w: 30vw; }
+  .hero {
+    --t-y: calc(var(--topo-y) + clamp(96px, 16svh, 190px));
+    --t-corpo: clamp(40px, min(15.6vw, 10.4svh), 128px);
+    --t-recuo: 0px;
+  }
+  .t-parte { display: block; }
+  .t-linha + .t-linha { margin-top: 0; }
+}
+
+@media (max-width: 1023px) and (min-width: 640px) {
+  .hero__mancha--principal { --x: 27vw; --y: 26svh; --w: 50vw; }
+  .hero__mancha--b         { --x: -10vw; --y: 72svh; --w: 46vw; }
+  .hero__mancha--c         { --x: 86vw; --y: 15svh; --w: 5vw; }
+  .hero__mancha--d         { --x: 84vw; --y: 60svh; --w: 22vw; }
+}
+
+/* celular deitado: pouca altura, as manchas ficam a direita e a headline desce
+   para o meio da tela */
+@media (max-width: 1023px) and (max-height: 520px) and (orientation: landscape) {
+  .hero__mancha--principal { --x: 29vw; --y: 30svh; --w: 30vw; }
+  .hero__mancha--b         { --x: 78vw; --y: 62svh; --w: 26vw; }
+  .hero__mancha--c         { --x: 62vw; --y: 22svh; --w: 3.6vw; }
+  .hero__mancha--d         { display: none; }
+  .hero {
+    --t-y: calc(var(--topo-y) + 30svh);
+    --t-corpo: clamp(34px, 11svh, 60px);
+  }
+  .t-parte { display: inline-block; }
+  .t-linha--2 { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .t-tinta,
+  .js .topo__marca,
+  .js .topo__nav { opacity: 1; transform: none; }
+}

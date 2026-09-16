@@ -1,0 +1,81 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--papel);
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  color: var(--tinta);
+  background: var(--papel);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+@supports (overflow: clip) { body { overflow-x: clip; } }
+
+/* com a camada aberta a pagina de tras nao rola */
+html.camada-aberta, html.camada-aberta body { overflow: hidden; }
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* A mancha cresce com transform, e transform aumenta a area rolavel. O main
+   corta esse excesso, sem virar container de rolagem (clip, nao hidden). */
+main { display: block; overflow: hidden; }
+@supports (overflow: clip) { main { overflow: clip; } }
+main:focus { outline: none; }
+
+:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 4px;
+}
+
+.u-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* biblioteca de formas: a mancha oficial vive aqui uma vez e e usada por <use> */
+.u-formas { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.pular {
+  position: absolute;
+  z-index: 300;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  left: var(--margem);
+  padding: 12px 16px;
+  background: var(--azul);
+  color: var(--papel);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transform: translateY(-180%);
+}
+.pular:focus { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0ms !important;
+  }
+}

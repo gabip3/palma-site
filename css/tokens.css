@@ -1,0 +1,32 @@
+/* Site institucional Palma. Tokens da marca.
+   Assets compartilhados com o teaser ficam em /assets, na raiz do projeto. */
+
+/* A fonte do wordmark "Palma" nao esta na pasta. Ate ela chegar, os textos usam
+   a Nunito auto-hospedada, a mesma aprovada no teaser: arredondada como o
+   lettering da marca e identica em qualquer sistema. Para trocar, basta
+   apontar este @font-face para o arquivo oficial. */
+@font-face {
+  font-family: "Palma Sans";
+  src: url("../assets/fonts/nunito/Nunito-Variable.woff2") format("woff2-variations"),
+       url("../assets/fonts/nunito/Nunito-Variable.woff2") format("woff2");
+  font-weight: 400 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* cores oficiais, lidas dos SVGs da logo */
+  --tinta: #100d0b;
+  --papel: #ffffff;
+  --azul: #003998;
+  --azul-fundo: #002c77;
+
+  --fonte: "Palma Sans", ui-rounded, "Segoe UI Variable Display", system-ui, sans-serif;
+
+  --margem: clamp(20px, 4.4vw, 76px);
+  --topo-y: calc(env(safe-area-inset-top, 0px) + clamp(14px, 2.2vw, 30px));
+  --base-y: calc(env(safe-area-inset-bottom, 0px) + clamp(26px, 6.5svh, 72px));
+
+  --ease-saida: cubic-bezier(.16, 1, .3, 1);
+  --ease-tinta: cubic-bezier(.72, 0, .18, 1);
+}

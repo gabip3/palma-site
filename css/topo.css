@@ -1,0 +1,277 @@
+/* ===== HEADER =====
+   Sem barra e sem fundo: o header e parte da composicao do Hero.
+   Navegacao e acoes usam mix-blend-mode: difference. Sobre o papel ficam
+   pretas; quando a mancha passa por baixo, invertem sozinhas para branco. Por
+   isso nem o header nem o Hero podem criar contexto de empilhamento: a mistura
+   precisa enxergar a mancha. So os filhos recebem z-index. */
+
+.topo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--topo-y) var(--margem) 0;
+  pointer-events: none;
+}
+.topo > * { pointer-events: auto; }
+
+.topo__marca {
+  position: relative;
+  z-index: 30;
+  display: block;
+  width: clamp(66px, 7.2vw, 136px);
+  aspect-ratio: 476 / 368;
+  -webkit-tap-highlight-color: transparent;
+}
+.topo__logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity .35s ease;
+}
+.topo__logo--branco { opacity: 0; }
+.topo.is-sobre-mancha .topo__logo { opacity: 0; }
+.topo.is-sobre-mancha .topo__logo--branco { opacity: 1; }
+
+.topo__nav {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 2.6vw, 46px);
+  margin-top: clamp(10px, 1.2vw, 22px);
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.topo__nav :focus-visible { outline-color: currentColor; }
+
+.topo__lista {
+  display: flex;
+  gap: clamp(22px, 2.6vw, 46px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topo__link,
+.topo__acao {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: clamp(12px, .86vw, 15px);
+  font-weight: 750;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* sublinhado que corre da esquerda, em vez de mudar de cor */
+.topo__link::after,
+.topo__acao--busca .topo__rotulo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform .45s var(--ease-saida);
+}
+.topo__acao--busca .topo__rotulo { position: relative; }
+.topo__acao--busca .topo__rotulo::after { bottom: -8px; }
+.topo__link:hover::after,
+.topo__acao--busca:hover .topo__rotulo::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.topo__acao--busca {
+  padding-left: clamp(22px, 2.6vw, 46px);
+  border-left: 1.5px solid currentColor;
+}
+.topo__icone { width: 18px; height: 18px; flex: none; }
+
+/* A semente: a propria mancha oficial em miniatura. Ao tocar, e dela que o
+   menu cresce (ver topo.js). */
+.topo__semente {
+  width: 26px;
+  height: auto;
+  aspect-ratio: 225.62 / 182.3;
+  flex: none;
+  color: currentColor;
+  transition: transform .5s var(--ease-saida);
+}
+.topo__acao--menu:hover .topo__semente { transform: scale(1.12) rotate(-6deg); }
+.topo__acao--menu { display: none; }
+
+@media (max-width: 1023px) {
+  .topo__lista { display: none; }
+  .topo__nav { gap: 26px; margin-top: 8px; }
+  .topo__acao--menu { display: inline-flex; }
+  .topo__acao--busca { padding-left: 0; border-left: 0; }
+  .topo__acao--busca .topo__rotulo {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .topo__icone { width: 22px; height: 22px; }
+}
+
+/* ===== CAMADA =====
+   Menu e busca nao abrem como gaveta: a mancha cresce a partir do botao que
+   foi tocado e cobre a tela. */
+
+.camada {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  height: 100dvh;
+  color: #fff;
+  isolation: isolate;
+  overflow: hidden;
+}
+.camada[hidden] { display: none; }
+.camada:focus { outline: none; }
+
+.camada__mancha {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60vmax;
+  aspect-ratio: 225.62 / 182.3;
+  color: var(--tinta);
+  transform-origin: 0 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.camada__mancha svg { width: 100%; height: 100%; }
+
+.camada__fundo {
+  position: absolute;
+  inset: 0;
+  background: var(--tinta);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.camada__topo,
+.camada__corpo {
+  position: relative;
+  opacity: 0;
+  transition: opacity .35s ease, transform .6s var(--ease-saida);
+}
+.camada__corpo { transform: translateY(18px); }
+
+.camada.is-cheia .camada__fundo,
+.camada.is-cheia .camada__topo,
+.camada.is-cheia .camada__corpo { opacity: 1; }
+.camada.is-cheia .camada__corpo { transform: none; transition-delay: .06s; }
+
+.camada :focus-visible { outline-color: #fff; }
+
+.camada__topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--topo-y) var(--margem) 0;
+}
+.camada__logo { width: clamp(66px, 7.2vw, 136px); height: auto; }
+
+.camada__fechar {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 10px 0;
+  font-size: clamp(12px, .86vw, 14px);
+  font-weight: 750;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.camada__fechar svg { width: 22px; height: 22px; transition: transform .5s var(--ease-saida); }
+.camada__fechar:hover svg { transform: rotate(90deg); }
+
+.camada__corpo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: clamp(40px, 8svh, 96px);
+  height: calc(100% - 130px);
+  padding: 0 var(--margem) var(--base-y);
+}
+
+.camada__lista {
+  display: grid;
+  gap: .22em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(30px, min(9.2vw, 7.4svh), 104px);
+}
+.camada__link {
+  display: inline-block;
+  padding: .06em 0;
+  font-size: 1em;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-decoration-thickness: .06em;
+  text-underline-offset: .12em;
+}
+.camada__link:hover { text-decoration-line: underline; }
+
+.busca { max-width: 920px; }
+.busca__rotulo {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .7;
+}
+.busca__linha {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 2px solid currentColor;
+}
+.busca__campo {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 0 12px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  caret-color: #fff;
+  font: 800 clamp(24px, 3.4vw, 44px)/1.1 var(--fonte);
+  letter-spacing: -.01em;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.busca__campo:focus { outline: none; }
+.busca__campo::-webkit-search-cancel-button { -webkit-appearance: none; }
+.busca__linha:focus-within { border-bottom-width: 3px; }
+.busca__enviar { width: 40px; height: 40px; display: grid; place-items: center; flex: none; }
+.busca__enviar svg { width: 30px; transition: transform .5s var(--ease-saida); }
+.busca__enviar:hover svg { transform: translateX(5px); }
+
+/* no modo busca so a busca aparece, maior */
+.camada[data-modo="busca"] .camada__nav { display: none; }
+.camada[data-modo="busca"] .camada__corpo { justify-content: center; }
+.camada[data-modo="busca"] .busca__campo { font-size: clamp(34px, 6vw, 84px); }
