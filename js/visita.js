@@ -19,18 +19,41 @@ export function iniciarVisita() {
 /* ----- entrada dos blocos ----- */
 
 function revelar() {
-  const alvos = document.querySelectorAll('.vs-sobe, .vs-ato');
-  if (!alvos.length) return;
+  const restam = new Set(document.querySelectorAll('.vs-sobe, .vs-ato'));
+  if (!restam.size) return;
+
+  const mostrar = (el) => { el.classList.add('is-visivel'); restam.delete(el); };
 
   const io = new IntersectionObserver((itens) => {
-    for (const item of itens) {
-      if (!item.isIntersecting) continue;
-      item.target.classList.add('is-visivel');
-      io.unobserve(item.target);
-    }
+    for (const item of itens) if (item.isIntersecting) mostrar(item.target);
+    if (!restam.size) desligar();
   }, { rootMargin: '0px 0px -12% 0px' });
 
-  alvos.forEach((el) => io.observe(el));
+  restam.forEach((el) => io.observe(el));
+
+  /* Rede de seguranca: numa rolagem muito rapida, ou num salto de ancora, o
+     observador pode nao receber a passagem de um bloco e ele ficaria invisivel.
+     Esta varredura mostra tudo o que ja passou da borda de baixo da tela. */
+  let pedido = 0;
+  function varrer() {
+    pedido = 0;
+    const limite = window.innerHeight * 0.88;
+    for (const el of [...restam]) {
+      if (el.getBoundingClientRect().top < limite) mostrar(el);
+    }
+    if (!restam.size) desligar();
+  }
+  const pedir = () => { if (!pedido) pedido = requestAnimationFrame(varrer); };
+
+  function desligar() {
+    io.disconnect();
+    window.removeEventListener('scroll', pedir);
+    window.removeEventListener('resize', pedir);
+  }
+
+  window.addEventListener('scroll', pedir, { passive: true });
+  window.addEventListener('resize', pedir);
+  varrer();
 
   // dentro de um mesmo grupo as fotos entram em cascata
   document.querySelectorAll('[data-cascata]').forEach((grupo) => {
