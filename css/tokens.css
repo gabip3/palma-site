@@ -1,10 +1,10 @@
 /* Site institucional Palma. Tokens da marca.
    Assets compartilhados com o teaser ficam em /assets, na raiz do projeto. */
 
-/* A fonte do wordmark "Palma" nao esta na pasta. Ate ela chegar, os textos usam
-   a Nunito auto-hospedada, a mesma aprovada no teaser: arredondada como o
-   lettering da marca e identica em qualquer sistema. Para trocar, basta
-   apontar este @font-face para o arquivo oficial. */
+/* A fonte dos textos e a Foco, da Dalton Maag, desenhada por Fabio Haag. Ela
+   vem do Adobe Fonts, pela folha que as duas paginas carregam no <head>.
+   A Nunito auto-hospedada fica logo atras na pilha, como reserva: se a folha
+   do Adobe nao carregar, o site cai nela e nao num tipo de sistema. */
 @font-face {
   font-family: "Palma Sans";
   src: url("../assets/fonts/nunito/Nunito-Variable.woff2") format("woff2-variations"),
@@ -21,7 +21,12 @@
   --azul: #003998;
   --azul-fundo: #002c77;
 
-  --fonte: "Palma Sans", ui-rounded, "Segoe UI Variable Display", system-ui, sans-serif;
+  --fonte: "foco", "Palma Sans", ui-rounded, "Segoe UI Variable Display", system-ui, sans-serif;
+  /* A Foco e estatica e tem quatro pesos; o site usava seis, o que so a Nunito
+     variavel permitia. Os textos ficam em 400 (Regular), os rotulos e chamadas
+     em 700 (Bold) e os titulos grandes em 900 (Black). Os antigos 750 e 800
+     viraram 700: em caixa alta e corpo pequeno o Black pesa demais. O 600 que
+     sobrou resolve sozinho para o Bold, pela regra de casamento de pesos. */
 
   --margem: clamp(20px, 4.4vw, 76px);
   --topo-y: calc(env(safe-area-inset-top, 0px) + clamp(14px, 2.2vw, 30px));

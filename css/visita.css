@@ -67,7 +67,7 @@
   margin: 0;
   padding: var(--respiro) var(--margem) clamp(26px, 4svh, 48px);
   font-size: clamp(11px, .8vw, 14px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--azul);
@@ -281,7 +281,7 @@
   bottom: var(--base-y);
   margin: 0;
   font-size: clamp(11px, .8vw, 13px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .72);
@@ -403,7 +403,7 @@
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(16, 13, 11, .16);
   font-size: clamp(15px, 1.25vw, 21px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
   text-decoration: none;

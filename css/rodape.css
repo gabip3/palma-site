@@ -60,7 +60,7 @@
 .rodape__rotulo {
   margin: 0 0 16px;
   font-size: clamp(11px, .78vw, 13px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .56);
@@ -91,7 +91,7 @@
 
 .rodape__telefone {
   font-size: clamp(20px, 1.7vw, 30px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -.01em;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;

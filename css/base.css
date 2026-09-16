@@ -65,7 +65,7 @@ main:focus { outline: none; }
   background: var(--azul);
   color: var(--papel);
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
   transform: translateY(-180%);
 }

@@ -29,7 +29,7 @@
 .noticias__rotulo {
   margin: 0;
   font-size: clamp(11px, .8vw, 14px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--azul);
@@ -41,7 +41,7 @@
   gap: 1em;
   padding: .7em 0;
   font-size: clamp(11px, .8vw, 14px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .18em;
   line-height: 1;
   text-decoration: none;
@@ -71,7 +71,7 @@
 .noticias__fonte {
   margin: 0;
   font-size: clamp(11px, .78vw, 13px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--azul);
@@ -86,7 +86,7 @@
 
 .noticias__titulo {
   margin: clamp(14px, 1.4vw, 22px) 0 0;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -.02em;
   text-wrap: pretty;
 }
@@ -111,7 +111,7 @@
   gap: 1em;
   margin-top: clamp(18px, 2vw, 30px);
   font-size: clamp(11px, .8vw, 14px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .18em;
 }
 .noticias__ler svg { width: 2.2em; transition: transform .55s var(--ease-saida); }

@@ -65,7 +65,7 @@
   gap: 10px;
   padding: 10px 0;
   font-size: clamp(12px, .86vw, 15px);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
   text-decoration: none;
@@ -196,7 +196,7 @@
   margin-top: 8px;
   padding: 10px 0;
   font-size: clamp(12px, .86vw, 14px);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: .16em;
   text-transform: uppercase;
 }
@@ -239,7 +239,7 @@
   display: block;
   margin-bottom: 14px;
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
   opacity: .7;

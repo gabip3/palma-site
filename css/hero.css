@@ -19,8 +19,11 @@
   background: var(--papel);
   color: var(--tinta);
 
+  /* A Foco Black e ~14% mais estreita que a Nunito 900 no mesmo corpo. Os
+     tamanhos abaixo ja vem multiplicados por isso, para a headline voltar a
+     encostar na mancha como no desenho original. */
   --t-y: 29svh;
-  --t-corpo: clamp(56px, min(8vw, 14.4svh), 200px);
+  --t-corpo: clamp(64px, min(9.1vw, 16.4svh), 228px);
   --t-recuo: 15.5vw;
 }
 
@@ -99,7 +102,7 @@
   .hero__mancha--d         { --x: 80vw; --y: 62svh; --w: 30vw; }
   .hero {
     --t-y: calc(var(--topo-y) + clamp(96px, 16svh, 190px));
-    --t-corpo: clamp(40px, min(15.6vw, 10.4svh), 128px);
+    --t-corpo: clamp(46px, min(17.7vw, 11.8svh), 146px);
     --t-recuo: 0px;
   }
   .t-parte { display: block; }
@@ -122,7 +125,7 @@
   .hero__mancha--d         { display: none; }
   .hero {
     --t-y: calc(var(--topo-y) + 30svh);
-    --t-corpo: clamp(34px, 11svh, 60px);
+    --t-corpo: clamp(39px, 12.5svh, 68px);
   }
   .t-parte { display: inline-block; }
   .t-linha--2 { padding-left: 0; }
