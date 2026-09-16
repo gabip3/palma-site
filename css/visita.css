@@ -1,0 +1,559 @@
+/* ===== NOSSA FAZENDA: A VISITA =====
+   Os 14 quadros que vêm depois da história. Cada quadro muda de linguagem,
+   para a página não virar a repetição de título, texto e foto:
+
+   .vs-ato       marca de ato, a única estrutura que se repete
+   .vs-cheia     fotografia em tela cheia, sem texto
+   .vs-faixa     três fotos de larguras e alturas diferentes
+   .vs-rebanho   quatro fotos escalonadas ao lado do texto
+   .vs-cortina   foto presa ao topo enquanto o quadro seguinte sobe por cima
+   .vs-geracao   texto com uma tira de três quadros e uma foto maior
+   .vs-mosaico   só detalhes, sem texto
+   .vs-trilho    sequência horizontal que se percorre de lado
+   .vs-cinema    três quadros da mesma caminhada, um dando lugar ao outro
+   .vs-afeto     vertical grande com três pequenas ao lado
+   .vs-dupla     duas fotos com legenda
+   .vs-gesto     uma foto grande e duas menores
+   .vs-saida     a frase do caminhão e os dois caminhos de volta
+   .vs-fim       o último anoitecer, que se dissolve no rodapé
+
+   Os textos usam só o que está documentado nos materiais da Palma. Onde não
+   havia fato confirmado, a foto fala sozinha ou a legenda descreve o que se vê. */
+
+/* ----- medidas comuns ----- */
+
+.vs {
+  --gutter: clamp(16px, 2vw, 32px);
+  --respiro: clamp(72px, 12svh, 156px);
+  --respiro-curto: clamp(44px, 7svh, 92px);
+  position: relative;
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+.vs-titulo {
+  margin: 0;
+  font-size: clamp(34px, 4.4vw, 78px);
+  font-weight: 900;
+  line-height: .96;
+  letter-spacing: -.034em;
+  text-wrap: balance;
+}
+
+.vs-texto {
+  margin: clamp(18px, 2.6svh, 30px) 0 0;
+  max-width: 46ch;
+  font-size: clamp(16px, 1.15vw, 20px);
+  line-height: 1.55;
+  color: rgba(16, 13, 11, .78);
+}
+
+.vs-legenda {
+  margin: 12px 0 0;
+  font-size: clamp(12px, .85vw, 14px);
+  line-height: 1.4;
+  color: rgba(16, 13, 11, .52);
+}
+
+.vs figure { margin: 0; }
+.vs img { width: 100%; height: auto; }
+
+/* ----- marca de ato ----- */
+
+.vs-ato {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.6vw, 24px);
+  margin: 0;
+  padding: var(--respiro) var(--margem) clamp(26px, 4svh, 48px);
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+.vs-ato::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 57, 152, .22);
+  transform-origin: left center;
+}
+
+/* ----- tela cheia ----- */
+
+.vs-cheia img {
+  display: block;
+  height: var(--alt, 78svh);
+  min-height: 320px;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+
+/* ----- a terra em faixa ----- */
+
+.vs-faixa {
+  display: grid;
+  grid-template-columns: 1.15fr .92fr 1fr;
+  gap: var(--gutter);
+  align-items: start;
+  padding: 0 var(--margem) var(--respiro);
+}
+.vs-faixa figure:nth-child(2) { margin-top: clamp(28px, 6svh, 76px); }
+.vs-faixa figure:nth-child(3) { margin-top: clamp(14px, 3svh, 38px); }
+.vs-faixa img { display: block; }
+
+/* ----- o rebanho: texto e quatro fotos escalonadas ----- */
+
+.vs-rebanho {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: 0 var(--margem) var(--respiro);
+}
+.vs-rebanho__texto { grid-column: 1 / span 5; align-self: center; }
+.vs-rebanho__grade {
+  grid-column: 7 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+}
+.vs-rebanho__grade figure:nth-child(2) { margin-top: clamp(30px, 7svh, 80px); }
+.vs-rebanho__grade figure:nth-child(3) { margin-top: calc(-1 * clamp(18px, 4svh, 48px)); }
+.vs-rebanho__grade img {
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+
+/* ----- cortina: a foto fica presa e o quadro seguinte sobe por cima ----- */
+
+.vs-cortina { position: relative; }
+.vs-cortina__foto {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.vs-cortina__foto img {
+  display: block;
+  height: 92svh;
+  min-height: 340px;
+  object-fit: cover;
+  object-position: 50% 58%;
+}
+.vs-cortina__folha {
+  position: relative;
+  z-index: 1;
+  background: var(--papel);
+}
+
+/* ----- a próxima geração ----- */
+
+.vs-geracao {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: clamp(64px, 11svh, 140px) var(--margem) var(--respiro);
+}
+.vs-geracao__texto {
+  grid-row: 1;
+  grid-column: 1 / span 5;
+  align-self: center;
+}
+.vs-geracao__equipe {
+  grid-row: 1;
+  grid-column: 7 / -1;
+}
+.vs-geracao__equipe img {
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 50% 46%;
+}
+/* a tira das bezerras atravessa o quadro inteiro embaixo */
+.vs-geracao__tira {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  margin-top: clamp(28px, 5svh, 64px);
+}
+.vs-geracao__tira img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: var(--foco, 50% 45%);
+}
+
+/* ----- de perto: mosaico de detalhes ----- */
+
+.vs-mosaico {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--gutter);
+  padding: 0 var(--margem) var(--respiro);
+}
+.vs-mosaico figure:nth-child(1) { grid-column: span 3; }
+.vs-mosaico figure:nth-child(2) { grid-column: span 3; margin-top: clamp(26px, 5svh, 62px); }
+.vs-mosaico figure:nth-child(3) { grid-column: span 2; }
+.vs-mosaico figure:nth-child(4) { grid-column: span 2; margin-top: clamp(20px, 4svh, 46px); }
+.vs-mosaico figure:nth-child(5) { grid-column: span 2; }
+.vs-mosaico img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+.vs-mosaico figure:nth-child(2) img { aspect-ratio: 1 / 1; }
+
+/* ----- alimentação: cabeçalho e sequência horizontal ----- */
+
+.vs-cabeca {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: 0 var(--margem) clamp(36px, 6svh, 72px);
+}
+.vs-cabeca .vs-titulo { grid-column: 1 / span 6; }
+.vs-cabeca .vs-texto { grid-column: 8 / -1; align-self: end; margin-top: 0; }
+
+.vs-trilho {
+  display: flex;
+  gap: var(--gutter);
+  padding: 0 var(--margem) clamp(30px, 5svh, 56px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.vs-trilho::-webkit-scrollbar { display: none; }
+.vs-trilho figure {
+  flex: none;
+  width: clamp(240px, 27vw, 420px);
+}
+.vs-trilho figure:nth-child(even) { margin-top: clamp(22px, 4svh, 54px); }
+.vs-trilho img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+.vs-trilho__fim { flex: none; width: 1px; }
+
+/* ----- cinema: a mesma caminhada, quadro a quadro ----- */
+
+/* tres telas de curso: uma para cada quadro da caminhada */
+.vs-cinema { position: relative; height: 300svh; }
+.vs-cinema__palco {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 360px;
+  overflow: hidden;
+  background: #120f0d;
+}
+.vs-cinema__palco img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+/* veu so no pe: a luz do corredor e clara e a legenda branca sumia nela */
+.vs-cinema__palco::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44%;
+  background: linear-gradient(to top, rgba(8, 8, 10, .62) 0%, rgba(8, 8, 10, .26) 44%, rgba(8, 8, 10, 0) 100%);
+  pointer-events: none;
+}
+
+.vs-cinema__legenda {
+  z-index: 1;
+  position: absolute;
+  left: var(--margem);
+  bottom: var(--base-y);
+  margin: 0;
+  font-size: clamp(11px, .8vw, 13px);
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+
+/* ----- pessoas e animais ----- */
+
+.vs-afeto {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: var(--respiro) var(--margem);
+}
+.vs-afeto__grande { grid-column: 1 / span 7; }
+.vs-afeto__grande img {
+  display: block;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: 50% 36%;
+}
+.vs-afeto__serie {
+  grid-column: 9 / -1;
+  align-self: end;
+  display: grid;
+  gap: var(--gutter);
+}
+.vs-afeto__serie img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* ----- duas fotos com legenda ----- */
+
+.vs-dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  padding: clamp(30px, 5svh, 64px) var(--margem) var(--respiro);
+}
+.vs-dupla img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+
+/* ----- ordenha: do todo ao gesto ----- */
+
+.vs-gesto {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: var(--gutter);
+  padding: 0 var(--margem) var(--respiro);
+}
+.vs-gesto__grande { grid-column: 1 / span 8; }
+.vs-gesto__grande img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.vs-gesto__lado {
+  grid-column: 9 / -1;
+  align-self: end;
+  display: grid;
+  gap: var(--gutter);
+}
+.vs-gesto__lado img {
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+
+/* ----- fabricação ----- */
+
+.vs-fabrica {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: var(--gutter);
+  padding: 0 var(--margem) var(--respiro);
+}
+.vs-fabrica figure:nth-child(1) { grid-column: 1 / span 7; }
+.vs-fabrica figure:nth-child(2) { grid-column: 8 / -1; align-self: end; }
+.vs-fabrica figure:nth-child(3) { grid-column: 1 / span 4; }
+.vs-fabrica figure:nth-child(4) { grid-column: 6 / -1; margin-top: clamp(18px, 3svh, 40px); }
+.vs-fabrica img {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: var(--foco, 50% 50%);
+}
+.vs-fabrica figure:nth-child(3) img { aspect-ratio: 2 / 3; object-position: 50% 42%; }
+
+/* ----- a saída: a frase do caminhão e os dois caminhos ----- */
+
+.vs-saida {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: center;
+  padding: 0 var(--margem) var(--respiro);
+}
+.vs-saida__foto { grid-column: 1 / span 7; }
+.vs-saida__foto img { display: block; }
+.vs-saida__caminhos {
+  grid-column: 9 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2svh, 22px);
+}
+.vs-saida__link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(16, 13, 11, .16);
+  font-size: clamp(15px, 1.25vw, 21px);
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--tinta);
+  transition: color .3s ease, border-color .3s ease;
+}
+.vs-saida__link span { font-size: 1.4em; line-height: 1; transition: transform .35s var(--ease-saida); }
+.vs-saida__link:hover,
+.vs-saida__link:focus-visible { color: var(--azul); border-color: var(--azul); }
+.vs-saida__link:hover span { transform: translateX(6px); }
+
+/* ----- o dia termina ----- */
+
+.vs-fim {
+  position: relative;
+  background: var(--tinta);
+}
+.vs-fim img {
+  display: block;
+  height: 88svh;
+  min-height: 360px;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+/* a imagem escura se dissolve no rodapé, que já é tinta */
+.vs-fim::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: linear-gradient(to top, var(--tinta) 0%, rgba(16, 13, 11, 0) 100%);
+  pointer-events: none;
+}
+
+/* ===== movimento ===== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .vs-sobe { opacity: 0; transform: translateY(26px); }
+  .js .vs-sobe.is-visivel {
+    opacity: 1;
+    transform: none;
+    transition: opacity .9s ease, transform 1.1s var(--ease-saida);
+    transition-delay: calc(var(--n, 0) * 90ms);
+  }
+
+  .js .vs-ato::after { transform: scaleX(0); }
+  .js .vs-ato.is-visivel::after { transform: none; transition: transform 1.4s var(--ease-saida); }
+
+  /* cinema: o quadro atual aparece por cima do anterior */
+  .js .vs-cinema__palco img { opacity: 0; transition: opacity .45s linear; }
+  .js .vs-cinema__palco img.is-atual { opacity: 1; }
+}
+
+/* sem animação: tudo já está no lugar e o cinema vira três fotos empilhadas */
+@media (prefers-reduced-motion: reduce) {
+  .vs-cinema { height: auto; }
+  .vs-cinema__palco { position: static; height: auto; min-height: 0; }
+  .vs-cinema__palco::after { display: none; }
+  .vs-cinema__palco img { position: static; height: auto; aspect-ratio: 3 / 2; }
+  .vs-cinema__legenda { position: static; padding: 14px var(--margem); color: rgba(16, 13, 11, .55); }
+}
+
+/* ===== composições ===== */
+
+@media (max-width: 1023px) {
+  .vs-rebanho__texto,
+  .vs-geracao__texto { grid-row: auto; grid-column: 1 / -1; }
+  .vs-rebanho__grade { grid-column: 1 / -1; margin-top: clamp(32px, 5svh, 56px); }
+  .vs-geracao__tira { grid-row: auto; grid-column: 1 / -1; }
+  .vs-geracao__equipe { grid-row: auto; grid-column: 1 / -1; margin-top: clamp(28px, 4svh, 48px); }
+  .vs-cabeca .vs-titulo { grid-column: 1 / -1; }
+  .vs-cabeca .vs-texto { grid-column: 1 / -1; margin-top: clamp(18px, 3svh, 28px); }
+  .vs-afeto__grande { grid-column: 1 / span 7; }
+  .vs-afeto__serie { grid-column: 9 / -1; }
+  .vs-afeto__serie figure:nth-child(3) { display: none; }
+  .vs-gesto__grande { grid-column: 1 / -1; }
+  .vs-gesto__lado { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
+  .vs-fabrica figure:nth-child(1) { grid-column: 1 / span 8; }
+  .vs-fabrica figure:nth-child(2) { grid-column: 9 / -1; }
+  .vs-fabrica figure:nth-child(3) { grid-column: 1 / span 5; }
+  .vs-fabrica figure:nth-child(4) { grid-column: 6 / -1; }
+  .vs-saida__foto { grid-column: 1 / -1; }
+  .vs-saida__caminhos { grid-column: 1 / -1; margin-top: clamp(30px, 5svh, 56px); }
+}
+
+@media (max-width: 639px) {
+  .vs-titulo { font-size: clamp(30px, 8.6vw, 46px); }
+
+  .vs-cheia img { --alt: 62svh; }
+
+  .vs-faixa { grid-template-columns: 1fr; gap: clamp(28px, 5svh, 48px); }
+  .vs-faixa figure { margin-top: 0 !important; }
+  .vs-faixa figure:nth-child(2) { width: 82%; margin-left: auto; }
+  .vs-faixa figure:nth-child(3) { width: 90%; }
+
+  .vs-rebanho__grade { grid-template-columns: 1fr; gap: clamp(24px, 4svh, 40px); }
+  .vs-rebanho__grade figure { margin-top: 0 !important; }
+  .vs-rebanho__grade img { aspect-ratio: 4 / 5; }
+
+  .vs-cortina__foto img { height: 74svh; }
+
+  .vs-geracao__tira { gap: 6px; }
+  .vs-geracao__equipe img { aspect-ratio: 4 / 3; }
+
+  .vs-mosaico { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .vs-mosaico figure { margin-top: 0 !important; }
+  .vs-mosaico figure:nth-child(1) { grid-column: span 4; }
+  .vs-mosaico figure:nth-child(2) { grid-column: span 2; }
+  .vs-mosaico figure:nth-child(3) { grid-column: span 2; }
+  .vs-mosaico figure:nth-child(4) { grid-column: span 2; }
+  .vs-mosaico figure:nth-child(5) { grid-column: span 2; }
+  .vs-mosaico figure:nth-child(2) img,
+  .vs-mosaico figure:nth-child(3) img { aspect-ratio: 1 / 1; }
+  .vs-mosaico figure:nth-child(4) img,
+  .vs-mosaico figure:nth-child(5) img { aspect-ratio: 1 / 1; }
+
+  .vs-trilho figure { width: 74vw; }
+  .vs-trilho figure:nth-child(even) { margin-top: 0; }
+
+  .vs-afeto { display: block; }
+  .vs-afeto__grande img { aspect-ratio: 4 / 5; }
+  .vs-afeto__serie {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .vs-afeto__serie figure:nth-child(3) { display: block; }
+  .vs-afeto__serie img { aspect-ratio: 1 / 1; }
+
+  .vs-dupla { grid-template-columns: 1fr; gap: clamp(24px, 4svh, 40px); }
+  .vs-gesto__lado { grid-template-columns: 1fr; }
+  .vs-gesto__grande img { aspect-ratio: 4 / 3; }
+
+  .vs-fabrica figure:nth-child(1) { grid-column: 1 / -1; }
+  .vs-fabrica figure:nth-child(2) { grid-column: 1 / -1; }
+  .vs-fabrica figure:nth-child(3) { grid-column: 1 / span 6; }
+  .vs-fabrica figure:nth-child(4) { grid-column: 7 / -1; margin-top: 0; }
+  .vs-fabrica figure:nth-child(3) img,
+  .vs-fabrica figure:nth-child(4) img { aspect-ratio: 3 / 4; }
+
+  .vs-fim img { height: 70svh; }
+}
+
+/* celular deitado: pouca altura, nada preso à tela inteira */
+@media (max-width: 1023px) and (max-height: 520px) and (orientation: landscape) {
+  .vs-cheia img { --alt: 108svh; min-height: 0; }
+  .vs-cortina__foto img { height: 108svh; min-height: 0; }
+  .vs-cinema { height: 324svh; }
+  .vs-cinema__palco { height: 108svh; min-height: 0; }
+  .vs-fim img { height: 108svh; min-height: 0; }
+}
