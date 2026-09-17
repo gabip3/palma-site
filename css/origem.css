@@ -43,10 +43,12 @@
   width: 100%;
   height: 100%;
 }
-/* a vaca e o bezerro inteiros: da cabeca da vaca aos cascos na palha */
+/* O enquadramento vem da foto sorteada: cada uma traz o seu --foco. O valor
+   de reserva e o da vaca com o bezerro, que pede a cabeca da vaca ate os
+   cascos na palha. */
 .origem__foto img {
   object-fit: cover;
-  object-position: 50% 70%;
+  object-position: var(--foco, 50% 70%);
   transform-origin: 50% 40%;
 }
 
@@ -184,11 +186,11 @@
 
 /* telas estreitas (tablet em pe e celular): recorte vertical proprio da foto */
 @media (max-aspect-ratio: 5/6) {
-  .origem__foto img { object-position: 25% 50%; }
+  .origem__foto img { object-position: var(--foco-estreito, 25% 50%); }
 }
 @media (max-aspect-ratio: 5/6) and (max-width: 639px) {
   /* a cara do bezerro e o olho da vaca cabem juntos, sem folga */
-  .origem__foto img { object-position: 31% 50%; }
+  .origem__foto img { object-position: var(--foco-estreito, 31% 50%); }
 }
 
 @media (max-width: 1023px) {
@@ -203,3 +205,6 @@
   }
   .origem__assinatura { --sep: 1.8em; font-size: clamp(10px, 2.9vw, 13px); }
 }
+
+/* Sem JavaScript o quadro sorteado fica vazio: ele some e o <noscript> assume. */
+html:not(.js) #origem-quadro { display: none; }
