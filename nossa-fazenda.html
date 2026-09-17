@@ -12,9 +12,45 @@
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ein2dnu.css">
-  <link rel="preload" as="image" href="assets/fotos/fazenda-anoitecer-paisagem-1600.webp"
-        imagesrcset="assets/fotos/fazenda-anoitecer-paisagem-1000.webp 1000w, assets/fotos/fazenda-anoitecer-paisagem-1600.webp 1600w, assets/fotos/fazenda-anoitecer-paisagem-2400.webp 2400w"
-        imagesizes="100vw" media="(min-aspect-ratio: 5/6)">
+  <!-- A foto de abertura muda a cada visita: sao quatro aereas da fazenda e o
+       sorteio acontece aqui, antes de qualquer coisa ser desenhada. O preload
+       ja sai para a escolhida, entao nada e baixado a toa e nada pisca.
+
+       A Home tambem sorteia, na foto que a mancha revela. As duas guardam a
+       ultima escolhida na sessao e evitam repetir: quem vem da Home cai numa
+       vista diferente aqui.
+
+       Sem JavaScript, o <noscript> do hero mostra uma delas, fixa. -->
+  <script>
+  window.PALMA_HERO = (function () {
+    var fotos = [
+      { id: "aerea-represa",
+        alt: "Vista aérea da Fazenda Palma: a represa, os galpões do rebanho em fila e o círculo do pivô" },
+      { id: "aerea-galpoes",
+        alt: "Vista aérea dos galpões do rebanho e das lavouras da Fazenda Palma" },
+      { id: "aerea-ouro",
+        alt: "Vista aérea da Fazenda Palma na luz do fim da tarde, com o curral circular ao centro" },
+      { id: "aerea-poente",
+        alt: "Vista aérea da Fazenda Palma no pôr do sol, com o rebanho espalhado no pasto" }
+    ];
+    var ultima = null;
+    try { ultima = sessionStorage.getItem("palma-foto"); } catch (e) {}
+    var sobram = fotos.filter(function (f) { return f.id !== ultima; });
+    var f = (sobram.length ? sobram : fotos)[Math.floor(Math.random() * (sobram.length || fotos.length))];
+    try { sessionStorage.setItem("palma-foto", f.id); } catch (e) {}
+    f.base = "assets/fotos/fazenda/fz-" + f.id;
+    f.larga = [1000, 1600, 2400].map(function (w) { return f.base + "-" + w + ".webp " + w + "w"; }).join(", ");
+    f.alta  = [720, 1100].map(function (w) { return f.base + "-r" + w + ".webp " + w + "w"; }).join(", ");
+    [["(min-aspect-ratio: 5/6)", f.larga, f.base + "-1600.webp"],
+     ["(max-aspect-ratio: 5/6)", f.alta,  f.base + "-r1100.webp"]].forEach(function (p) {
+      var l = document.createElement("link");
+      l.rel = "preload"; l.as = "image"; l.media = p[0];
+      l.imageSrcset = p[1]; l.imageSizes = "100vw"; l.href = p[2];
+      document.head.appendChild(l);
+    });
+    return f;
+  })();
+  </script>
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="stylesheet" href="css/tokens.css">
@@ -142,19 +178,36 @@
   <main id="conteudo" tabindex="-1">
 
     <!-- ===== HERO: E DAQUI QUE VEM A PALMA =====
-         Foto: _MG_8400.JPG, sessao propria de 26/08/2025, 18h28. O galpao do
-         rebanho aceso ao anoitecer, com o silo a direita. No celular, recorte
-         vertical proprio (de 55% a 95% da largura). -->
+         A foto e uma das quatro aereas sorteadas na cabeca da pagina. O <img>
+         nasce sem src e o script logo abaixo o preenche, para o navegador nao
+         baixar duas fotos. O <noscript> cobre quem esta sem JavaScript.
+
+         Aereas da sessao de 11/06/2026. CREDITO PENDENTE: confirmar com a
+         Palma a autorizacao e o credito do fotografo. -->
     <div class="fz-entrada">
-      <section class="fz-hero" aria-labelledby="fz-titulo">
-        <picture class="fz-hero__foto">
-          <source media="(max-aspect-ratio: 5/6)" sizes="100vw"
-                  srcset="assets/fotos/fazenda-anoitecer-retrato-720.webp 720w, assets/fotos/fazenda-anoitecer-retrato-1100.webp 1100w">
-          <img src="assets/fotos/fazenda-anoitecer-paisagem-1600.webp"
-               srcset="assets/fotos/fazenda-anoitecer-paisagem-1000.webp 1000w, assets/fotos/fazenda-anoitecer-paisagem-1600.webp 1600w, assets/fotos/fazenda-anoitecer-paisagem-2400.webp 2400w"
-               sizes="100vw" width="2400" height="1597" fetchpriority="high" decoding="async"
-               alt="Galpão do rebanho com as luzes acesas ao anoitecer, com o silo ao lado, na Fazenda Palma">
+      <section class="fz-hero fz-hero--aerea" aria-labelledby="fz-titulo">
+        <picture class="fz-hero__foto" id="fz-quadro">
+          <source id="fz-fonte" media="(max-aspect-ratio: 5/6)" sizes="100vw">
+          <img id="fz-foto" sizes="100vw" width="2400" height="1467" fetchpriority="high" decoding="async" alt="">
         </picture>
+        <script>
+        (function () {
+          var f = window.PALMA_HERO; if (!f) return;
+          document.getElementById("fz-fonte").srcset = f.alta;
+          var i = document.getElementById("fz-foto");
+          i.srcset = f.larga; i.src = f.base + "-1600.webp"; i.alt = f.alt;
+        })();
+        </script>
+        <noscript>
+          <picture class="fz-hero__foto">
+            <source media="(max-aspect-ratio: 5/6)" sizes="100vw"
+                    srcset="assets/fotos/fazenda/fz-aerea-represa-r720.webp 720w, assets/fotos/fazenda/fz-aerea-represa-r1100.webp 1100w">
+            <img src="assets/fotos/fazenda/fz-aerea-represa-1600.webp"
+                 srcset="assets/fotos/fazenda/fz-aerea-represa-1000.webp 1000w, assets/fotos/fazenda/fz-aerea-represa-1600.webp 1600w, assets/fotos/fazenda/fz-aerea-represa-2400.webp 2400w"
+                 sizes="100vw" width="2400" height="1467"
+                 alt="Vista aérea da Fazenda Palma: a represa, os galpões do rebanho em fila e o círculo do pivô">
+          </picture>
+        </noscript>
 
         <div class="fz-hero__texto">
           <p class="fz-hero__rotulo"><svg viewBox="0 0 225.62 182.3" aria-hidden="true" focusable="false"><use href="#mancha-palma"/></svg>Nossa Fazenda</p>

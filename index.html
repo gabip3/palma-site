@@ -177,6 +177,10 @@
                  navegador baixar uma foto so. Sem JavaScript, o <noscript>
                  mostra a vaca com o bezerro, fixa.
 
+                 O hero da Nossa Fazenda tambem sorteia. As duas guardam a
+                 ultima escolhida na sessao e evitam repetir, para quem sai
+                 daqui para la nao ver a mesma foto duas vezes.
+
                  Aereas da sessao de 11/06/2026. CREDITO PENDENTE: confirmar com
                  a Palma a autorizacao e o credito do fotografo. -->
             <picture class="origem__foto" id="origem-quadro">
@@ -188,22 +192,26 @@
               var fotos = [
       { l: "assets/fotos/fazenda-origem-paisagem-1024.webp 1024w, assets/fotos/fazenda-origem-paisagem-1537.webp 1537w",
         p: "assets/fotos/fazenda-origem-retrato-560.webp 560w, assets/fotos/fazenda-origem-retrato-830.webp 830w",
-        src: "assets/fotos/fazenda-origem-paisagem-1537.webp", w: 1537, a: 1023,
+        id: "origem-vaca", src: "assets/fotos/fazenda-origem-paisagem-1537.webp", w: 1537, a: 1023,
         alt: "Vaca preta e branca ao lado do bezerro recém-nascido, sobre a palha" },
       { l: "assets/fotos/fazenda/fz-aerea-represa-1000.webp 1000w, assets/fotos/fazenda/fz-aerea-represa-1600.webp 1600w, assets/fotos/fazenda/fz-aerea-represa-2400.webp 2400w",
         p: "assets/fotos/fazenda/fz-aerea-represa-r720.webp 720w, assets/fotos/fazenda/fz-aerea-represa-r1100.webp 1100w",
-        src: "assets/fotos/fazenda/fz-aerea-represa-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
+        id: "aerea-represa", src: "assets/fotos/fazenda/fz-aerea-represa-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
         alt: "Vista aérea da Fazenda Palma: a represa, os galpões do rebanho em fila e o círculo do pivô" },
       { l: "assets/fotos/fazenda/fz-aerea-ouro-1000.webp 1000w, assets/fotos/fazenda/fz-aerea-ouro-1600.webp 1600w, assets/fotos/fazenda/fz-aerea-ouro-2400.webp 2400w",
         p: "assets/fotos/fazenda/fz-aerea-ouro-r720.webp 720w, assets/fotos/fazenda/fz-aerea-ouro-r1100.webp 1100w",
-        src: "assets/fotos/fazenda/fz-aerea-ouro-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
+        id: "aerea-ouro", src: "assets/fotos/fazenda/fz-aerea-ouro-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
         alt: "Vista aérea da Fazenda Palma na luz do fim da tarde, com o curral circular ao centro" },
       { l: "assets/fotos/fazenda/fz-aerea-poente-1000.webp 1000w, assets/fotos/fazenda/fz-aerea-poente-1600.webp 1600w, assets/fotos/fazenda/fz-aerea-poente-2400.webp 2400w",
         p: "assets/fotos/fazenda/fz-aerea-poente-r720.webp 720w, assets/fotos/fazenda/fz-aerea-poente-r1100.webp 1100w",
-        src: "assets/fotos/fazenda/fz-aerea-poente-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
+        id: "aerea-poente", src: "assets/fotos/fazenda/fz-aerea-poente-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
         alt: "Vista aérea da Fazenda Palma no pôr do sol, com o rebanho espalhado no pasto" }
               ];
-              var f = fotos[Math.floor(Math.random() * fotos.length)];
+              var ultima = null;
+              try { ultima = sessionStorage.getItem("palma-foto"); } catch (e) {}
+              var sobram = fotos.filter(function (x) { return x.id !== ultima; });
+              var f = (sobram.length ? sobram : fotos)[Math.floor(Math.random() * (sobram.length || fotos.length))];
+              try { sessionStorage.setItem("palma-foto", f.id); } catch (e) {}
               document.getElementById("origem-fonte").srcset = f.p;
               var i = document.getElementById("origem-foto");
               i.srcset = f.l; i.src = f.src; i.alt = f.alt;
