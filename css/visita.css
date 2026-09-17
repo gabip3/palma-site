@@ -633,3 +633,30 @@
   .vs-adiante__texto { margin-top: clamp(24px, 4svh, 36px); }
   .vs-adiante .vs-texto { max-width: none; }
 }
+
+/* ----- de onde esta pagina vem -----
+   So na Producao: ela e a segunda metade da visita, e quem cai aqui pelo menu
+   precisa saber que existe uma primeira. Nas outras paginas o menu e o rodape
+   ja dao conta, e um "voltar" generico so repetiria o botao do navegador. */
+
+.vs-volta {
+  margin: 0;
+  padding: clamp(28px, 4.4svh, 56px) var(--margem) 0;
+}
+.vs-volta a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .7em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid transparent;
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(16, 13, 11, .5);
+  transition: color .35s ease, border-color .35s ease;
+}
+.vs-volta span { transition: transform .5s var(--ease-saida); }
+.vs-volta a:hover { color: var(--tinta); border-bottom-color: rgba(16, 13, 11, .2); }
+.vs-volta a:hover span { transform: translateX(-.4em); }
