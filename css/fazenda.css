@@ -293,11 +293,12 @@
   background: linear-gradient(to top, rgba(8, 8, 18, .74) 0%, rgba(8, 8, 18, .46) 42%, rgba(8, 8, 18, 0) 100%);
 }
 
-/* No alto desta foto a nevoa fica acesa e a logo branca sumia, principalmente
-   no celular, onde o recorte sobe. Um veu curto no topo resolve sem escurecer
-   a cena. O z-index e o mesmo do texto: a ordem no HTML mantem o texto na
-   frente. */
-.fz-hero--capitulo::before {
+/* Ceu claro no alto da foto apaga a logo branca e o menu: acontece na nevoa
+   acesa dos aspersores e no ceu das aereas. Um veu curto no topo resolve sem
+   escurecer a cena. O z-index e o mesmo do texto: a ordem no HTML mantem o
+   texto na frente. */
+.fz-hero--capitulo::before,
+.fz-hero--aerea::before {
   content: "";
   position: absolute;
   z-index: 1;
@@ -306,3 +307,8 @@
   background: linear-gradient(to bottom, rgba(8, 8, 18, .46) 0%, rgba(8, 8, 18, 0) 100%);
   pointer-events: none;
 }
+
+/* Aerea no hero: o assunto e o meio da foto, nao o chao. E sem JavaScript o
+   quadro sorteado fica vazio, entao ele some e o <noscript> assume. */
+.fz-hero--aerea .fz-hero__foto img { object-position: 50% 46%; }
+html:not(.js) #fz-quadro { display: none; }
