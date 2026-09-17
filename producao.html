@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Agropecuária Palma | Da nossa fazenda para sua casa.</title>
-  <meta name="description" content="Há mais de 60 anos, a origem vem primeiro.">
-  <meta name="theme-color" content="#ffffff">
+  <title>Produção | Agropecuária Palma</title>
+  <meta name="description" content="Do curral à caixa: o conforto do rebanho, a ordenha e a fabricação, na Fazenda Palma.">
+  <meta name="theme-color" content="#17172a">
 
   <!-- Foco, da Dalton Maag, servida pelo Adobe Fonts (projeto "Palma").
        A Nunito continua no tokens.css como reserva, caso a folha nao carregue. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ein2dnu.css">
+  <link rel="preload" as="image" href="assets/fotos/fazenda/fz-aspersores-1600.webp"
+        imagesrcset="assets/fotos/fazenda/fz-aspersores-1000.webp 1000w, assets/fotos/fazenda/fz-aspersores-1600.webp 1600w, assets/fotos/fazenda/fz-aspersores-2400.webp 2400w"
+        imagesizes="100vw">
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/topo.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/origem.css">
-  <link rel="stylesheet" href="css/produtos.css">
-  <link rel="stylesheet" href="css/onde.css">
+  <link rel="stylesheet" href="css/fazenda.css">
+  <link rel="stylesheet" href="css/visita.css">
   <link rel="stylesheet" href="css/rodape.css">
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/pagina-fazenda.js"></script>
 </head>
 <body>
 
@@ -57,17 +58,17 @@
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- ===== HEADER ===== -->
-  <header class="topo" id="topo">
-    <a class="topo__marca" href="./">
+  <header class="topo topo--foto" id="topo">
+    <a class="topo__marca" href="index.html">
       <img class="topo__logo" src="assets/brand/palma-logo.svg" alt="Agropecuária Palma" width="476" height="368">
       <img class="topo__logo topo__logo--branco" src="assets/brand/palma-logo-branco.svg" alt="" width="476" height="368">
     </a>
 
     <nav class="topo__nav" aria-label="Principal">
       <ul class="topo__lista">
-        <li><a class="topo__link" href="#produtos">Produtos</a></li>
+        <li><a class="topo__link" href="index.html#produtos">Produtos</a></li>
         <li><a class="topo__link" href="nossa-fazenda.html">Nossa Fazenda</a></li>
-        <li><a class="topo__link" href="producao.html">Produção</a></li>
+        <li><a class="topo__link" href="producao.html" aria-current="page">Produção</a></li>
         <li><a class="topo__link" href="receitas.html">Receitas</a></li>
         <li><a class="topo__link" href="noticias.html">Notícias</a></li>
         <li><a class="topo__link" href="#contato">Contato</a></li>
@@ -114,9 +115,9 @@
 
       <nav class="camada__nav" aria-label="Principal">
         <ul class="camada__lista">
-          <li><a class="camada__link" href="#produtos">Produtos</a></li>
+          <li><a class="camada__link" href="index.html#produtos">Produtos</a></li>
           <li><a class="camada__link" href="nossa-fazenda.html">Nossa Fazenda</a></li>
-          <li><a class="camada__link" href="producao.html">Produção</a></li>
+          <li><a class="camada__link" href="producao.html" aria-current="page">Produção</a></li>
           <li><a class="camada__link" href="receitas.html">Receitas</a></li>
           <li><a class="camada__link" href="noticias.html">Notícias</a></li>
           <li><a class="camada__link" href="#contato">Contato</a></li>
@@ -139,217 +140,168 @@
   </div>
 
   <main id="conteudo" tabindex="-1">
+    <!-- ===== HERO: DO CURRAL A CAIXA =====
+         Foto: a nevoa dos aspersores sobre o rebanho reunido no curral, da
+         sessao propria de 26/08/2025. Antes ela abria o bloco de conforto no
+         meio da visita; virou a abertura desta pagina.
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
-      <div class="hero__mancha hero__mancha--principal" data-forma="mancha-a" style="--ar: 128.73 / 121.512" aria-hidden="true">
-        <svg viewBox="0 0 128.73 121.512" preserveAspectRatio="none" focusable="false"><use href="#mancha-a"/></svg>
-      </div>
-      <div class="hero__mancha hero__mancha--b" data-forma="mancha-b" style="--ar: 225.621 / 182.305" aria-hidden="true">
-        <svg viewBox="0 0 225.621 182.305" preserveAspectRatio="none" focusable="false"><use href="#mancha-b"/></svg>
-      </div>
-      <div class="hero__mancha hero__mancha--c" data-forma="mancha-c" style="--ar: 48.598 / 38.418" aria-hidden="true">
-        <svg viewBox="0 0 48.598 38.418" preserveAspectRatio="none" focusable="false"><use href="#mancha-c"/></svg>
-      </div>
-      <div class="hero__mancha hero__mancha--d" data-forma="mancha-d" style="--ar: 68.742 / 71.758" aria-hidden="true">
-        <svg viewBox="0 0 68.742 71.758" preserveAspectRatio="none" focusable="false"><use href="#mancha-d"/></svg>
-      </div>
+         O hero daqui e mais baixo que o da Nossa Fazenda de proposito: esta
+         pagina e a continuacao de um capitulo, nao a entrada do site. -->
+    <section class="fz-hero fz-hero--capitulo" aria-labelledby="pr-titulo">
+      <picture class="fz-hero__foto">
+        <img src="assets/fotos/fazenda/fz-aspersores-1600.webp"
+             srcset="assets/fotos/fazenda/fz-aspersores-1000.webp 1000w, assets/fotos/fazenda/fz-aspersores-1600.webp 1600w, assets/fotos/fazenda/fz-aspersores-2400.webp 2400w"
+             sizes="100vw" width="2400" height="1246" fetchpriority="high" decoding="async"
+             style="--foco: 50% 58%"
+             alt="Névoa dos aspersores brilhando sobre o rebanho reunido no curral">
+      </picture>
 
-      <h1 class="hero__titulo" id="hero-titulo">
-        <span class="t-linha"><span class="t-parte"><span class="t-tinta" style="--i:0">DA NOSSA</span></span> <span class="t-parte"><span class="t-tinta" style="--i:1">FAZENDA</span></span></span>
-        <span class="t-linha t-linha--2"><span class="t-parte"><span class="t-tinta" style="--i:2">PARA SUA</span></span> <span class="t-parte"><span class="t-tinta" style="--i:3">CASA.</span></span></span>
-      </h1>
-    </section>
-
-    <!-- ===== SECAO 02: ORIGEM =====
-         Marca, origem, produto: esta secao so mostra de onde vem a Palma.
-         Com movimento, sobe para dentro do Hero: a foto nasce na mancha principal
-         e cresce com ela (origem.js). A foto fica limpa, sem nada por cima: e a
-         pausa entre o Hero e o texto. Sem movimento ou sem JS, e uma secao comum
-         logo abaixo do Hero. -->
-    <section class="origem">
-      <div class="origem__trilho">
-        <div class="origem__palco">
-          <div class="origem__janela">
-            <picture class="origem__foto">
-              <source media="(max-aspect-ratio: 5/6)" sizes="82vh" srcset="assets/fotos/fazenda-origem-retrato-560.webp 560w, assets/fotos/fazenda-origem-retrato-830.webp 830w">
-              <img src="assets/fotos/fazenda-origem-paisagem-1024.webp" srcset="assets/fotos/fazenda-origem-paisagem-1024.webp 1024w, assets/fotos/fazenda-origem-paisagem-1537.webp 1537w"
-                   sizes="100vw" width="1537" height="1023" loading="lazy" decoding="async"
-                   alt="Vaca preta e branca ao lado do bezerro recém-nascido, sobre a palha">
-            </picture>
-          </div>
-        </div>
-      </div>
-
-      <div class="origem__faixa">
-        <div class="origem__abertura">
-          <!-- "Tudo começa aqui." abre o mesmo paragrafo: aparece primeiro, logo
-               depois da foto, e o resto da frase vem em seguida -->
-          <p class="origem__texto"><span class="origem__abre"><span class="origem__abre-tinta">Tudo começa aqui.</span></span> <span class="origem__segue">Há mais de 60 anos,<br> a Palma transforma cuidado, conhecimento e origem em alimentos que chegam todos os&nbsp;dias à sua casa.</span></p>
-          <a class="origem__cta" href="nossa-fazenda.html">
-            <span>CONHEÇA NOSSA FAZENDA</span>
-            <svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-          </a>
-          <p class="origem__assinatura">
-            <span class="origem__pilares">
-              <span>GENÉTICA</span>
-              <span>ALIMENTAÇÃO</span>
-              <span>ORDENHA</span>
-              <span>DIRETO PARA A FABRICAÇÃO</span>
-            </span>
-          </p>
-        </div>
-
-        <!-- Passagem para a Seção 03 (Produtos). O papel continua sem quebra; a
-             proxima secao se conecta aqui e pode ouvir origem.assinar() para
-             saber quanto desta saida ja passou pela tela. -->
-        <div class="origem__saida" aria-hidden="true"></div>
+      <div class="fz-hero__texto">
+        <p class="fz-hero__rotulo"><svg viewBox="0 0 225.62 182.3" aria-hidden="true" focusable="false"><use href="#mancha-palma"/></svg>Produção</p>
+        <h1 class="fz-hero__titulo" id="pr-titulo">
+          <span class="fz-linha"><span class="fz-tinta" style="--i:0">Do curral</span></span>
+          <span class="fz-linha"><span class="fz-tinta" style="--i:1">à caixa.</span></span>
+        </h1>
       </div>
     </section>
 
-    <!-- ===== SECAO 03: PRODUTOS =====
-         A mancha que abriu a pagina e cobriu a fazenda esta nas embalagens. A
-         frase de abertura e do documento de posicionamento da Palma. O Leite
-         Integral e o recorte grande; as outras embalagens reais correm num
-         slider e crescem quando recebem a atencao (hover no desktop, o centro no
-         celular). A linha Zero Lactose fica para a Secao 04. -->
-    <section class="produtos" id="produtos" aria-labelledby="produtos-titulo">
-      <div class="produtos__leite" aria-hidden="true">
-        <img src="assets/produtos/leite-integral-760.webp" srcset="assets/produtos/leite-integral-760.webp 760w, assets/produtos/leite-integral-1300.webp 1300w"
-             sizes="(max-width: 639px) 72vw, 43vw" width="1300" height="1737" loading="lazy" decoding="async" alt="">
-      </div>
+    <!-- ===== A VISITA, SEGUNDA PARTE =====
+         Continuacao direta da Nossa Fazenda, com as mesmas regras: so entra
+         texto documentado nos materiais da Palma, e onde nao havia fato
+         confirmado a fotografia fala sozinha.
 
-      <div class="produtos__abertura">
-        <p class="produtos__rotulo">Produtos</p>
-        <h2 class="produtos__titulo" id="produtos-titulo">
-          <span class="produtos__linha"><span class="produtos__tinta" style="--i:0">A mancha é</span></span>
-          <span class="produtos__linha"><span class="produtos__tinta" style="--i:1">uma promessa.</span></span>
-        </h2>
-      </div>
+         PENDENTE de confirmacao da Palma, e por isso fora do texto:
+         frequencia da ordenha, colares de monitoramento por animal e
+         laticinio dentro da fazenda.
+         PENDENTE tambem: autorizacao de imagem das pessoas e credito do
+         fotografo das duas sessoes. -->
+    <div class="vs">
+      <!-- ========== O CONFORTO DO REBANHO ========== -->
+      <p class="vs-ato">O conforto do rebanho</p>
 
-      <div class="produtos__vitrine">
-        <div class="produtos__trilho" id="produtos-trilho" role="region" aria-label="Linha de produtos Palma" tabindex="0">
-          <ul class="produtos__lista">
-            <li class="produtos__item" style="--h:13; --hm:32">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-divino-480.webp" srcset="assets/produtos/queijo-divino-480.webp 480w, assets/produtos/queijo-divino-960.webp 960w"
-                     sizes="(max-width: 639px) 43vw, 15vw" width="960" height="875" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Divino</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:17; --hm:42">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/creme-de-leite-320.webp" srcset="assets/produtos/creme-de-leite-320.webp 320w, assets/produtos/creme-de-leite-640.webp 640w"
-                     sizes="(max-width: 639px) 31vw, 11vw" width="640" height="1063" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Creme de Leite</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:13.5; --hm:33">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/manteiga-com-sal-380.webp" srcset="assets/produtos/manteiga-com-sal-380.webp 380w, assets/produtos/manteiga-com-sal-760.webp 760w"
-                     sizes="(max-width: 639px) 29vw, 10vw" width="760" height="1109" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Manteiga com Sal</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:11; --hm:27">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-minas-frescal-420.webp" srcset="assets/produtos/queijo-minas-frescal-420.webp 420w, assets/produtos/queijo-minas-frescal-840.webp 840w"
-                     sizes="(max-width: 639px) 43vw, 15vw" width="840" height="657" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Minas Frescal</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:10; --hm:25">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-prato-520.webp" srcset="assets/produtos/queijo-prato-520.webp 520w, assets/produtos/queijo-prato-1040.webp 1040w"
-                     sizes="(max-width: 639px) 62vw, 21vw" width="1040" height="513" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Prato</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:10.5; --hm:26">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/doce-de-leite-260.webp" srcset="assets/produtos/doce-de-leite-260.webp 260w, assets/produtos/doce-de-leite-520.webp 520w"
-                     sizes="(max-width: 639px) 29vw, 10vw" width="520" height="580" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Doce de Leite</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:10.5; --hm:26">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-minas-padrao-480.webp" srcset="assets/produtos/queijo-minas-padrao-480.webp 480w, assets/produtos/queijo-minas-padrao-960.webp 960w"
-                     sizes="(max-width: 639px) 55vw, 19vw" width="960" height="547" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Minas Padrão</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:9; --hm:22">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/ricota-fresca-300.webp" srcset="assets/produtos/ricota-fresca-300.webp 300w, assets/produtos/ricota-fresca-600.webp 600w"
-                     sizes="(max-width: 639px) 34vw, 12vw" width="600" height="477" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Ricota Fresca</figcaption>
-              </figure>
-            </li>
-          </ul>
+      <section class="vs-dupla vs-sobe" data-cascata aria-label="Conforto do rebanho">
+        <figure>
+          <img src="assets/fotos/fazenda/fz-camas-700.webp"
+               srcset="assets/fotos/fazenda/fz-camas-700.webp 700w, assets/fotos/fazenda/fz-camas-1300.webp 1300w"
+               sizes="(max-width: 639px) 100vw, 46vw" width="1300" height="865" loading="lazy" decoding="async"
+               alt="Fila de vacas descansando nas camas de areia do free stall">
+          <figcaption class="vs-legenda">Camas de areia no free stall.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/fotos/fazenda/fz-colar-700.webp"
+               srcset="assets/fotos/fazenda/fz-colar-700.webp 700w, assets/fotos/fazenda/fz-colar-1300.webp 1300w"
+               sizes="(max-width: 639px) 100vw, 46vw" width="1300" height="865" loading="lazy" decoding="async"
+               style="--foco: 56% 50%"
+               alt="Colar de monitoramento no pescoço de uma vaca, em primeiro plano">
+          <figcaption class="vs-legenda">Colar de monitoramento.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ========== COMO PRODUZIMOS ========== -->
+      <p class="vs-ato">Como produzimos</p>
+
+      <!-- Ordenha. A frequência fica fora do texto: o site antigo diz duas vezes
+           ao dia e a reportagem de 2025 diz duas para o Girolando e três para o
+           Holandês. A frase descreve apenas o que a fotografia mostra. -->
+      <section class="vs-cabeca vs-sobe" aria-labelledby="vs-ordenha-titulo">
+        <h2 class="vs-titulo" id="vs-ordenha-titulo">A ordenha.</h2>
+        <p class="vs-texto">Na sala rotativa, as vacas entram em círculo, uma a uma.</p>
+      </section>
+
+      <section class="vs-gesto vs-sobe" data-cascata aria-label="Da sala de ordenha ao gesto">
+        <figure class="vs-gesto__grande">
+          <img src="assets/fotos/fazenda/fz-ordenha-900.webp"
+               srcset="assets/fotos/fazenda/fz-ordenha-900.webp 900w, assets/fotos/fazenda/fz-ordenha-1500.webp 1500w"
+               sizes="(max-width: 1023px) 100vw, 62vw" width="1500" height="1000" loading="lazy" decoding="async"
+               alt="A sala de ordenha rotativa vista do alto, com as vacas posicionadas em círculo">
+        </figure>
+        <div class="vs-gesto__lado">
+          <figure>
+            <img src="assets/fotos/fazenda/fz-teteiras-650.webp"
+                 srcset="assets/fotos/fazenda/fz-teteiras-650.webp 650w, assets/fotos/fazenda/fz-teteiras-1200.webp 1200w"
+                 sizes="(max-width: 639px) 100vw, 24vw" width="1200" height="798" loading="lazy" decoding="async"
+                 style="--foco: 54% 50%"
+                 alt="Ordenhador colocando as teteiras em uma vaca na plataforma">
+          </figure>
+          <figure>
+            <img src="assets/fotos/fazenda/fz-teteiras-detalhe-650.webp"
+                 srcset="assets/fotos/fazenda/fz-teteiras-detalhe-650.webp 650w, assets/fotos/fazenda/fz-teteiras-detalhe-1200.webp 1200w"
+                 sizes="(max-width: 639px) 100vw, 24vw" width="1200" height="798" loading="lazy" decoding="async"
+                 alt="As teteiras desfocadas em primeiro plano, com o ordenhador ao fundo">
+          </figure>
         </div>
+      </section>
 
-        <div class="produtos__controles">
-          <!-- destino futuro: /produtos ("Nossos Produtos" era o nome da pagina no site antigo) -->
-          <a class="produtos__cta" href="#produtos">
-            <span>NOSSOS PRODUTOS</span>
-            <svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-          </a>
-          <div class="produtos__navega">
-            <span class="produtos__progresso" aria-hidden="true"><span class="produtos__barra"></span></span>
-            <button class="produtos__seta produtos__seta--voltar" type="button" aria-controls="produtos-trilho" aria-label="Voltar"><svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M31 12H3M11 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
-            <button class="produtos__seta produtos__seta--avancar" type="button" aria-controls="produtos-trilho" aria-label="Avançar"><svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
-          </div>
+      <!-- Fabricação. Primeira frase do site antigo da Palma: o leite segue da
+           ordenha por tubulação até os tanques de pasteurização. A segunda frase
+           não afirma onde fica o laticínio, que ainda depende de confirmação. -->
+      <section class="vs-cabeca vs-sobe" aria-labelledby="vs-fabrica-titulo">
+        <h2 class="vs-titulo" id="vs-fabrica-titulo">Direto para<br> a fabricação.</h2>
+        <p class="vs-texto">O leite sai da ordenha por tubulação até os tanques de pasteurização. Dali ele vira queijo, manteiga e doce de leite.</p>
+      </section>
+
+      <section class="vs-fabrica vs-sobe" data-cascata aria-label="Da queijaria à caixa">
+        <figure>
+          <img src="assets/fotos/fazenda/fz-caixa-650.webp"
+               srcset="assets/fotos/fazenda/fz-caixa-650.webp 650w, assets/fotos/fazenda/fz-caixa-1200.webp 1200w"
+               sizes="(max-width: 639px) 100vw, 54vw" width="1200" height="798" loading="lazy" decoding="async"
+               style="--foco: 46% 50%"
+               alt="Mãos acomodando peças de Queijo Minas Frescal embaladas dentro de uma caixa Palma">
+          <figcaption class="vs-legenda">As peças entram na caixa.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/fotos/fazenda/fz-frescal-650.webp"
+               srcset="assets/fotos/fazenda/fz-frescal-650.webp 650w, assets/fotos/fazenda/fz-frescal-1200.webp 1200w"
+               sizes="(max-width: 639px) 100vw, 34vw" width="1200" height="798" loading="lazy" decoding="async"
+               alt="Peças de Queijo Minas Frescal embaladas com o padrão de manchas da Palma">
+          <figcaption class="vs-legenda">Queijo Minas Frescal.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/fotos/fazenda/fz-manteiga-650.webp"
+               srcset="assets/fotos/fazenda/fz-manteiga-650.webp 650w, assets/fotos/fazenda/fz-manteiga-1200.webp 1200w"
+               sizes="(max-width: 639px) 46vw, 30vw" width="1200" height="1803" loading="lazy" decoding="async"
+               alt="Potes de manteiga Palma empilhados">
+          <figcaption class="vs-legenda">Manteiga Palma.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/fotos/fazenda/fz-queijaria-650.webp"
+               srcset="assets/fotos/fazenda/fz-queijaria-650.webp 650w, assets/fotos/fazenda/fz-queijaria-1200.webp 1200w"
+               sizes="(max-width: 639px) 50vw, 54vw" width="1200" height="798" loading="lazy" decoding="async"
+               style="--foco: 54% 50%"
+               alt="Equipe na queijaria, entre as prateleiras com as formas de queijo">
+          <figcaption class="vs-legenda">Na queijaria.</figcaption>
+        </figure>
+      </section>
+
+      <!-- ========== O QUE SAI DAQUI ========== -->
+      <p class="vs-ato">O que sai daqui</p>
+
+      <!-- A frase é material real da marca, escrita no baú do caminhão da Palma,
+           e fecha o ciclo com a headline da Home. -->
+      <section class="vs-saida" aria-label="De volta aos produtos">
+        <figure class="vs-saida__foto vs-sobe">
+          <img src="assets/fotos/fazenda/fz-caminhao-700.webp"
+               srcset="assets/fotos/fazenda/fz-caminhao-700.webp 700w, assets/fotos/fazenda/fz-caminhao-1300.webp 1300w"
+               sizes="(max-width: 1023px) 100vw, 54vw" width="1300" height="575" loading="lazy" decoding="async"
+               alt="A frase Da nossa fazenda direto para sua casa, escrita à mão no baú do caminhão da Palma">
+        </figure>
+        <div class="vs-saida__caminhos vs-sobe" data-cascata>
+          <a class="vs-saida__link" href="index.html#produtos">Nossos produtos <span aria-hidden="true">&rsaquo;</span></a>
+          <a class="vs-saida__link" href="index.html#onde-encontrar">Onde encontrar <span aria-hidden="true">&rsaquo;</span></a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===== SECAO 05: ONDE ENCONTRAR PALMA =====
-         CONTEUDO PENDENTE: os materiais do projeto (15/09/2026) nao tem a lista de
-         onde encontrar Palma (lugares, cidades ou CEPs). A busca e o painel ja estao
-         prontos; os dados entram em js/onde-encontrar.js. Enquanto a lista
-         estiver vazia, nada de loja, endereco ou disponibilidade e mostrado.
-         O unico lugar marcado e a origem real: a Fazenda Palma, em Luziania, GO
-         (endereco do site antigo). -->
-    <section class="onde" id="onde-encontrar" aria-labelledby="onde-titulo">
-      <div class="onde__chamada">
-        <p class="onde__rotulo">Onde encontrar</p>
-        <h2 class="onde__titulo" id="onde-titulo">
-          <span class="onde__linha"><span class="onde__tinta" style="--i:0">Da nossa fazenda</span></span>
-          <span class="onde__linha"><span class="onde__tinta" style="--i:1">para a sua casa.</span></span>
-        </h2>
-        <p class="onde__apoio">Encontre Palma perto de você.</p>
+      <!-- O dia termina no mesmo anoitecer em que a visita começou, e a foto se
+           dissolve no rodapé. -->
+      <figure class="vs-fim">
+        <img src="assets/fotos/fazenda/fz-anoitecer-fim-1600.webp"
+             srcset="assets/fotos/fazenda/fz-anoitecer-fim-1000.webp 1000w, assets/fotos/fazenda/fz-anoitecer-fim-1600.webp 1600w, assets/fotos/fazenda/fz-anoitecer-fim-2400.webp 2400w"
+             sizes="100vw" width="2400" height="1597" loading="lazy" decoding="async"
+             alt="O último brilho do pôr do sol atrás do galpão, no fim do dia">
+      </figure>
 
-        <form class="onde__busca" role="search" novalidate>
-          <label class="u-sr" for="onde-local">Cidade ou CEP</label>
-          <input class="onde__campo" id="onde-local" name="local" type="text" inputmode="search" autocomplete="off"
-                 placeholder="Digite sua cidade ou CEP" enterkeyhint="search" required>
-          <button class="onde__botao" type="submit">
-            <span>ENCONTRAR PALMA</span>
-            <svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-          </button>
-        </form>
-      </div>
+    </div>
 
-      <div class="onde__painel">
-        <!-- o caminho da origem ate quem busca; quando houver dados, os lugares onde encontrar
-             Palma aparecem na lista abaixo (e, se tiverem coordenadas, podem virar mapa) -->
-        <div class="onde__caminho" aria-hidden="true">
-          <svg class="onde__traco" viewBox="0 0 560 440" preserveAspectRatio="none" focusable="false">
-            <path d="M 74 78 C 84 300, 290 170, 486 352" pathLength="1" fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
-          </svg>
-          <svg class="onde__marca onde__marca--origem" viewBox="0 0 68.742 71.758" focusable="false"><use href="#mancha-d"/></svg>
-          <svg class="onde__marca onde__marca--destino" viewBox="0 0 48.598 38.418" focusable="false"><use href="#mancha-c"/></svg>
-          <p class="onde__ponto onde__ponto--origem"><span>Fazenda Palma</span>Luziânia, GO</p>
-          <p class="onde__ponto onde__ponto--destino"><span>Sua casa</span><em class="onde__lugar"></em></p>
-        </div>
-
-        <div class="onde__resultado" aria-live="polite" hidden>
-          <p class="onde__aviso"></p>
-          <ul class="onde__lista"></ul>
-        </div>
-      </div>
-    </section>
 
   </main>
 

@@ -557,3 +557,79 @@
   .vs-cinema__palco { height: 108svh; min-height: 0; }
   .vs-fim img { height: 108svh; min-height: 0; }
 }
+
+/* ----- passagem para a Producao -----
+   A visita continua em outra pagina, porque junta ficava com 21 telas. O bloco
+   inteiro e um link so, com a foto da ordenha como isca do que vem depois. */
+
+.vs-adiante {
+  padding: var(--respiro) var(--margem);
+  border-top: 1px solid rgba(16, 13, 11, .14);
+}
+
+.vs-adiante__link {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.vs-adiante__foto {
+  grid-column: 1 / span 6;
+  margin: 0;
+  overflow: hidden;
+  background: #efece6;
+}
+.vs-adiante__foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 1.2s var(--ease-saida);
+}
+
+.vs-adiante__texto { grid-column: 8 / -1; }
+
+.vs-adiante__rotulo {
+  margin: 0 0 clamp(14px, 2svh, 24px);
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+.vs-adiante .vs-texto { max-width: 26ch; }
+
+.vs-adiante__seta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1em;
+  margin-top: clamp(22px, 3.4svh, 40px);
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(16, 13, 11, .16);
+  font-size: clamp(13px, 1.04vw, 18px);
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transition: border-color .4s ease;
+}
+.vs-adiante__seta span { transition: transform .55s var(--ease-saida); }
+
+@media (hover: hover) and (pointer: fine) {
+  .vs-adiante__link:hover .vs-adiante__foto img { transform: scale(1.035); }
+  .vs-adiante__link:hover .vs-adiante__seta { border-bottom-color: var(--tinta); }
+  .vs-adiante__link:hover .vs-adiante__seta span { transform: translateX(.5em); }
+}
+.vs-adiante__link:focus-visible { outline: 2px solid var(--azul); outline-offset: 8px; }
+
+@media (max-width: 1023px) {
+  .vs-adiante__foto { grid-column: 1 / span 7; }
+  .vs-adiante__texto { grid-column: 8 / -1; }
+}
+
+@media (max-width: 639px) {
+  .vs-adiante__link { display: block; }
+  .vs-adiante__texto { margin-top: clamp(24px, 4svh, 36px); }
+  .vs-adiante .vs-texto { max-width: none; }
+}

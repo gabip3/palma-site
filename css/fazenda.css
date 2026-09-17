@@ -13,7 +13,6 @@
 .topo--foto .topo__nav { mix-blend-mode: normal; color: #fff; }
 .topo--foto .topo__logo { opacity: 0; }
 .topo--foto .topo__logo--branco { opacity: 1; }
-.topo__link[aria-current="page"]::after { transform: scaleX(1); }
 
 /* ----- hero ----- */
 
@@ -275,4 +274,35 @@
   .fz-hero__foto img { object-position: 50% 88%; }
   .fz-hero__titulo { font-size: clamp(34px, 12svh, 60px); }
   .fz-hero__lugar { display: none; }
+}
+
+/* ----- hero de capitulo -----
+   A Producao continua a visita, entao a foto de abertura e mais baixa que a da
+   entrada e nao fica presa ao topo: e um capitulo, nao a porta do site. */
+
+.fz-hero--capitulo {
+  position: relative;
+  height: clamp(420px, 72svh, 780px);
+  min-height: 0;
+}
+.fz-hero--capitulo .fz-hero__foto img { object-position: var(--foco, 50% 52%); }
+/* A foto dos aspersores e bem mais clara que a do anoitecer, entao o veu daqui
+   e um pouco mais forte: o titulo branco tem que aguentar a nevoa acesa. */
+.fz-hero--capitulo::after {
+  height: 78%;
+  background: linear-gradient(to top, rgba(8, 8, 18, .74) 0%, rgba(8, 8, 18, .46) 42%, rgba(8, 8, 18, 0) 100%);
+}
+
+/* No alto desta foto a nevoa fica acesa e a logo branca sumia, principalmente
+   no celular, onde o recorte sobe. Um veu curto no topo resolve sem escurecer
+   a cena. O z-index e o mesmo do texto: a ordem no HTML mantem o texto na
+   frente. */
+.fz-hero--capitulo::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 auto 0;
+  height: 34%;
+  background: linear-gradient(to bottom, rgba(8, 8, 18, .46) 0%, rgba(8, 8, 18, 0) 100%);
+  pointer-events: none;
 }

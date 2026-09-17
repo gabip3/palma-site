@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Agropecuária Palma | Da nossa fazenda para sua casa.</title>
-  <meta name="description" content="Há mais de 60 anos, a origem vem primeiro.">
+  <title>Notícias | Agropecuária Palma</title>
+  <meta name="description" content="O que a imprensa escreveu sobre a Agropecuária Palma: a fazenda, o rebanho e a linha de produtos.">
   <meta name="theme-color" content="#ffffff">
 
   <!-- Foco, da Dalton Maag, servida pelo Adobe Fonts (projeto "Palma").
@@ -12,17 +12,14 @@
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ein2dnu.css">
-  <script>document.documentElement.classList.add('js');</script>
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/topo.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/origem.css">
-  <link rel="stylesheet" href="css/produtos.css">
-  <link rel="stylesheet" href="css/onde.css">
+  <link rel="stylesheet" href="css/pagina.css">
+  <link rel="stylesheet" href="css/noticias.css">
   <link rel="stylesheet" href="css/rodape.css">
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/pagina-noticias.js"></script>
 </head>
 <body>
 
@@ -58,18 +55,18 @@
 
   <!-- ===== HEADER ===== -->
   <header class="topo" id="topo">
-    <a class="topo__marca" href="./">
+    <a class="topo__marca" href="index.html">
       <img class="topo__logo" src="assets/brand/palma-logo.svg" alt="Agropecuária Palma" width="476" height="368">
       <img class="topo__logo topo__logo--branco" src="assets/brand/palma-logo-branco.svg" alt="" width="476" height="368">
     </a>
 
     <nav class="topo__nav" aria-label="Principal">
       <ul class="topo__lista">
-        <li><a class="topo__link" href="#produtos">Produtos</a></li>
+        <li><a class="topo__link" href="index.html#produtos">Produtos</a></li>
         <li><a class="topo__link" href="nossa-fazenda.html">Nossa Fazenda</a></li>
         <li><a class="topo__link" href="producao.html">Produção</a></li>
         <li><a class="topo__link" href="receitas.html">Receitas</a></li>
-        <li><a class="topo__link" href="noticias.html">Notícias</a></li>
+        <li><a class="topo__link" href="noticias.html" aria-current="page">Notícias</a></li>
         <li><a class="topo__link" href="#contato">Contato</a></li>
       </ul>
 
@@ -114,11 +111,11 @@
 
       <nav class="camada__nav" aria-label="Principal">
         <ul class="camada__lista">
-          <li><a class="camada__link" href="#produtos">Produtos</a></li>
+          <li><a class="camada__link" href="index.html#produtos">Produtos</a></li>
           <li><a class="camada__link" href="nossa-fazenda.html">Nossa Fazenda</a></li>
           <li><a class="camada__link" href="producao.html">Produção</a></li>
           <li><a class="camada__link" href="receitas.html">Receitas</a></li>
-          <li><a class="camada__link" href="noticias.html">Notícias</a></li>
+          <li><a class="camada__link" href="noticias.html" aria-current="page">Notícias</a></li>
           <li><a class="camada__link" href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -140,214 +137,73 @@
 
   <main id="conteudo" tabindex="-1">
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
-      <div class="hero__mancha hero__mancha--principal" data-forma="mancha-a" style="--ar: 128.73 / 121.512" aria-hidden="true">
-        <svg viewBox="0 0 128.73 121.512" preserveAspectRatio="none" focusable="false"><use href="#mancha-a"/></svg>
-      </div>
-      <div class="hero__mancha hero__mancha--b" data-forma="mancha-b" style="--ar: 225.621 / 182.305" aria-hidden="true">
-        <svg viewBox="0 0 225.621 182.305" preserveAspectRatio="none" focusable="false"><use href="#mancha-b"/></svg>
-      </div>
-      <div class="hero__mancha hero__mancha--c" data-forma="mancha-c" style="--ar: 48.598 / 38.418" aria-hidden="true">
-        <svg viewBox="0 0 48.598 38.418" preserveAspectRatio="none" focusable="false"><use href="#mancha-c"/></svg>
-      </div>
-      <div class="hero__mancha hero__mancha--d" data-forma="mancha-d" style="--ar: 68.742 / 71.758" aria-hidden="true">
-        <svg viewBox="0 0 68.742 71.758" preserveAspectRatio="none" focusable="false"><use href="#mancha-d"/></svg>
+    <!-- ===== ABERTURA =====
+         A Palma ainda nao tem noticias proprias nos materiais. As tres
+         chamadas sao reportagens reais publicadas sobre a empresa, com
+         titulo, veiculo e data exatos, e link para a materia original.
+         Quando a Palma tiver as proprias, basta trocar os artigos. -->
+    <header class="pagina">
+      <p class="pagina__rotulo">Notícias</p>
+      <h1 class="pagina__titulo">A Palma na imprensa.</h1>
+      <p class="pagina__apoio">O que escreveram sobre a fazenda, o rebanho e a linha de produtos.</p>
+    </header>
+    <!-- ===== SECAO 04: NOTICIAS =====
+         Sem posts proprios nos materiais do projeto, as chamadas sao reportagens
+         reais publicadas sobre a Agropecuaria Palma, com titulo, veiculo e data
+         exatamente como saíram, e link para a materia original. As fotos sao da
+         propria Palma (sessao de 26/08/2025). Quando a Palma tiver as proprias
+         noticias, basta trocar os artigos. -->
+    <section class="noticias noticias--pagina" id="noticias" aria-labelledby="noticias-titulo">
+      <div class="noticias__topo">
+        <h2 class="noticias__rotulo" id="noticias-titulo">Notícias</h2>
       </div>
 
-      <h1 class="hero__titulo" id="hero-titulo">
-        <span class="t-linha"><span class="t-parte"><span class="t-tinta" style="--i:0">DA NOSSA</span></span> <span class="t-parte"><span class="t-tinta" style="--i:1">FAZENDA</span></span></span>
-        <span class="t-linha t-linha--2"><span class="t-parte"><span class="t-tinta" style="--i:2">PARA SUA</span></span> <span class="t-parte"><span class="t-tinta" style="--i:3">CASA.</span></span></span>
-      </h1>
-    </section>
+      <article class="noticias__principal">
+        <figure class="noticias__foto">
+          <img src="assets/noticias/rebanho-horizonte-1000.webp" srcset="assets/noticias/rebanho-horizonte-1000.webp 1000w, assets/noticias/rebanho-horizonte-1700.webp 1700w"
+               sizes="(max-width: 639px) 125vw, (max-width: 1023px) 92vw, 60vw" width="1700" height="1131" loading="lazy" decoding="async"
+               alt="Mulher de camisa branca em pé diante do rebanho, com os morros ao fundo">
+        </figure>
+        <div class="noticias__texto">
+          <p class="noticias__fonte">Revista Leite Integral</p>
+          <time class="noticias__data" datetime="2025-10-06">6 de outubro de 2025</time>
+          <h3 class="noticias__titulo">
+            <a href="https://www.revistaleiteintegral.com.br/noticia/entre-raizes-e-horizontes-conheca-historia-da-agropecuaria-palma-luzianiago" target="_blank" rel="noopener">Entre raízes e horizontes: conheça a história da Agropecuária Palma (Luziânia/GO)<span class="u-sr"> (abre em nova aba)</span></a>
+          </h3>
+          <span class="noticias__ler" aria-hidden="true">LER A MATÉRIA <svg viewBox="0 0 32 24" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+        </div>
+      </article>
 
-    <!-- ===== SECAO 02: ORIGEM =====
-         Marca, origem, produto: esta secao so mostra de onde vem a Palma.
-         Com movimento, sobe para dentro do Hero: a foto nasce na mancha principal
-         e cresce com ela (origem.js). A foto fica limpa, sem nada por cima: e a
-         pausa entre o Hero e o texto. Sem movimento ou sem JS, e uma secao comum
-         logo abaixo do Hero. -->
-    <section class="origem">
-      <div class="origem__trilho">
-        <div class="origem__palco">
-          <div class="origem__janela">
-            <picture class="origem__foto">
-              <source media="(max-aspect-ratio: 5/6)" sizes="82vh" srcset="assets/fotos/fazenda-origem-retrato-560.webp 560w, assets/fotos/fazenda-origem-retrato-830.webp 830w">
-              <img src="assets/fotos/fazenda-origem-paisagem-1024.webp" srcset="assets/fotos/fazenda-origem-paisagem-1024.webp 1024w, assets/fotos/fazenda-origem-paisagem-1537.webp 1537w"
-                   sizes="100vw" width="1537" height="1023" loading="lazy" decoding="async"
-                   alt="Vaca preta e branca ao lado do bezerro recém-nascido, sobre a palha">
-            </picture>
+      <div class="noticias__outras">
+        <article class="noticias__chamada noticias__chamada--a">
+          <figure class="noticias__foto">
+            <img src="assets/noticias/trato-galpao-600.webp" srcset="assets/noticias/trato-galpao-600.webp 600w, assets/noticias/trato-galpao-1000.webp 1000w"
+                 sizes="(max-width: 639px) 76vw, (max-width: 1023px) 50vw, 26vw" width="1000" height="665" loading="lazy" decoding="async"
+                 alt="Trator no corredor do galpão, entre as vacas no cocho, contra a luz">
+          </figure>
+          <div class="noticias__texto">
+            <p class="noticias__fonte">Portal do Agronegócio</p>
+            <time class="noticias__data" datetime="2023-12-11">11 de dezembro de 2023</time>
+            <h3 class="noticias__titulo">
+              <a href="https://www.portaldoagronegocio.com.br/gestao-rural/gestao/noticias/propriedade-em-luziania-go-alcanca-eficiencia-na-gestao-e-sanidade-do-rebanho-com-auxilio-da-tecnologia" target="_blank" rel="noopener">Propriedade em Luziânia (GO) alcança eficiência na gestão e sanidade do rebanho com auxílio da tecnologia<span class="u-sr"> (abre em nova aba)</span></a>
+            </h3>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="origem__faixa">
-        <div class="origem__abertura">
-          <!-- "Tudo começa aqui." abre o mesmo paragrafo: aparece primeiro, logo
-               depois da foto, e o resto da frase vem em seguida -->
-          <p class="origem__texto"><span class="origem__abre"><span class="origem__abre-tinta">Tudo começa aqui.</span></span> <span class="origem__segue">Há mais de 60 anos,<br> a Palma transforma cuidado, conhecimento e origem em alimentos que chegam todos os&nbsp;dias à sua casa.</span></p>
-          <a class="origem__cta" href="nossa-fazenda.html">
-            <span>CONHEÇA NOSSA FAZENDA</span>
-            <svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-          </a>
-          <p class="origem__assinatura">
-            <span class="origem__pilares">
-              <span>GENÉTICA</span>
-              <span>ALIMENTAÇÃO</span>
-              <span>ORDENHA</span>
-              <span>DIRETO PARA A FABRICAÇÃO</span>
-            </span>
-          </p>
-        </div>
-
-        <!-- Passagem para a Seção 03 (Produtos). O papel continua sem quebra; a
-             proxima secao se conecta aqui e pode ouvir origem.assinar() para
-             saber quanto desta saida ja passou pela tela. -->
-        <div class="origem__saida" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- ===== SECAO 03: PRODUTOS =====
-         A mancha que abriu a pagina e cobriu a fazenda esta nas embalagens. A
-         frase de abertura e do documento de posicionamento da Palma. O Leite
-         Integral e o recorte grande; as outras embalagens reais correm num
-         slider e crescem quando recebem a atencao (hover no desktop, o centro no
-         celular). A linha Zero Lactose fica para a Secao 04. -->
-    <section class="produtos" id="produtos" aria-labelledby="produtos-titulo">
-      <div class="produtos__leite" aria-hidden="true">
-        <img src="assets/produtos/leite-integral-760.webp" srcset="assets/produtos/leite-integral-760.webp 760w, assets/produtos/leite-integral-1300.webp 1300w"
-             sizes="(max-width: 639px) 72vw, 43vw" width="1300" height="1737" loading="lazy" decoding="async" alt="">
-      </div>
-
-      <div class="produtos__abertura">
-        <p class="produtos__rotulo">Produtos</p>
-        <h2 class="produtos__titulo" id="produtos-titulo">
-          <span class="produtos__linha"><span class="produtos__tinta" style="--i:0">A mancha é</span></span>
-          <span class="produtos__linha"><span class="produtos__tinta" style="--i:1">uma promessa.</span></span>
-        </h2>
-      </div>
-
-      <div class="produtos__vitrine">
-        <div class="produtos__trilho" id="produtos-trilho" role="region" aria-label="Linha de produtos Palma" tabindex="0">
-          <ul class="produtos__lista">
-            <li class="produtos__item" style="--h:13; --hm:32">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-divino-480.webp" srcset="assets/produtos/queijo-divino-480.webp 480w, assets/produtos/queijo-divino-960.webp 960w"
-                     sizes="(max-width: 639px) 43vw, 15vw" width="960" height="875" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Divino</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:17; --hm:42">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/creme-de-leite-320.webp" srcset="assets/produtos/creme-de-leite-320.webp 320w, assets/produtos/creme-de-leite-640.webp 640w"
-                     sizes="(max-width: 639px) 31vw, 11vw" width="640" height="1063" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Creme de Leite</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:13.5; --hm:33">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/manteiga-com-sal-380.webp" srcset="assets/produtos/manteiga-com-sal-380.webp 380w, assets/produtos/manteiga-com-sal-760.webp 760w"
-                     sizes="(max-width: 639px) 29vw, 10vw" width="760" height="1109" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Manteiga com Sal</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:11; --hm:27">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-minas-frescal-420.webp" srcset="assets/produtos/queijo-minas-frescal-420.webp 420w, assets/produtos/queijo-minas-frescal-840.webp 840w"
-                     sizes="(max-width: 639px) 43vw, 15vw" width="840" height="657" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Minas Frescal</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:10; --hm:25">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-prato-520.webp" srcset="assets/produtos/queijo-prato-520.webp 520w, assets/produtos/queijo-prato-1040.webp 1040w"
-                     sizes="(max-width: 639px) 62vw, 21vw" width="1040" height="513" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Prato</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:10.5; --hm:26">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/doce-de-leite-260.webp" srcset="assets/produtos/doce-de-leite-260.webp 260w, assets/produtos/doce-de-leite-520.webp 520w"
-                     sizes="(max-width: 639px) 29vw, 10vw" width="520" height="580" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Doce de Leite</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:10.5; --hm:26">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/queijo-minas-padrao-480.webp" srcset="assets/produtos/queijo-minas-padrao-480.webp 480w, assets/produtos/queijo-minas-padrao-960.webp 960w"
-                     sizes="(max-width: 639px) 55vw, 19vw" width="960" height="547" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Queijo Minas Padrão</figcaption>
-              </figure>
-            </li>
-            <li class="produtos__item" style="--h:9; --hm:22">
-              <figure class="produtos__peca">
-                <img src="assets/produtos/ricota-fresca-300.webp" srcset="assets/produtos/ricota-fresca-300.webp 300w, assets/produtos/ricota-fresca-600.webp 600w"
-                     sizes="(max-width: 639px) 34vw, 12vw" width="600" height="477" loading="lazy" decoding="async" alt="">
-                <figcaption class="produtos__nome">Ricota Fresca</figcaption>
-              </figure>
-            </li>
-          </ul>
-        </div>
-
-        <div class="produtos__controles">
-          <!-- destino futuro: /produtos ("Nossos Produtos" era o nome da pagina no site antigo) -->
-          <a class="produtos__cta" href="#produtos">
-            <span>NOSSOS PRODUTOS</span>
-            <svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-          </a>
-          <div class="produtos__navega">
-            <span class="produtos__progresso" aria-hidden="true"><span class="produtos__barra"></span></span>
-            <button class="produtos__seta produtos__seta--voltar" type="button" aria-controls="produtos-trilho" aria-label="Voltar"><svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M31 12H3M11 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
-            <button class="produtos__seta produtos__seta--avancar" type="button" aria-controls="produtos-trilho" aria-label="Avançar"><svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+        <article class="noticias__chamada noticias__chamada--b">
+          <figure class="noticias__foto">
+            <img src="assets/noticias/queijaria-embalagem-480.webp" srcset="assets/noticias/queijaria-embalagem-480.webp 480w, assets/noticias/queijaria-embalagem-800.webp 800w"
+                 sizes="(max-width: 639px) 58vw, (max-width: 1023px) 34vw, 17vw" width="800" height="1202" loading="lazy" decoding="async"
+                 alt="Funcionário de touca e roupa branca embalando potes em caixas com as manchas da Palma">
+          </figure>
+          <div class="noticias__texto">
+            <p class="noticias__fonte">Jornal de Brasília</p>
+            <time class="noticias__data" datetime="2019-10-02">2 de outubro de 2019</time>
+            <h3 class="noticias__titulo">
+              <a href="https://jornaldebrasilia.com.br/gastronomia/palma-investe-em-linha-sem-lactose-para-atender-demanda-crescente/" target="_blank" rel="noopener">Palma investe em linha sem lactose para atender demanda crescente<span class="u-sr"> (abre em nova aba)</span></a>
+            </h3>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SECAO 05: ONDE ENCONTRAR PALMA =====
-         CONTEUDO PENDENTE: os materiais do projeto (15/09/2026) nao tem a lista de
-         onde encontrar Palma (lugares, cidades ou CEPs). A busca e o painel ja estao
-         prontos; os dados entram em js/onde-encontrar.js. Enquanto a lista
-         estiver vazia, nada de loja, endereco ou disponibilidade e mostrado.
-         O unico lugar marcado e a origem real: a Fazenda Palma, em Luziania, GO
-         (endereco do site antigo). -->
-    <section class="onde" id="onde-encontrar" aria-labelledby="onde-titulo">
-      <div class="onde__chamada">
-        <p class="onde__rotulo">Onde encontrar</p>
-        <h2 class="onde__titulo" id="onde-titulo">
-          <span class="onde__linha"><span class="onde__tinta" style="--i:0">Da nossa fazenda</span></span>
-          <span class="onde__linha"><span class="onde__tinta" style="--i:1">para a sua casa.</span></span>
-        </h2>
-        <p class="onde__apoio">Encontre Palma perto de você.</p>
-
-        <form class="onde__busca" role="search" novalidate>
-          <label class="u-sr" for="onde-local">Cidade ou CEP</label>
-          <input class="onde__campo" id="onde-local" name="local" type="text" inputmode="search" autocomplete="off"
-                 placeholder="Digite sua cidade ou CEP" enterkeyhint="search" required>
-          <button class="onde__botao" type="submit">
-            <span>ENCONTRAR PALMA</span>
-            <svg viewBox="0 0 32 24" aria-hidden="true" focusable="false"><path d="M1 12h28M21 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
-          </button>
-        </form>
-      </div>
-
-      <div class="onde__painel">
-        <!-- o caminho da origem ate quem busca; quando houver dados, os lugares onde encontrar
-             Palma aparecem na lista abaixo (e, se tiverem coordenadas, podem virar mapa) -->
-        <div class="onde__caminho" aria-hidden="true">
-          <svg class="onde__traco" viewBox="0 0 560 440" preserveAspectRatio="none" focusable="false">
-            <path d="M 74 78 C 84 300, 290 170, 486 352" pathLength="1" fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
-          </svg>
-          <svg class="onde__marca onde__marca--origem" viewBox="0 0 68.742 71.758" focusable="false"><use href="#mancha-d"/></svg>
-          <svg class="onde__marca onde__marca--destino" viewBox="0 0 48.598 38.418" focusable="false"><use href="#mancha-c"/></svg>
-          <p class="onde__ponto onde__ponto--origem"><span>Fazenda Palma</span>Luziânia, GO</p>
-          <p class="onde__ponto onde__ponto--destino"><span>Sua casa</span><em class="onde__lugar"></em></p>
-        </div>
-
-        <div class="onde__resultado" aria-live="polite" hidden>
-          <p class="onde__aviso"></p>
-          <ul class="onde__lista"></ul>
-        </div>
+        </article>
       </div>
     </section>
 

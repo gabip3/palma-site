@@ -275,3 +275,6 @@
 .camada[data-modo="busca"] .camada__nav { display: none; }
 .camada[data-modo="busca"] .camada__corpo { justify-content: center; }
 .camada[data-modo="busca"] .busca__campo { font-size: clamp(34px, 6vw, 84px); }
+
+/* pagina atual: o fio embaixo do link fica aceso */
+.topo__link[aria-current="page"]::after { transform: scaleX(1); }
