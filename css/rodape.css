@@ -125,7 +125,7 @@
 .rodape__base { align-items: flex-end; justify-content: flex-start; }
 .rodape__galo {
   margin-left: auto;
-  width: clamp(38px, 3vw, 48px);
+  width: clamp(66px, 6vw, 104px);
   height: auto;
   aspect-ratio: 111.81 / 93.33;
   fill: #fff;
