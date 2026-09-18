@@ -158,19 +158,25 @@
     </header>
 
     <div class="cat">
-      <div class="cat__filtros" role="group" aria-label="Filtrar produtos">
+      <div class="cat__filtros" role="group" aria-label="Filtrar por linha">
         <button class="cat__filtro" type="button" data-linha="todos" aria-pressed="true">Todos</button>
         <button class="cat__filtro" type="button" data-linha="leites" aria-pressed="false">Leites</button>
         <button class="cat__filtro" type="button" data-linha="queijos" aria-pressed="false">Queijos</button>
         <button class="cat__filtro" type="button" data-linha="manteigas" aria-pressed="false">Manteigas e Cremes</button>
         <button class="cat__filtro" type="button" data-linha="doces" aria-pressed="false">Doces</button>
-        <button class="cat__filtro cat__zero" type="button" aria-pressed="false">Zero lactose</button>
+      </div>
+      <!-- As versoes filtram pela cor da embalagem: a pessoa escolhe pelo que
+           reconhece na prateleira. Mesmas cores das barras das pecas. -->
+      <div class="cat__versoes" role="group" aria-label="Filtrar por versão">
+        <button class="cat__versao cat__versao--tradicional" type="button" data-versao="tradicional" aria-pressed="false">Tradicional</button>
+        <button class="cat__versao cat__versao--light" type="button" data-versao="light" aria-pressed="false">Light</button>
+        <button class="cat__versao cat__versao--zero" type="button" data-versao="zero" aria-pressed="false">Zero lactose</button>
       </div>
 
       <section class="cat__grupo" aria-labelledby="cat-leites">
         <h2 class="cat__linha" id="cat-leites">Leites</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="leites" data-zero="nao">
+          <li class="cat__item" data-linha="leites" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/leite-integral-760.webp"
@@ -188,7 +194,7 @@
       <section class="cat__grupo" aria-labelledby="cat-queijos">
         <h2 class="cat__linha" id="cat-queijos">Queijos</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-frescal-420.webp"
@@ -203,7 +209,7 @@
               <p class="cat__formatos">Também em peça grande, por quilo</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="light">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-frescal-light-420.webp"
@@ -217,7 +223,7 @@
               </ul>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="sim">
+          <li class="cat__item" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-frescal-zero-420.webp"
@@ -231,7 +237,7 @@
               </ul>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-padrao-480.webp"
@@ -246,7 +252,7 @@
               <p class="cat__formatos">Peça, por quilo</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="sim">
+          <li class="cat__item" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-padrao-zero-480.webp"
@@ -260,7 +266,7 @@
               </ul>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-prato-520.webp"
@@ -274,7 +280,7 @@
               </ul>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="sim">
+          <li class="cat__item" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-prato-zero-520.webp"
@@ -288,7 +294,7 @@
               </ul>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-divino-480.webp"
@@ -299,13 +305,13 @@
               <h3 class="cat__nome">Queijo Divino</h3>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco cat__palco--vazio"><span>Foto em breve</span></div>
               <h3 class="cat__nome">Queijo de Coalho</h3>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco cat__palco--vazio"><span>Foto em breve</span></div>
               <h3 class="cat__nome">Queijo tipo Cottage</h3>
@@ -316,7 +322,7 @@
               <p class="cat__nota">Queijo de alto valor proteico.</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="sim">
+          <li class="cat__item" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco cat__palco--vazio"><span>Foto em breve</span></div>
               <h3 class="cat__nome">Queijo tipo Cottage</h3>
@@ -327,7 +333,7 @@
               <p class="cat__nota">Queijo de alto valor proteico.</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-zero="nao">
+          <li class="cat__item" data-linha="queijos" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/ricota-fresca-300.webp"
@@ -344,7 +350,7 @@
       <section class="cat__grupo" aria-labelledby="cat-manteigas">
         <h2 class="cat__linha" id="cat-manteigas">Manteigas e Cremes</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="manteigas" data-zero="nao">
+          <li class="cat__item" data-linha="manteigas" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/manteiga-com-sal-380.webp"
@@ -356,7 +362,7 @@
               <p class="cat__formatos">500 g</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="manteigas" data-zero="nao">
+          <li class="cat__item" data-linha="manteigas" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/creme-de-leite-320.webp"
@@ -374,7 +380,7 @@
       <section class="cat__grupo" aria-labelledby="cat-doces">
         <h2 class="cat__linha" id="cat-doces">Doces</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="doces" data-zero="nao">
+          <li class="cat__item" data-linha="doces" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/doce-de-leite-260.webp"
