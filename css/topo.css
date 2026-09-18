@@ -5,13 +5,15 @@
    isso nem o header nem o Hero podem criar contexto de empilhamento: a mistura
    precisa enxergar a mancha. So os filhos recebem z-index. */
 
+/* Com a logo horizontal, logo e menu centralizam na mesma linha. A margem que
+   o menu tinha em cima existia para alinhar com a logo vertical, que era alta. */
 .topo {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   padding: var(--topo-y) var(--margem) 0;
   pointer-events: none;
@@ -22,8 +24,10 @@
   position: relative;
   z-index: 30;
   display: block;
-  width: clamp(66px, 7.2vw, 136px);
-  aspect-ratio: 476 / 368;
+  /* logo horizontal: cabeca ao lado do nome. Dimensionada pelo "Palma", que
+     fica no mesmo corpo da logo vertical de antes; o topo fica mais baixo. */
+  width: clamp(128px, 13.2vw, 230px);
+  aspect-ratio: 596.05 / 135.76;
   -webkit-tap-highlight-color: transparent;
 }
 .topo__logo {
@@ -43,7 +47,6 @@
   display: flex;
   align-items: center;
   gap: clamp(22px, 2.6vw, 46px);
-  margin-top: clamp(10px, 1.2vw, 22px);
   color: #fff;
   mix-blend-mode: difference;
 }
@@ -116,7 +119,7 @@
 
 @media (max-width: 1023px) {
   .topo__lista { display: none; }
-  .topo__nav { gap: 26px; margin-top: 8px; }
+  .topo__nav { gap: 26px; }
   .topo__acao--menu { display: inline-flex; }
   .topo__acao--busca { padding-left: 0; border-left: 0; }
   .topo__acao--busca .topo__rotulo {
@@ -187,7 +190,7 @@
   justify-content: space-between;
   padding: var(--topo-y) var(--margem) 0;
 }
-.camada__logo { width: clamp(66px, 7.2vw, 136px); height: auto; }
+.camada__logo { width: clamp(128px, 13.2vw, 230px); height: auto; }
 
 .camada__fechar {
   display: inline-flex;
