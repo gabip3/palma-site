@@ -24,7 +24,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 54% 50%;
+  /* o rosto dela fica no terco de cima, e sobra rebanho dos dois lados */
+  object-position: 50% 38%;
 }
 
 .contato__painel {
@@ -236,6 +237,7 @@ textarea.form__entrada { min-height: 150px; resize: vertical; }
 
 @media (max-width: 1023px) {
   .contato { grid-template-columns: 1fr; }
+  .contato__foto img { object-position: 45% 35%; }
   .contato__foto { min-height: 0; aspect-ratio: 16 / 9; }
   .canais__lista { grid-template-columns: 1fr; }
 }

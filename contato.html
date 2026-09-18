@@ -147,11 +147,18 @@
          receber as mensagens. Enquanto for a marca, o formulario nao envia nada.
          A Politica de Privacidade ja descreve o formulario. -->
     <section class="contato" aria-labelledby="contato-titulo">
+      <!-- Foto: _MG_8232, sessao propria de 26/08/2025, no fim da tarde. No
+           computador entra o recorte vertical; no celular, a horizontal inteira.
+           PENDENTE: autorizacao de imagem da pessoa retratada. -->
       <figure class="contato__foto">
-        <img src="assets/fotos/fazenda/fz-queijaria-1200.webp"
-             srcset="assets/fotos/fazenda/fz-queijaria-650.webp 650w, assets/fotos/fazenda/fz-queijaria-1200.webp 1200w"
-             sizes="(max-width: 1023px) 100vw, 42vw" width="1200" height="798" decoding="async"
-             alt="Equipe da Palma na queijaria, entre as prateleiras com as formas de queijo">
+        <picture>
+          <source media="(min-width: 1024px)" sizes="42vw"
+                  srcset="assets/fotos/fazenda/fz-contato-r700.webp 700w, assets/fotos/fazenda/fz-contato-r1100.webp 1100w">
+          <img src="assets/fotos/fazenda/fz-contato-1600.webp"
+               srcset="assets/fotos/fazenda/fz-contato-1000.webp 1000w, assets/fotos/fazenda/fz-contato-1600.webp 1600w"
+               sizes="100vw" width="1600" height="1065" decoding="async"
+               alt="Mulher de camisa branca da Palma sorrindo no meio do rebanho, no fim da tarde">
+        </picture>
       </figure>
 
       <div class="contato__painel">
