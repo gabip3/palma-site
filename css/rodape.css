@@ -118,3 +118,16 @@
   .rodape__colunas { grid-template-columns: 1fr; gap: 32px; }
   .rodape__topo { align-items: center; }
 }
+
+/* O galo na cerca assina o rodape: branco, pequeno, na ponta direita da ultima
+   linha, fazendo diagonal com a logo no alto a esquerda. */
+/* os dados legais ficam juntos a esquerda e o galo sozinho na ponta */
+.rodape__base { align-items: flex-end; justify-content: flex-start; }
+.rodape__galo {
+  margin-left: auto;
+  width: clamp(38px, 3vw, 48px);
+  height: auto;
+  aspect-ratio: 111.81 / 93.33;
+  fill: #fff;
+  flex: none;
+}
