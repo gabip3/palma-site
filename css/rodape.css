@@ -131,3 +131,28 @@
   fill: #fff;
   flex: none;
 }
+
+/* O jogo nao entra no menu. Ele mora no rodape, logo abaixo dos links, como
+   um botao de contorno: diferente o bastante para ser achado, discreto o
+   bastante para nao disputar com a navegacao. */
+.rodape__jogo {
+  display: inline-flex;
+  align-items: center;
+  gap: .8em;
+  margin-top: clamp(20px, 2.6svh, 28px);
+  padding: .85em 1.3em;
+  border: 1.5px solid rgba(255, 255, 255, .85);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .3s ease, color .3s ease;
+}
+.rodape__jogo span { transition: transform .5s var(--ease-saida); }
+.rodape__jogo:hover { background: #fff; color: var(--tinta); }
+.rodape__jogo:hover span { transform: translateX(.3em); }
+.rodape__jogo:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
