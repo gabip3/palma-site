@@ -28,6 +28,7 @@
 .pagina__titulo {
   margin: 0;
   max-width: 16ch;
+  text-wrap: balance;
   font-size: clamp(44px, 6vw, 118px);
   font-weight: 900;
   line-height: .92;
