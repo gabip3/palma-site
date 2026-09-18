@@ -1,0 +1,246 @@
+/* ===== CONTATO =====
+   Referencia do Murilo: foto a esquerda, formulario num bloco azul a direita.
+   Um formulario so, generico, com a escolha Consumidor ou Revenda e um campo
+   de mensagem. Embaixo, os canais em cartoes.
+
+   O envio e pelo Web3Forms, configurado na entrega (ver js/contato.js). */
+
+.contato {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  margin: calc(var(--topo-y) + clamp(76px, 11svh, 120px)) var(--margem) 0;
+}
+
+.contato__foto {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+  background: #e9e5df;
+}
+.contato__foto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 54% 50%;
+}
+
+.contato__painel {
+  padding: clamp(36px, 5vw, 80px) clamp(24px, 4.4vw, 76px);
+  background: var(--azul);
+  color: #fff;
+}
+
+.contato__rotulo {
+  margin: 0 0 clamp(12px, 1.8svh, 20px);
+  font-size: clamp(11px, .8vw, 14px);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+.contato__titulo {
+  margin: 0;
+  font-size: clamp(42px, 4.6vw, 84px);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.035em;
+}
+.contato__apoio {
+  margin: clamp(14px, 2svh, 22px) 0 0;
+  max-width: 40ch;
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, .86);
+}
+
+/* ----- formulario ----- */
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 20px) clamp(14px, 1.6vw, 22px);
+  margin-top: clamp(28px, 4svh, 44px);
+}
+.form__campo { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.form__campo--largo { grid-column: 1 / -1; }
+
+.form__rotulo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .86);
+}
+.form__rotulo small {
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-transform: none;
+  color: rgba(255, 255, 255, .6);
+}
+
+.form__entrada {
+  width: 100%;
+  padding: .85em 1em;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--tinta);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.3;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+.form__entrada::placeholder { color: rgba(16, 13, 11, .4); }
+.form__entrada:focus { outline: none; box-shadow: 0 0 0 3px rgba(255, 255, 255, .55); }
+textarea.form__entrada { min-height: 150px; resize: vertical; }
+.form__entrada[aria-invalid="true"] { border-color: #ffb199; box-shadow: 0 0 0 3px rgba(255, 177, 153, .45); }
+
+/* Consumidor ou Revenda: dois botoes de escolha */
+.form__perfil { border: 0; margin: 0; padding: 0; min-width: 0; }
+.form__perfil legend { padding: 0; margin-bottom: 9px; }
+.form__opcoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.form__opcao { position: relative; }
+.form__opcao input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.form__opcao span {
+  display: inline-block;
+  padding: .8em 1.4em;
+  border: 1.5px solid rgba(255, 255, 255, .85);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: background-color .25s ease, color .25s ease;
+}
+.form__opcao input:checked + span { background: #fff; color: var(--azul); }
+.form__opcao input:focus-visible + span { outline: 2px solid #fff; outline-offset: 3px; }
+.form__perfil[aria-invalid="true"] .form__opcao span { border-color: #ffb199; }
+
+.form__erro {
+  margin: 0;
+  font-size: 13px;
+  color: #ffd6c8;
+}
+.form__erro:empty { display: none; }
+
+.form__lgpd {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .72);
+}
+.form__lgpd a { color: #fff; }
+
+.form__rodape {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+}
+.form__enviar {
+  display: inline-flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1.1em 1.7em;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--azul);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: background-color .3s ease, color .3s ease, opacity .3s ease;
+}
+.form__enviar span { transition: transform .5s var(--ease-saida); }
+.form__enviar:hover { background: var(--tinta); color: #fff; }
+.form__enviar:hover span { transform: translateX(.4em); }
+.form__enviar:disabled { opacity: .6; cursor: progress; }
+.form__enviar:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+.form__retorno {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.form__retorno:empty { display: none; }
+.form__retorno a { color: #fff; font-weight: 700; }
+
+/* o campo que so robo preenche */
+.form__isca { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ----- canais, em cartoes ----- */
+
+.canais {
+  margin-top: clamp(56px, 9svh, 110px);
+  padding: clamp(48px, 8svh, 96px) var(--margem) clamp(72px, 12svh, 150px);
+  background: #f4f2ef;
+}
+.canais__lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.canal {
+  padding: clamp(28px, 3vw, 44px) clamp(22px, 2.4vw, 36px);
+  background: #fff;
+  text-align: center;
+}
+.canal h2 {
+  margin: 0;
+  font-size: clamp(19px, 1.4vw, 24px);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.canal h2::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  margin: 14px auto 16px;
+  border-radius: 2px;
+  background: var(--azul);
+}
+.canal p,
+.canal address {
+  margin: 0;
+  font-size: clamp(15px, 1.05vw, 17px);
+  font-style: normal;
+  line-height: 1.55;
+  color: rgba(16, 13, 11, .78);
+}
+.canal a {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--azul);
+  text-decoration: none;
+}
+.canal a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.canal__forte { font-weight: 700; color: var(--tinta); font-size: 1.15em; }
+
+/* ----- composicoes ----- */
+
+@media (max-width: 1023px) {
+  .contato { grid-template-columns: 1fr; }
+  .contato__foto { min-height: 0; aspect-ratio: 16 / 9; }
+  .canais__lista { grid-template-columns: 1fr; }
+}
+@media (max-width: 639px) {
+  .contato { margin-left: 0; margin-right: 0; }
+  .contato__foto { aspect-ratio: 4 / 3; }
+  .form { grid-template-columns: 1fr; }
+}
