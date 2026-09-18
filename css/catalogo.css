@@ -202,3 +202,10 @@
   .cat__zero { margin-left: 0; }
   .cat__filtro { padding: .7em 1em; font-size: 12px; }
 }
+
+/* A embalagem fica no meio do palco, entao o texto tambem: nome, barra,
+   formato e nota centralizados embaixo dela, cada peca vira um bloco so. */
+.cat__peca { text-align: center; }
+.cat__variantes { justify-content: center; }
+.cat__formatos,
+.cat__nota { margin-left: auto; margin-right: auto; max-width: 32ch; text-wrap: balance; }
