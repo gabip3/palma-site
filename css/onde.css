@@ -237,3 +237,20 @@
   .onde__ponto { font-size: 13px; }
   .onde__ponto span { font-size: 11px; }
 }
+
+/* ----- o galo na cerca -----
+   Na embalagem o galinho fica pousado no fim de "Da nossa fazenda". Aqui
+   tambem: ele mora dentro da primeira linha, entao sobe junto com ela na
+   entrada, e a cerca apoia no topo das ultimas letras. A linha abre o recorte
+   de cima para ele caber, porque o recorte existe so para cortar embaixo. */
+.onde__linha--galo { clip-path: inset(-1.3em -.7em 0 -.4em); }
+.onde__linha--galo .onde__tinta { position: relative; }
+.onde__galo {
+  position: absolute;
+  right: -.14em;
+  bottom: .86em;
+  width: 1.1em;
+  height: .918em;
+  fill: currentColor;
+  overflow: visible;
+}
