@@ -34,7 +34,7 @@
 .cat__filtro[aria-pressed="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
 
 .cat__zero { margin-left: auto; }
-.cat__zero[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: var(--papel); }
+.cat__zero[aria-pressed="true"] { background: #d85d17; border-color: #d85d17; color: #fff; }
 
 /* ----- grupos e grade ----- */
 
@@ -113,18 +113,31 @@
   line-height: 1.35;
   color: rgba(16, 13, 11, .55);
 }
-.cat__selo {
-  display: inline-block;
-  margin-top: .7em;
-  padding: .4em .8em;
+/* ----- versoes: a mesma cor da embalagem -----
+   Zero lactose e laranja em todas as embalagens zero (rotulo do Padrao Zero,
+   corpo do Prato Zero, tampa do Frescal Zero); light e o azul-claro da tampa do
+   Frescal Light; tradicional fica no azul da marca. Assim a barra do site bate
+   com o que a pessoa ve na prateleira. */
+.cat__variantes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: .8em 0 0;
+  padding: 0;
+  list-style: none;
+}
+.cat__variante {
+  padding: .45em .85em;
   border-radius: 999px;
-  background: rgba(0, 57, 152, .08);
   font-size: clamp(10px, .72vw, 12px);
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--azul);
+  line-height: 1;
 }
+.cat__variante--tradicional { background: var(--azul); color: #fff; }
+.cat__variante--light       { background: #88cae5; color: var(--tinta); }
+.cat__variante--zero        { background: #d85d17; color: #fff; }
 
 .cat__nota {
   margin: .7em 0 0;
