@@ -1,0 +1,58 @@
+/* ===== TEXTOS LEGAIS =====
+   Politica de Privacidade e Termos de Uso: leitura longa, entao coluna
+   estreita, corpo confortavel e respiro entre as partes. */
+
+.legal {
+  padding: 0 var(--margem) clamp(96px, 16svh, 200px);
+}
+.legal__corpo {
+  max-width: 68ch;
+  font-size: clamp(16px, 1.1vw, 19px);
+  line-height: 1.65;
+  color: rgba(16, 13, 11, .86);
+}
+
+/* enquanto a Palma nao revisa, o texto avisa que e rascunho */
+.legal__aviso {
+  margin: 0 0 clamp(28px, 4svh, 44px);
+  padding: 1em 1.2em;
+  border-left: 3px solid var(--azul);
+  background: #f4f2ef;
+  font-size: .92em;
+  line-height: 1.5;
+  color: var(--tinta);
+}
+.legal__aviso strong { font-weight: 700; }
+
+.legal__data {
+  margin: 0 0 1.6em;
+  font-size: .82em;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(16, 13, 11, .5);
+}
+
+.legal__corpo h2 {
+  margin: 2.2em 0 .6em;
+  font-size: clamp(20px, 1.6vw, 28px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  color: var(--tinta);
+}
+.legal__corpo p { margin: 0 0 1em; }
+.legal__corpo ul { margin: 0 0 1em; padding-left: 1.2em; }
+.legal__corpo li { margin: 0 0 .5em; }
+.legal__corpo li::marker { color: var(--azul); }
+.legal__corpo a { color: var(--azul); text-underline-offset: .18em; }
+.legal__corpo strong { font-weight: 700; color: var(--tinta); }
+
+/* o que so a Palma pode preencher aparece marcado, para ninguem publicar sem */
+.legal__corpo mark {
+  padding: .05em .35em;
+  border-radius: 3px;
+  background: #ffe28a;
+  color: var(--tinta);
+  font-weight: 700;
+}

@@ -3,27 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Produção | Agropecuária Palma</title>
-  <meta name="description" content="Do curral à caixa: o conforto do rebanho, a ordenha e a fabricação, na Fazenda Palma.">
-  <meta name="theme-color" content="#17172a">
+  <title>Termos de Uso | Agropecuária Palma</title>
+  <meta name="description" content="As condições de uso do site da Agropecuária Palma.">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- Foco, da Dalton Maag, servida pelo Adobe Fonts (projeto "Palma").
        A Nunito continua no tokens.css como reserva, caso a folha nao carregue. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="preconnect" href="https://p.typekit.net" crossorigin>
   <link rel="stylesheet" href="https://use.typekit.net/ein2dnu.css">
-  <link rel="preload" as="image" href="assets/fotos/fazenda/fz-aspersores-1600.webp"
-        imagesrcset="assets/fotos/fazenda/fz-aspersores-1000.webp 1000w, assets/fotos/fazenda/fz-aspersores-1600.webp 1600w, assets/fotos/fazenda/fz-aspersores-2400.webp 2400w"
-        imagesizes="100vw">
-  <script>document.documentElement.classList.add('js');</script>
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/topo.css">
-  <link rel="stylesheet" href="css/fazenda.css">
-  <link rel="stylesheet" href="css/visita.css">
+  <link rel="stylesheet" href="css/pagina.css">
+  <link rel="stylesheet" href="css/legal.css">
   <link rel="stylesheet" href="css/rodape.css">
-  <script type="module" src="js/pagina-fazenda.js"></script>
+  <script type="module" src="js/pagina-simples.js"></script>
 </head>
 <body>
 
@@ -58,7 +54,7 @@
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- ===== HEADER ===== -->
-  <header class="topo topo--foto" id="topo">
+  <header class="topo" id="topo">
     <a class="topo__marca" href="index.html">
       <img class="topo__logo" src="assets/brand/palma-logo.svg" alt="Agropecuária Palma" width="476" height="368">
       <img class="topo__logo topo__logo--branco" src="assets/brand/palma-logo-branco.svg" alt="" width="476" height="368">
@@ -68,7 +64,7 @@
       <ul class="topo__lista">
         <li><a class="topo__link" href="produtos.html">Produtos</a></li>
         <li><a class="topo__link" href="nossa-fazenda.html">Nossa Fazenda</a></li>
-        <li><a class="topo__link" href="producao.html" aria-current="page">Produção</a></li>
+        <li><a class="topo__link" href="producao.html">Produção</a></li>
         <li><a class="topo__link" href="receitas.html">Receitas</a></li>
         <li><a class="topo__link" href="noticias.html">Notícias</a></li>
         <li><a class="topo__link" href="#contato">Contato</a></li>
@@ -117,7 +113,7 @@
         <ul class="camada__lista">
           <li><a class="camada__link" href="produtos.html">Produtos</a></li>
           <li><a class="camada__link" href="nossa-fazenda.html">Nossa Fazenda</a></li>
-          <li><a class="camada__link" href="producao.html" aria-current="page">Produção</a></li>
+          <li><a class="camada__link" href="producao.html">Produção</a></li>
           <li><a class="camada__link" href="receitas.html">Receitas</a></li>
           <li><a class="camada__link" href="noticias.html">Notícias</a></li>
           <li><a class="camada__link" href="#contato">Contato</a></li>
@@ -140,176 +136,54 @@
   </div>
 
   <main id="conteudo" tabindex="-1">
-    <!-- ===== HERO: DO CURRAL A CAIXA =====
-         Foto: a nevoa dos aspersores sobre o rebanho reunido no curral, da
-         sessao propria de 26/08/2025. Antes ela abria o bloco de conforto no
-         meio da visita; virou a abertura desta pagina.
 
-         O hero daqui e mais baixo que o da Nossa Fazenda de proposito: esta
-         pagina e a continuacao de um capitulo, nao a entrada do site. -->
-    <section class="fz-hero fz-hero--capitulo" aria-labelledby="pr-titulo">
-      <picture class="fz-hero__foto">
-        <img src="assets/fotos/fazenda/fz-aspersores-1600.webp"
-             srcset="assets/fotos/fazenda/fz-aspersores-1000.webp 1000w, assets/fotos/fazenda/fz-aspersores-1600.webp 1600w, assets/fotos/fazenda/fz-aspersores-2400.webp 2400w"
-             sizes="100vw" width="2400" height="1246" fetchpriority="high" decoding="async"
-             style="--foco: 50% 58%"
-             alt="Névoa dos aspersores brilhando sobre o rebanho reunido no curral">
-      </picture>
+    <!-- ===== TERMOS DE USO =====
+         RASCUNHO: escrito a partir do que o site faz hoje (18/09/2026) e
+         ainda precisa da revisao juridica da Palma. PENDENTE: o e-mail do
+         encarregado de dados. Se o site ganhar formulario, analytics ou
+         qualquer coleta nova, este texto muda ANTES. -->
+    <header class="pagina">
+      <p class="pagina__rotulo">Termos</p>
+      <h1 class="pagina__titulo">Termos de Uso</h1>
+    </header>
 
-      <div class="fz-hero__texto">
-        <p class="fz-hero__rotulo"><svg viewBox="0 0 225.62 182.3" aria-hidden="true" focusable="false"><use href="#mancha-palma"/></svg>Produção</p>
-        <h1 class="fz-hero__titulo" id="pr-titulo">
-          <span class="fz-linha"><span class="fz-tinta" style="--i:0">Do curral</span></span>
-          <span class="fz-linha"><span class="fz-tinta" style="--i:1">à caixa.</span></span>
-        </h1>
+    <article class="legal" aria-labelledby="termos-data">
+      <div class="legal__corpo">
+        <p class="legal__aviso"><strong>Rascunho em revisão.</strong> Este texto foi escrito a partir do que o site faz hoje e ainda precisa ser revisado pela área jurídica da Palma antes de valer.</p>
+        <p class="legal__data" id="termos-data">Última atualização: 18 de setembro de 2026</p>
+        <p>Ao usar o site da Agropecuária Palma, você concorda com estes termos. Se não concordar, pedimos que não use o site.</p>
+
+        <h2>O site</h2>
+        <p>Este é o site institucional da Agropecuária Palma Ltda., CNPJ 37.363.835/0001-16. Ele apresenta a fazenda, a forma de produção e os produtos da marca. O site não vende produtos.</p>
+
+        <h2>Informações sobre os produtos</h2>
+        <p>As imagens das embalagens são ilustrativas. Formatos, embalagens e disponibilidade podem mudar e variar conforme a região e o ponto de venda. Valem sempre as informações impressas na embalagem do produto, inclusive ingredientes, informação nutricional e validade.</p>
+
+        <h2>Onde encontrar</h2>
+        <p>A lista de onde encontrar os produtos Palma é informativa. O estoque é de cada estabelecimento, por isso vale confirmar com a loja antes de ir.</p>
+
+        <h2>Propriedade intelectual</h2>
+        <p>A marca Palma, o logotipo, o pattern de manchas, os textos, as fotografias e os demais conteúdos do site pertencem à Agropecuária Palma ou são usados com autorização de seus titulares, e são protegidos pela legislação de propriedade intelectual. Não é permitido copiá-los, reproduzi-los ou usá-los para fins comerciais sem autorização por escrito da Palma. Compartilhar o endereço das páginas é sempre bem-vindo.</p>
+
+        <h2>O Jogo da Palmira</h2>
+        <p>O jogo é gratuito, feito para entretenimento, e não dá direito a prêmio. O recorde fica guardado só no seu navegador, como explica a <a href="privacidade.html">Política de Privacidade</a>.</p>
+
+        <h2>Links para outros sites</h2>
+        <p>O site tem links para redes sociais e para reportagens publicadas por terceiros. A Palma não controla esses sites e não responde pelo conteúdo deles.</p>
+
+        <h2>Disponibilidade</h2>
+        <p>A Palma se esforça para manter o site no ar e com informações corretas, mas ele pode passar por interrupções e manutenções, ou conter erros, que serão corrigidos assim que identificados.</p>
+
+        <h2>Mudanças nestes termos</h2>
+        <p>Estes termos podem ser atualizados. A versão em vigor é sempre a publicada nesta página, com a data no alto.</p>
+
+        <h2>Lei e foro</h2>
+        <p>Estes termos seguem a legislação brasileira. Fica eleito o foro da comarca de Luziânia, GO, ressalvado o direito do consumidor de propor ação no foro do seu domicílio.</p>
+
+        <h2>Contato</h2>
+        <p>Agropecuária Palma Ltda., CNPJ 37.363.835/0001-16, Fazenda Palma, Rodovia Municipal Paulista, Km 23, Caixa Postal 21, Zona Rural, Luziânia, GO. Telefone (61)&nbsp;3362-0191.</p>
       </div>
-    </section>
-
-    <!-- ===== A VISITA, SEGUNDA PARTE =====
-         Continuacao direta da Nossa Fazenda, com as mesmas regras: so entra
-         texto documentado nos materiais da Palma, e onde nao havia fato
-         confirmado a fotografia fala sozinha.
-
-         PENDENTE de confirmacao da Palma, e por isso fora do texto:
-         frequencia da ordenha, colares de monitoramento por animal e
-         laticinio dentro da fazenda.
-         PENDENTE tambem: autorizacao de imagem das pessoas e credito do
-         fotografo das duas sessoes. -->
-    <div class="vs">
-
-      <!-- A Producao e a segunda metade da visita. Quem chega aqui pelo menu
-           ou por um link solto nao tem como saber que existe uma primeira
-           metade, entao a pagina diz de onde ela vem. -->
-      <p class="vs-volta">
-        <a href="nossa-fazenda.html"><span aria-hidden="true">&lsaquo;</span> A visita começa em Nossa Fazenda</a>
-      </p>
-
-      <!-- ========== O CONFORTO DO REBANHO ========== -->
-      <p class="vs-ato">O conforto do rebanho</p>
-
-      <section class="vs-dupla vs-sobe" data-cascata aria-label="Conforto do rebanho">
-        <figure>
-          <img src="assets/fotos/fazenda/fz-camas-700.webp"
-               srcset="assets/fotos/fazenda/fz-camas-700.webp 700w, assets/fotos/fazenda/fz-camas-1300.webp 1300w"
-               sizes="(max-width: 639px) 100vw, 46vw" width="1300" height="865" loading="lazy" decoding="async"
-               alt="Fila de vacas descansando nas camas de areia do free stall">
-          <figcaption class="vs-legenda">Camas de areia no free stall.</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/fotos/fazenda/fz-colar-700.webp"
-               srcset="assets/fotos/fazenda/fz-colar-700.webp 700w, assets/fotos/fazenda/fz-colar-1300.webp 1300w"
-               sizes="(max-width: 639px) 100vw, 46vw" width="1300" height="865" loading="lazy" decoding="async"
-               style="--foco: 56% 50%"
-               alt="Colar de monitoramento no pescoço de uma vaca, em primeiro plano">
-          <figcaption class="vs-legenda">Colar de monitoramento.</figcaption>
-        </figure>
-      </section>
-
-      <!-- ========== COMO PRODUZIMOS ========== -->
-      <p class="vs-ato">Como produzimos</p>
-
-      <!-- Ordenha. A frequência fica fora do texto: o site antigo diz duas vezes
-           ao dia e a reportagem de 2025 diz duas para o Girolando e três para o
-           Holandês. A frase descreve apenas o que a fotografia mostra. -->
-      <section class="vs-cabeca vs-sobe" aria-labelledby="vs-ordenha-titulo">
-        <h2 class="vs-titulo" id="vs-ordenha-titulo">A ordenha.</h2>
-        <p class="vs-texto">Na sala rotativa, as vacas entram em círculo, uma a uma.</p>
-      </section>
-
-      <section class="vs-gesto vs-sobe" data-cascata aria-label="Da sala de ordenha ao gesto">
-        <figure class="vs-gesto__grande">
-          <img src="assets/fotos/fazenda/fz-ordenha-900.webp"
-               srcset="assets/fotos/fazenda/fz-ordenha-900.webp 900w, assets/fotos/fazenda/fz-ordenha-1500.webp 1500w"
-               sizes="(max-width: 1023px) 100vw, 62vw" width="1500" height="1000" loading="lazy" decoding="async"
-               alt="A sala de ordenha rotativa vista do alto, com as vacas posicionadas em círculo">
-        </figure>
-        <div class="vs-gesto__lado">
-          <figure>
-            <img src="assets/fotos/fazenda/fz-teteiras-650.webp"
-                 srcset="assets/fotos/fazenda/fz-teteiras-650.webp 650w, assets/fotos/fazenda/fz-teteiras-1200.webp 1200w"
-                 sizes="(max-width: 639px) 100vw, 24vw" width="1200" height="798" loading="lazy" decoding="async"
-                 style="--foco: 54% 50%"
-                 alt="Ordenhador colocando as teteiras em uma vaca na plataforma">
-          </figure>
-          <figure>
-            <img src="assets/fotos/fazenda/fz-teteiras-detalhe-650.webp"
-                 srcset="assets/fotos/fazenda/fz-teteiras-detalhe-650.webp 650w, assets/fotos/fazenda/fz-teteiras-detalhe-1200.webp 1200w"
-                 sizes="(max-width: 639px) 100vw, 24vw" width="1200" height="798" loading="lazy" decoding="async"
-                 alt="As teteiras desfocadas em primeiro plano, com o ordenhador ao fundo">
-          </figure>
-        </div>
-      </section>
-
-      <!-- Fabricação. Primeira frase do site antigo da Palma: o leite segue da
-           ordenha por tubulação até os tanques de pasteurização. A segunda frase
-           não afirma onde fica o laticínio, que ainda depende de confirmação. -->
-      <section class="vs-cabeca vs-sobe" aria-labelledby="vs-fabrica-titulo">
-        <h2 class="vs-titulo" id="vs-fabrica-titulo">Direto para<br> a fabricação.</h2>
-        <p class="vs-texto">O leite sai da ordenha por tubulação até os tanques de pasteurização. Dali ele vira queijo, manteiga e doce de leite.</p>
-      </section>
-
-      <section class="vs-fabrica vs-sobe" data-cascata aria-label="Da queijaria à caixa">
-        <figure>
-          <img src="assets/fotos/fazenda/fz-caixa-650.webp"
-               srcset="assets/fotos/fazenda/fz-caixa-650.webp 650w, assets/fotos/fazenda/fz-caixa-1200.webp 1200w"
-               sizes="(max-width: 639px) 100vw, 54vw" width="1200" height="798" loading="lazy" decoding="async"
-               style="--foco: 46% 50%"
-               alt="Mãos acomodando peças de Queijo Minas Frescal embaladas dentro de uma caixa Palma">
-          <figcaption class="vs-legenda">As peças entram na caixa.</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/fotos/fazenda/fz-frescal-650.webp"
-               srcset="assets/fotos/fazenda/fz-frescal-650.webp 650w, assets/fotos/fazenda/fz-frescal-1200.webp 1200w"
-               sizes="(max-width: 639px) 100vw, 34vw" width="1200" height="798" loading="lazy" decoding="async"
-               alt="Peças de Queijo Minas Frescal embaladas com o padrão de manchas da Palma">
-          <figcaption class="vs-legenda">Queijo Minas Frescal.</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/fotos/fazenda/fz-manteiga-650.webp"
-               srcset="assets/fotos/fazenda/fz-manteiga-650.webp 650w, assets/fotos/fazenda/fz-manteiga-1200.webp 1200w"
-               sizes="(max-width: 639px) 46vw, 30vw" width="1200" height="1803" loading="lazy" decoding="async"
-               alt="Potes de manteiga Palma empilhados">
-          <figcaption class="vs-legenda">Manteiga Palma.</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/fotos/fazenda/fz-queijaria-650.webp"
-               srcset="assets/fotos/fazenda/fz-queijaria-650.webp 650w, assets/fotos/fazenda/fz-queijaria-1200.webp 1200w"
-               sizes="(max-width: 639px) 50vw, 54vw" width="1200" height="798" loading="lazy" decoding="async"
-               style="--foco: 54% 50%"
-               alt="Equipe na queijaria, entre as prateleiras com as formas de queijo">
-          <figcaption class="vs-legenda">Na queijaria.</figcaption>
-        </figure>
-      </section>
-
-      <!-- ========== O QUE SAI DAQUI ========== -->
-      <p class="vs-ato">O que sai daqui</p>
-
-      <!-- A frase é material real da marca, escrita no baú do caminhão da Palma,
-           e fecha o ciclo com a headline da Home. -->
-      <section class="vs-saida" aria-label="De volta aos produtos">
-        <figure class="vs-saida__foto vs-sobe">
-          <img src="assets/fotos/fazenda/fz-caminhao-700.webp"
-               srcset="assets/fotos/fazenda/fz-caminhao-700.webp 700w, assets/fotos/fazenda/fz-caminhao-1300.webp 1300w"
-               sizes="(max-width: 1023px) 100vw, 54vw" width="1300" height="575" loading="lazy" decoding="async"
-               alt="A frase Da nossa fazenda direto para sua casa, escrita à mão no baú do caminhão da Palma">
-        </figure>
-        <div class="vs-saida__caminhos vs-sobe" data-cascata>
-          <a class="vs-saida__link" href="produtos.html">Nossos produtos <span aria-hidden="true">&rsaquo;</span></a>
-          <a class="vs-saida__link" href="index.html#onde-encontrar">Onde encontrar <span aria-hidden="true">&rsaquo;</span></a>
-        </div>
-      </section>
-
-      <!-- O dia termina no mesmo anoitecer em que a visita começou, e a foto se
-           dissolve no rodapé. -->
-      <figure class="vs-fim">
-        <img src="assets/fotos/fazenda/fz-anoitecer-fim-1600.webp"
-             srcset="assets/fotos/fazenda/fz-anoitecer-fim-1000.webp 1000w, assets/fotos/fazenda/fz-anoitecer-fim-1600.webp 1600w, assets/fotos/fazenda/fz-anoitecer-fim-2400.webp 2400w"
-             sizes="100vw" width="2400" height="1597" loading="lazy" decoding="async"
-             alt="O último brilho do pôr do sol atrás do galpão, no fim do dia">
-      </figure>
-
-    </div>
-
+    </article>
 
   </main>
 

@@ -156,3 +156,11 @@
 .rodape__jogo:hover { background: #fff; color: var(--tinta); }
 .rodape__jogo:hover span { transform: translateX(.3em); }
 .rodape__jogo:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+/* Privacidade e Termos na linha de baixo, discretos como o resto dela */
+.rodape__legal {
+  color: inherit;
+  text-decoration: none;
+  transition: color .3s ease;
+}
+.rodape__legal:hover { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
