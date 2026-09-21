@@ -122,8 +122,6 @@ export const PRODUCTS = {
     { id: 'manteiga', nome: 'Manteiga de Primeira Qualidade com Sal', src: 'assets/produtos/manteiga.webp' },
     { id: 'ricota', nome: 'Ricota Fresca', src: 'assets/produtos/ricota.webp' },
     { id: 'doce-de-leite', nome: 'Doce de Leite', src: 'assets/produtos/doce-de-leite.webp' },
-    { id: 'queijo-prato', nome: 'Queijo Prato', src: 'assets/produtos/queijo-prato.webp' },
-    { id: 'queijo-prato-zero', nome: 'Queijo Prato Zero', src: 'assets/produtos/queijo-prato-zero.webp' },
     { id: 'frescal-light', nome: 'Queijo Frescal Light', src: 'assets/produtos/frescal-light.webp' },
     { id: 'frescal-tradicional', nome: 'Queijo Frescal Tradicional', src: 'assets/produtos/frescal-tradicional.webp' },
     { id: 'frescal-zero', nome: 'Queijo Frescal Zero', src: 'assets/produtos/frescal-zero.webp' },
