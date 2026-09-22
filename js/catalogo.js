@@ -55,4 +55,16 @@ export function iniciarCatalogo() {
     }
   }, { rootMargin: '0px 0px -10% 0px' });
   itens.forEach((i) => io.observe(i));
+
+  /* quem chega pela busca vem com o endereco da peca: centraliza e acende por
+     um instante, senao a pessoa cai no meio da grade sem saber qual era. */
+  const daBusca = location.hash && cat.querySelector(location.hash);
+  if (daBusca && daBusca.classList.contains('cat__item')) {
+    daBusca.classList.add('is-visivel');
+    requestAnimationFrame(() => {
+      daBusca.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      daBusca.classList.add('cat__item--achado');
+      setTimeout(() => daBusca.classList.remove('cat__item--achado'), 2400);
+    });
+  }
 }

@@ -240,3 +240,16 @@
 @media (max-width: 639px) {
   .cat__versao { padding: .7em 1em; font-size: 12px; }
 }
+
+/* a peca que a busca escolheu acende por um instante, para a pessoa saber
+   qual das treze era (ver o fim do js/catalogo.js) */
+.cat__item--achado .cat__peca {
+  animation: cat-achado 2.4s ease;
+}
+@keyframes cat-achado {
+  0%, 70% { box-shadow: 0 0 0 2px var(--azul), 0 0 0 10px rgba(0, 57, 152, .12); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 57, 152, 0), 0 0 0 0 rgba(0, 57, 152, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cat__item--achado .cat__peca { animation: none; box-shadow: 0 0 0 2px var(--azul); }
+}

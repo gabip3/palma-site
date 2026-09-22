@@ -1,4 +1,6 @@
 import { escalaQueCobre } from './mancha.js';
+import { ligarSubir } from './subir.js';
+import { ligarBusca } from './busca.js';
 
 /* Camada de menu e busca.
    Abrir: a mancha oficial cresce a partir do botao tocado ate cobrir a tela.
@@ -12,12 +14,16 @@ const reduzido = matchMedia('(prefers-reduced-motion: reduce)');
 const FOCAVEIS = 'a[href], button:not([disabled]), input:not([disabled])';
 
 export function iniciarTopo({ forma }) {
+  /* o voltar ao topo nao depende da camada: entra antes de qualquer saida */
+  ligarSubir();
+
   const camada = document.getElementById('camada');
   if (!camada) return;
   const manchaEl = camada.querySelector('.camada__mancha');
   const titulo = camada.querySelector('#camada-titulo');
   const campo = camada.querySelector('#busca-campo');
   const gatilhos = [...document.querySelectorAll('[data-camada]')];
+  const busca = ligarBusca(camada);
   const fundo = [document.getElementById('topo'), document.getElementById('conteudo'), document.querySelector('.pular')];
 
   let aberta = false;
@@ -84,6 +90,8 @@ export function iniciarTopo({ forma }) {
 
     const concluir = () => {
       camada.hidden = true;
+      /* fechou, esqueceu: abrir de novo comeca em branco */
+      busca?.limpar();
       document.documentElement.classList.remove('camada-aberta');
       fundo.forEach((n) => { if (n) n.inert = false; });
       gatilho?.setAttribute('aria-expanded', 'false');

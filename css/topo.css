@@ -281,3 +281,58 @@
 
 /* pagina atual: o fio embaixo do link fica aceso */
 .topo__link[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ----- resultados da busca -----
+   A lista nasce do js/busca.js, logo depois do campo. So ocupa espaco quando
+   tem o que mostrar, para a camada vazia continuar a tela limpa de antes. */
+
+.busca__resultados {
+  margin-top: clamp(18px, 3svh, 34px);
+  max-height: min(46svh, 420px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.busca__recado {
+  margin: 0 0 12px;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .6);
+}
+.busca__recado:empty { display: none; }
+
+.busca__itens { margin: 0; padding: 0; list-style: none; }
+.busca__item { border-top: 1px solid rgba(255, 255, 255, .16); }
+.busca__item:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
+
+.busca__ir {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(11px, 1.6svh, 17px) 2px;
+  color: #fff;
+  text-decoration: none;
+  transition: padding-left .35s var(--ease-saida), color .3s ease;
+}
+.busca__ir:hover,
+.busca__ir:focus-visible { padding-left: 14px; }
+.busca__ir:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.busca__nome {
+  font-size: clamp(17px, 1.7vw, 24px);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.2;
+}
+.busca__onde {
+  flex: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+}
+
+/* no modo menu a busca fica pequena no rodape da camada: some com a lista */
+.camada[data-modo="menu"] .busca__resultados { display: none; }

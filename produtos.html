@@ -7,6 +7,27 @@
   <meta name="description" content="Leite, queijos, manteiga, creme e doce de leite da Agropecuária Palma, feitos com o leite do próprio rebanho.">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- compartilhamento e icones: gerado por .preview/tmp/cabecalho-social.mjs.
+       O endereco abaixo e o da previa; na entrega vira o dominio da Palma. -->
+  <link rel="canonical" href="https://gabip3.github.io/palma-site/produtos.html">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <meta property="og:title" content="Produtos | Agropecuária Palma">
+  <meta property="og:description" content="Leite, queijos, manteiga, creme e doce de leite da Agropecuária Palma, feitos com o leite do próprio rebanho.">
+  <meta property="og:url" content="https://gabip3.github.io/palma-site/produtos.html">
+  <meta property="og:image" content="https://gabip3.github.io/palma-site/assets/palma-compartilhar.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vaca preta e branca ao lado do bezerro recém-nascido, com a marca Palma">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Agropecuária Palma">
+  <meta name="twitter:card" content="summary_large_image">
+
+
   <!-- Foco, da Dalton Maag, servida pelo Adobe Fonts (projeto "Palma").
        A Nunito continua no tokens.css como reserva, caso a folha nao carregue. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
@@ -177,7 +198,7 @@
       <section class="cat__grupo" aria-labelledby="cat-leites">
         <h2 class="cat__linha" id="cat-leites">Leites</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="leites" data-versoes="">
+          <li class="cat__item" id="p-leite-integral" data-linha="leites" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/leite-integral-760.webp"
@@ -196,7 +217,7 @@
       <section class="cat__grupo" aria-labelledby="cat-queijos">
         <h2 class="cat__linha" id="cat-queijos">Queijos</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
+          <li class="cat__item" id="p-queijo-minas-frescal" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-frescal-420.webp"
@@ -211,7 +232,7 @@
               <p class="cat__formatos">Vendido por peso, também em peça grande</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="light">
+          <li class="cat__item" id="p-queijo-minas-frescal-light" data-linha="queijos" data-versoes="light">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-frescal-light-420.webp"
@@ -226,7 +247,7 @@
               <p class="cat__formatos">Vendido por peso</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="zero">
+          <li class="cat__item" id="p-queijo-minas-frescal-zero" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-frescal-zero-420.webp"
@@ -241,7 +262,7 @@
               <p class="cat__formatos">Vendido por peso</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
+          <li class="cat__item" id="p-queijo-minas-padrao" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-padrao-480.webp"
@@ -256,7 +277,7 @@
               <p class="cat__formatos">Vendido por peso</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="zero">
+          <li class="cat__item" id="p-queijo-minas-padrao-zero" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-minas-padrao-zero-480.webp"
@@ -271,7 +292,7 @@
               <p class="cat__formatos">Vendido por peso</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="">
+          <li class="cat__item" id="p-queijo-divino" data-linha="queijos" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-divino-480.webp"
@@ -282,7 +303,7 @@
               <h3 class="cat__nome">Queijo Divino</h3>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="tradicional">
+          <li class="cat__item" id="p-queijo-cottage" data-linha="queijos" data-versoes="tradicional">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-cottage-420.webp"
@@ -298,7 +319,7 @@
               <p class="cat__nota">38 g de proteínas.</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="zero">
+          <li class="cat__item" id="p-queijo-cottage-zero" data-linha="queijos" data-versoes="zero">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/queijo-cottage-zero-420.webp"
@@ -314,7 +335,7 @@
               <p class="cat__nota">38 g de proteínas.</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="queijos" data-versoes="">
+          <li class="cat__item" id="p-ricota-fresca" data-linha="queijos" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/ricota-fresca-300.webp"
@@ -332,7 +353,7 @@
       <section class="cat__grupo" aria-labelledby="cat-manteigas">
         <h2 class="cat__linha" id="cat-manteigas">Manteigas e Cremes</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="manteigas" data-versoes="">
+          <li class="cat__item" id="p-manteiga-com-sal" data-linha="manteigas" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/manteiga-com-sal-380.webp"
@@ -344,7 +365,7 @@
               <p class="cat__formatos">500 g</p>
             </article>
           </li>
-          <li class="cat__item" data-linha="manteigas" data-versoes="">
+          <li class="cat__item" id="p-creme-de-leite" data-linha="manteigas" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/creme-de-leite-320.webp"
@@ -362,7 +383,7 @@
       <section class="cat__grupo" aria-labelledby="cat-doces">
         <h2 class="cat__linha" id="cat-doces">Doces</h2>
         <ul class="cat__lista">
-          <li class="cat__item" data-linha="doces" data-versoes="">
+          <li class="cat__item" id="p-doce-de-leite" data-linha="doces" data-versoes="">
             <article class="cat__peca">
               <div class="cat__palco">
                 <img src="assets/produtos/doce-de-leite-260.webp"

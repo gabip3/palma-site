@@ -164,3 +164,51 @@
   transition: color .3s ease;
 }
 .rodape__legal:hover { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+
+/* ===== VOLTAR AO TOPO =====
+   O cabecalho do site nao e fixo: rola junto e nao volta. Em pagina longa,
+   e a Nossa Fazenda passa de dezesseis telas de celular, a pessoa fica sem
+   saida ate o rodape. Este e o caminho de volta.
+
+   E uma mancha do pattern com a seta dentro, a mesma ideia dos icones de rede
+   aqui de cima, para nao virar a bolinha de sempre. Quem monta e o js/subir.js:
+   so entra em pagina que passa de tres telas, so aparece depois de duas, e
+   some quando o rodape chega. */
+
+.subir {
+  position: fixed;
+  right: max(var(--margem), env(safe-area-inset-right));
+  bottom: max(28px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: none;
+  width: clamp(54px, 4.4vw, 66px);
+  padding: 0;
+  border: 0;
+  background: none;
+  /* o desenho da mancha usa fill="currentColor", entao quem manda e a cor,
+     como nos icones de rede aqui de cima */
+  color: var(--tinta);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px) scale(.92);
+  pointer-events: none;
+  transition: opacity .4s ease, transform .5s var(--ease-saida);
+}
+.subir--serve { display: block; }
+.subir--vendo { opacity: 1; transform: none; pointer-events: auto; }
+
+.subir svg { display: block; width: 100%; height: auto; }
+.subir svg svg { overflow: visible; }
+/* a seta leva a cor do fundo: parece recortada na mancha */
+.subir__seta path { stroke: #fff; }
+
+.subir { transition: opacity .4s ease, transform .5s var(--ease-saida), color .3s ease; }
+.subir:hover { color: var(--azul); }
+.subir:hover { transform: translateY(-3px); }
+.subir:focus-visible { outline: 2px solid var(--azul); outline-offset: 5px; border-radius: 50%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .subir { transition: opacity .2s linear; transform: none; }
+  .subir--vendo { transform: none; }
+  .subir:hover { transform: none; }
+}
