@@ -50,7 +50,7 @@ export function iniciarOnde() {
   const lugar = secao.querySelector('.onde__lugar');
   const traco = secao.querySelector('.onde__traco path');
 
-  /* O traco se desenha da fazenda ate a casa em 2,1 segundos. Quem rola rapido
+  /* O traco se desenha da fazenda ate a casa em 1,25 segundo. Quem rola rapido
      pega ele no meio e acha que nunca chega, e quem busca de novo via o traco
      parado, como se a viagem nao tivesse acontecido. Entao: ele viaja outra vez
      a cada busca, e uma rede de seguranca garante que nunca fique pela metade. */
@@ -65,13 +65,13 @@ export function iniciarOnde() {
     traco.getBoundingClientRect();          // obriga o navegador a assumir o recuo
     traco.style.transition = '';
     traco.style.strokeDashoffset = '0';
-    rede = setTimeout(() => { traco.style.strokeDashoffset = '0'; }, 2600);
+    rede = setTimeout(() => { traco.style.strokeDashoffset = '0'; }, 1700);
   }
 
   new IntersectionObserver(([item], io) => {
     if (!item.isIntersecting) return;
     secao.classList.add('is-visivel');
-    rede = setTimeout(() => { if (traco) traco.style.strokeDashoffset = '0'; }, 2600);
+    rede = setTimeout(() => { if (traco) traco.style.strokeDashoffset = '0'; }, 1700);
     io.disconnect();
   }, { rootMargin: '0px 0px -20% 0px' }).observe(secao);
 
