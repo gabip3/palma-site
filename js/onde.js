@@ -1,9 +1,14 @@
 /* Secao 05: onde encontrar Palma.
 
-   A busca aceita cidade ou CEP. Os dados vem de onde-encontrar.js, hoje vazio
-   (conteudo pendente): nesse caso a resposta e so o aviso, sem inventar loja,
-   cidade ou disponibilidade. Com dados, a lista mostra onde encontrar Palma na
-   cidade ou na faixa de CEP digitada.
+   A busca aceita cidade, bairro, nome da loja ou CEP. Os dados vem de
+   onde-encontrar.js; com a lista vazia a resposta e so o aviso, sem inventar
+   loja, cidade ou disponibilidade.
+
+   Por que bairro e nome, e nao so cidade: as 20 lojas da rede Dona estao todas
+   em Brasilia, entao procurar por cidade devolveria as vinte de uma vez e nao
+   ajudaria ninguem. Quem mora no DF procura por "Asa Norte", "Aguas Claras",
+   "Taguatinga". O CEP tambem vale pela metade: digitar "70870" ja acha a faixa,
+   nao precisa dos oito digitos.
 
    O painel desenha o caminho da Fazenda Palma ate "sua casa"; depois da busca,
    o destino passa a mostrar o que a pessoa digitou. */
@@ -23,12 +28,15 @@ const soDigitos = (s) => s.replace(/\D/g, '');
 
 function procurar(consulta) {
   const digitos = soDigitos(consulta);
-  if (digitos.length === 8) {
-    // mesma faixa de CEP: os cinco primeiros digitos
+  if (digitos.length >= 5) {
+    // mesma faixa de CEP: os cinco primeiros digitos bastam
     return ONDE_ENCONTRAR.filter((p) => soDigitos(p.cep || '').slice(0, 5) === digitos.slice(0, 5));
   }
   const alvo = semAcento(consulta);
-  return ONDE_ENCONTRAR.filter((p) => semAcento(p.cidade || '').includes(alvo));
+  if (!alvo) return [];
+  return ONDE_ENCONTRAR.filter((p) =>
+    [p.bairro, p.nome, p.cidade, p.uf, p.endereco]
+      .some((campo) => semAcento(campo || '').includes(alvo)));
 }
 
 export function iniciarOnde() {
@@ -60,8 +68,11 @@ export function iniciarOnde() {
     }
 
     const digitos = soDigitos(consulta);
-    const cep = digitos.length === 8;
-    const rotulo = cep ? `CEP ${digitos.slice(0, 5)}-${digitos.slice(5)}` : consulta;
+    /* cinco digitos ja sao uma faixa de CEP; oito e o CEP inteiro */
+    const cep = digitos.length >= 5;
+    const rotulo = cep
+      ? (digitos.length >= 8 ? `CEP ${digitos.slice(0, 5)}-${digitos.slice(5, 8)}` : `CEP ${digitos.slice(0, 5)}`)
+      : consulta;
     const em = cep ? `perto do ${rotulo}` : `em ${rotulo}`;
     lugar.textContent = rotulo;
     secao.classList.add('tem-destino');
