@@ -48,10 +48,30 @@ export function iniciarOnde() {
   const aviso = secao.querySelector('.onde__aviso');
   const lista = secao.querySelector('.onde__lista');
   const lugar = secao.querySelector('.onde__lugar');
+  const traco = secao.querySelector('.onde__traco path');
+
+  /* O traco se desenha da fazenda ate a casa em 2,1 segundos. Quem rola rapido
+     pega ele no meio e acha que nunca chega, e quem busca de novo via o traco
+     parado, como se a viagem nao tivesse acontecido. Entao: ele viaja outra vez
+     a cada busca, e uma rede de seguranca garante que nunca fique pela metade. */
+  const parado = matchMedia('(prefers-reduced-motion: reduce)');
+  let rede = 0;
+  function viajar() {
+    if (!traco) return;
+    clearTimeout(rede);
+    if (parado.matches) { traco.style.strokeDashoffset = '0'; return; }
+    traco.style.transition = 'none';
+    traco.style.strokeDashoffset = '1';
+    traco.getBoundingClientRect();          // obriga o navegador a assumir o recuo
+    traco.style.transition = '';
+    traco.style.strokeDashoffset = '0';
+    rede = setTimeout(() => { traco.style.strokeDashoffset = '0'; }, 2600);
+  }
 
   new IntersectionObserver(([item], io) => {
     if (!item.isIntersecting) return;
     secao.classList.add('is-visivel');
+    rede = setTimeout(() => { if (traco) traco.style.strokeDashoffset = '0'; }, 2600);
     io.disconnect();
   }, { rootMargin: '0px 0px -20% 0px' }).observe(secao);
 
@@ -76,6 +96,7 @@ export function iniciarOnde() {
     const em = cep ? `perto do ${rotulo}` : `em ${rotulo}`;
     lugar.textContent = rotulo;
     secao.classList.add('tem-destino');
+    viajar();   // o traco refaz o caminho ate o destino novo
 
     if (!ONDE_ENCONTRAR.length) {
       aviso.textContent = AVISOS.pendente;
