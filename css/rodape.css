@@ -212,3 +212,10 @@
   .subir--vendo { transform: none; }
   .subir:hover { transform: none; }
 }
+
+/* Joao 3:16 na ultima linha, so a referencia, como a Palma pediu. Fica um
+   pouco mais claro que os dados legais ao lado: nao e nota de rodape. */
+.rodape__verso {
+  color: rgba(255, 255, 255, .75);
+  letter-spacing: .04em;
+}

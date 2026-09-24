@@ -240,3 +240,13 @@
   .onde__ponto { font-size: 13px; }
   .onde__ponto span { font-size: 11px; }
 }
+
+/* A linha que aparece quando a busca acha mais lojas do que cabe na lista.
+   Sao 94: buscar pela cidade traz quase todas. */
+.onde__mais {
+  display: block;
+  border-bottom: 0;
+  color: rgba(16, 13, 11, .6);
+  font-size: clamp(13px, .95vw, 16px);
+  font-style: italic;
+}

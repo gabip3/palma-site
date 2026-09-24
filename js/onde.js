@@ -23,6 +23,9 @@ const AVISOS = {
   achados: (em) => `Onde encontrar Palma ${em}:`,
 };
 
+/* quantas lojas a lista mostra antes de pedir para afunilar */
+const MOSTRA = 8;
+
 const semAcento = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const soDigitos = (s) => s.replace(/\D/g, '');
 
@@ -105,7 +108,10 @@ export function iniciarOnde() {
 
     const achados = procurar(consulta);
     aviso.textContent = achados.length ? AVISOS.achados(em) : AVISOS.nenhum(em);
-    achados.forEach((p) => {
+
+    /* São 94 lojas: buscar pela cidade traz quase todas e a lista vira uma
+       parede de seis mil pixels. Mostra as primeiras e ensina a afunilar. */
+    achados.slice(0, MOSTRA).forEach((p) => {
       const li = document.createElement('li');
       const nome = document.createElement('strong');
       nome.textContent = p.nome;
@@ -114,5 +120,13 @@ export function iniciarOnde() {
       li.append(nome, onde);
       lista.append(li);
     });
+
+    if (achados.length > MOSTRA) {
+      const sobram = achados.length - MOSTRA;
+      const li = document.createElement('li');
+      li.className = 'onde__mais';
+      li.textContent = `E mais ${sobram} ${sobram === 1 ? 'loja' : 'lojas'}. Busque pelo bairro ou pelo CEP para achar a mais perto.`;
+      lista.append(li);
+    }
   });
 }
