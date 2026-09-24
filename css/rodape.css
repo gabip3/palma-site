@@ -121,10 +121,13 @@
 
 /* O galo na cerca assina o rodape: branco, pequeno, na ponta direita da ultima
    linha, fazendo diagonal com a logo no alto a esquerda. */
-/* os dados legais ficam juntos a esquerda e o galo sozinho na ponta */
+/* Os dados legais ficam juntos a esquerda; o versiculo e o galo andam colados
+   na ponta direita. Quem empurra os dois e o .rodape__verso, com margem
+   automatica; se o galo tambem tivesse, o espaco se dividia entre eles e o
+   versiculo parava no meio da linha. */
 .rodape__base { align-items: flex-end; justify-content: flex-start; }
 .rodape__galo {
-  margin-left: auto;
+  margin-left: clamp(14px, 1.8vw, 30px);
   width: clamp(66px, 6vw, 104px);
   height: auto;
   aspect-ratio: 111.81 / 93.33;
@@ -213,9 +216,19 @@
   .subir:hover { transform: none; }
 }
 
-/* Joao 3:16 na ultima linha, so a referencia, como a Palma pediu. Fica um
-   pouco mais claro que os dados legais ao lado: nao e nota de rodape. */
-.rodape__verso {
-  color: rgba(255, 255, 255, .75);
-  letter-spacing: .04em;
+/* Joao 3:16, so a referencia, como a Palma pediu. Em 24/09/2026 o Murilo
+   pediu maior e junto do galo: passou a empurrar sozinho para a direita, e o
+   galo deixou de ter margem automatica para andar colado nele. O tamanho e
+   tres vezes o dos dados legais ao lado. */
+/* o seletor precisa da classe do pai: ".rodape__base p" zera a margem de todos
+   os paragrafos daqui e ganharia de ".rodape__verso" sozinho, deixando o
+   versiculo parado no meio da linha */
+.rodape__base .rodape__verso {
+  margin-left: auto;
+  text-align: right;
+  font-size: clamp(24px, 2.4vw, 40px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: rgba(255, 255, 255, .92);
 }
