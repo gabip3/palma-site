@@ -192,21 +192,19 @@
       <div class="origem__trilho">
         <div class="origem__palco">
           <div class="origem__janela">
-            <!-- A mancha revela uma de quatro fotos, sorteada a cada visita:
-                 a vaca com o bezerro e tres vistas da fazenda de cima. O sorteio
+            <!-- A mancha revela uma de sete fotos, sorteada a cada visita: quatro do
+                 pasto e do rebanho e tres vistas da fazenda de cima. O sorteio
                  acontece no script logo abaixo, e o <img> nasce sem src, para o
                  navegador baixar uma foto so. Sem JavaScript, o <noscript>
-                 mostra a vaca com o bezerro, fixa.
+                 mostra a primeira delas, fixa.
 
                  O hero da Nossa Fazenda tambem sorteia. As duas guardam a
                  ultima escolhida na sessao e evitam repetir, para quem sai
                  daqui para la nao ver a mesma foto duas vezes.
-
-                 A vaca com o bezerro e a _MG_8145, agora na versao tratada que
-                 chegou em 22/09/2026, em 4140 px: antes o site usava um arquivo
-                 de 1537 px e nao dava para crescer. Sai em 1024, 1600 e 2000;
-                 2400 pesaria 726 KB por causa da gra da palha, quase o dobro do
-                 de 2000, e nao vale o que se ganha.
+                 A vaca com o bezerro recem-nascido (_MG_8145) saiu em
+                 24/09/2026 a pedido do Murilo. As quatro que entraram sao
+                 tratadas; o recorte vertical de cada uma esta em
+                 .preview/tmp/exporta-abertura.mjs.
 
                  Aereas da sessao de 11/06/2026. CREDITO PENDENTE: confirmar com
                  a Palma a autorizacao e o credito do fotografo. -->
@@ -217,10 +215,22 @@
             <script>
             (function () {
               var fotos = [
-      { l: "assets/fotos/fazenda-origem-paisagem-1024.webp 1024w, assets/fotos/fazenda-origem-paisagem-1600.webp 1600w, assets/fotos/fazenda-origem-paisagem-2000.webp 2000w",
-        p: "assets/fotos/fazenda-origem-retrato-720.webp 720w, assets/fotos/fazenda-origem-retrato-1100.webp 1100w",
-        id: "origem-vaca", src: "assets/fotos/fazenda-origem-paisagem-1600.webp", w: 2000, a: 1331,
-        alt: "Vaca preta e branca ao lado do bezerro recém-nascido, sobre a palha" },
+      { l: "assets/fotos/fazenda/fz-abertura-pasto-1000.webp 1000w, assets/fotos/fazenda/fz-abertura-pasto-1600.webp 1600w, assets/fotos/fazenda/fz-abertura-pasto-2400.webp 2400w",
+        p: "assets/fotos/fazenda/fz-abertura-pasto-r720.webp 720w, assets/fotos/fazenda/fz-abertura-pasto-r1100.webp 1100w",
+        id: "abertura-pasto", src: "assets/fotos/fazenda/fz-abertura-pasto-1600.webp", w: 2400, a: 1597, foco: "50% 50%",
+        alt: "Vacas malhadas no pasto verde, diante da linha de eucaliptos" },
+      { l: "assets/fotos/fazenda/fz-abertura-gir-1000.webp 1000w, assets/fotos/fazenda/fz-abertura-gir-1600.webp 1600w, assets/fotos/fazenda/fz-abertura-gir-2400.webp 2400w",
+        p: "assets/fotos/fazenda/fz-abertura-gir-r720.webp 720w, assets/fotos/fazenda/fz-abertura-gir-r1100.webp 1100w",
+        id: "abertura-gir", src: "assets/fotos/fazenda/fz-abertura-gir-1600.webp", w: 2400, a: 1597, foco: "50% 50%",
+        alt: "Rebanho Gir de pelagem vermelha no capim alto, com a mata ao fundo" },
+      { l: "assets/fotos/fazenda/fz-abertura-rebanho-1000.webp 1000w, assets/fotos/fazenda/fz-abertura-rebanho-1600.webp 1600w, assets/fotos/fazenda/fz-abertura-rebanho-2400.webp 2400w",
+        p: "assets/fotos/fazenda/fz-abertura-rebanho-r720.webp 720w, assets/fotos/fazenda/fz-abertura-rebanho-r1100.webp 1100w",
+        id: "abertura-rebanho", src: "assets/fotos/fazenda/fz-abertura-rebanho-1600.webp", w: 2400, a: 1597, foco: "50% 50%",
+        alt: "Mulher de camisa branca da Palma caminhando no meio do rebanho Gir, no pasto" },
+      { l: "assets/fotos/fazenda/fz-abertura-horizonte-1000.webp 1000w, assets/fotos/fazenda/fz-abertura-horizonte-1600.webp 1600w, assets/fotos/fazenda/fz-abertura-horizonte-2400.webp 2400w",
+        p: "assets/fotos/fazenda/fz-abertura-horizonte-r720.webp 720w, assets/fotos/fazenda/fz-abertura-horizonte-r1100.webp 1100w",
+        id: "abertura-horizonte", src: "assets/fotos/fazenda/fz-abertura-horizonte-1600.webp", w: 2400, a: 1597, foco: "50% 50%",
+        alt: "O pasto se abrindo até o horizonte, com o rebanho espalhado e o céu alto" },
       { l: "assets/fotos/fazenda/fz-aerea-represa-1000.webp 1000w, assets/fotos/fazenda/fz-aerea-represa-1600.webp 1600w, assets/fotos/fazenda/fz-aerea-represa-2400.webp 2400w",
         p: "assets/fotos/fazenda/fz-aerea-represa-r720.webp 720w, assets/fotos/fazenda/fz-aerea-represa-r1100.webp 1100w",
         id: "aerea-represa", src: "assets/fotos/fazenda/fz-aerea-represa-1600.webp", w: 2400, a: 1467, foco: "50% 50%",
@@ -248,10 +258,10 @@
             </script>
             <noscript>
               <picture class="origem__foto">
-                <source media="(max-aspect-ratio: 5/6)" sizes="82vh" srcset="assets/fotos/fazenda-origem-retrato-720.webp 720w, assets/fotos/fazenda-origem-retrato-1100.webp 1100w">
-                <img src="assets/fotos/fazenda-origem-paisagem-1600.webp" srcset="assets/fotos/fazenda-origem-paisagem-1024.webp 1024w, assets/fotos/fazenda-origem-paisagem-1600.webp 1600w, assets/fotos/fazenda-origem-paisagem-2000.webp 2000w"
-                     sizes="100vw" width="2000" height="1331"
-                     alt="Vaca preta e branca ao lado do bezerro recém-nascido, sobre a palha">
+                <source media="(max-aspect-ratio: 5/6)" sizes="82vh" srcset="assets/fotos/fazenda/fz-abertura-pasto-r720.webp 720w, assets/fotos/fazenda/fz-abertura-pasto-r1100.webp 1100w">
+                <img src="assets/fotos/fazenda/fz-abertura-pasto-1600.webp" srcset="assets/fotos/fazenda/fz-abertura-pasto-1000.webp 1000w, assets/fotos/fazenda/fz-abertura-pasto-1600.webp 1600w, assets/fotos/fazenda/fz-abertura-pasto-2400.webp 2400w"
+                     sizes="100vw" width="2400" height="1597"
+                     alt="Vacas malhadas no pasto verde, diante da linha de eucaliptos">
               </picture>
             </noscript>
           </div>
