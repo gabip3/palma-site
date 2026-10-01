@@ -112,8 +112,8 @@ export const MILESTONES = [
    Para trocar pelo produto real: adicione os PNG/WEBP recortados em
    assets/produtos/ e liste os caminhos em `images`. O jogo passa a
    desenhar as imagens no lugar do desenho vetorial automaticamente. */
-/* Embalagens reais, na versao sem sombra da pasta do cliente, reduzidas para
-   o tamanho do jogo (originais fora do repositorio). O Queijo Divino fica a
+/* Embalagens reais, na versao sem sombra, reduzidas para o tamanho do jogo
+   (os originais ficam fora do repositorio). O Queijo Divino fica a
    parte: e o item raro, que vale mais (RUN.queijoValor). */
 export const PRODUCTS = {
   itens: [

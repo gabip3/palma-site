@@ -201,9 +201,8 @@
   }
 
   /* O traco se desenha da fazenda ate a casa; as manchas nascem nas pontas.
-     O tempo foi de 2,1s para 1,25s em 23/09/2026: a propria Gabriella leu o
-     traco no meio do caminho como defeito, duas vezes. Viagem longa demais
-     parece travada. */
+     Leva 1,25s, e nao mais 2,1s: linha parada no meio do caminho nao parece
+     viagem, parece travamento, e quem rola rapido pega ela justo no meio. */
   .js .onde__traco path { stroke-dashoffset: 1; }
   .js .onde.is-visivel .onde__traco path { stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s var(--ease-tinta) .15s; }
   .js .onde__marca { scale: .2; opacity: 0; }

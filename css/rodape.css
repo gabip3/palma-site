@@ -217,11 +217,10 @@
   .subir:hover { transform: none; }
 }
 
-/* Joao 3:16, so a referencia, como a Palma pediu. Em 24/09/2026 o Murilo
-   pediu maior e junto do galo: passou a empurrar sozinho para a direita, e o
-   galo deixou de ter margem automatica para andar colado nele. O tamanho e
-   quase o dobro do dos dados legais ao lado: em 24/09/2026 foi para tres
-   vezes, a pedido do Murilo, e a Gabriella achou grande demais. */
+/* Joao 3:16, so a referencia, fechando a linha a direita junto do galo.
+   Quem empurra os dois para a ponta e este paragrafo, com margem automatica;
+   por isso o galo nao tem a dele. O tamanho e quase o dobro do dos dados
+   legais ao lado: destaca sem virar titulo. */
 /* o seletor precisa da classe do pai: ".rodape__base p" zera a margem de todos
    os paragrafos daqui e ganharia de ".rodape__verso" sozinho, deixando o
    versiculo parado no meio da linha */
