@@ -8,7 +8,6 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/brand/palma-icone.svg" type="image/svg+xml">
 
-<!-- a mesma Foco do resto do site, pelo Adobe Fonts; a Nunito fica de reserva -->
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/ein2dnu.css">
 
@@ -25,11 +24,9 @@
 
 <main class="stage" id="stage" data-state="intro">
 
-  <!-- Cena continua: ja esta viva atras da intro e vira a area de jogo -->
   <canvas class="stage__canvas" id="scene" role="img"
           aria-label="Palmira, a vaca da Palma, corre da fazenda ate a casa do consumidor, desviando de obstaculos e coletando produtos."></canvas>
 
-  <!-- Manchas de vaca: composicao grafica, preenchidas via JS com o pattern oficial -->
   <div class="decor" id="decor" aria-hidden="true"></div>
 
   <header class="brandbar">
@@ -43,7 +40,6 @@
     </button>
   </header>
 
-  <!-- ————— ABERTURA ————— -->
   <section class="intro" id="intro" aria-labelledby="intro-title">
     <h1 class="intro__title" id="intro-title">
       <span class="intro__line1">Um joguinho</span>
@@ -73,7 +69,6 @@
     </p>
   </section>
 
-  <!-- ————— HUD ————— -->
   <div class="hud" id="hud" aria-hidden="true">
     <div class="hud__grid">
       <div class="hud__metric">
@@ -91,20 +86,17 @@
     </div>
   </div>
 
-  <!-- ————— INSTRUCAO DURANTE A PARTIDA ————— -->
   <p class="playhint" id="playhint" aria-hidden="true">
     <span class="only-fine">Espaço, seta ↑ ou clique para pular</span>
     <span class="only-coarse">Toque na tela para pular</span>
   </p>
 
-  <!-- ————— MARCOS DA MARCA ————— -->
   <div class="milestone" id="milestone" aria-hidden="true">
     <p class="milestone__top" id="ms-top"></p>
     <p class="milestone__bottom" id="ms-bottom"></p>
     <span class="milestone__rule" aria-hidden="true"></span>
   </div>
 
-  <!-- ————— GAME OVER ————— -->
   <section class="over" id="over" aria-labelledby="over-title" hidden>
     <p class="over__badge" id="over-badge" hidden>Novo recorde</p>
     <h2 class="over__title" id="over-title">MUUU!</h2>

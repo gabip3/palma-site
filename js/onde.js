@@ -15,7 +15,7 @@
 
 import { ONDE_ENCONTRAR } from './onde-encontrar.js';
 
-// CONTEUDO PENDENTE: textos de resposta revisados quando a lista existir
+// os textos de resposta da busca
 const AVISOS = {
   pendente: 'Estamos preparando a lista de onde encontrar Palma.',
   vazio: 'Digite uma cidade ou um CEP.',

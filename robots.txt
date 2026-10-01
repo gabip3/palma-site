@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fazendapalma.com/sitemap.xml
+Sitemap: https://agropecuariapalma.com.br/sitemap.xml
