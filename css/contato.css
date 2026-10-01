@@ -186,7 +186,8 @@ textarea.form__entrada { min-height: 150px; resize: vertical; }
 }
 .canais__lista {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* dois cartoes desde 01/10/2026, quando o Centro de Distribuicao saiu */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(14px, 1.6vw, 24px);
   margin: 0;
   padding: 0;

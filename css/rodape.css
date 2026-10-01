@@ -51,7 +51,8 @@
 
 .rodape__colunas {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* tres colunas desde 01/10/2026, quando o Centro de Distribuicao saiu */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px clamp(24px, 3vw, 56px);
   padding-top: clamp(28px, 4svh, 44px);
   border-top: 1px solid rgba(255, 255, 255, .18);
